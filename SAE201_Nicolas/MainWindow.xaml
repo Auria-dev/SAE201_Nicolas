@@ -1,12 +1,38 @@
-﻿<Window x:Class="SAE201_Nicolas.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SAE201_Nicolas"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+﻿<Window
+    x:Class="SAE201_Nicolas.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SAE201_Nicolas"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Application Nicolas"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
 
-    </Grid>
+    <StackPanel>
+        <TabControl>
+            <TabItem Header="Rechercher vin">
+                <!--  Content for Rechercher vin  -->
+            </TabItem>
+            <TabItem Header="Gestion commandes">
+                <!--  Content for Gestion commandes  -->
+            </TabItem>
+            <TabItem Header="Historique commandes">
+                <!--  Content for Historique commandes  -->
+            </TabItem>
+            <TabItem Header="Espace personnel">
+                <!--  Content for Espace personnel  -->
+            </TabItem>
+            <TabItem Header="Modifier">
+                <!--  Content for Modifier  -->
+            </TabItem>
+            <TabItem Header="Ajouter">
+                <!--  Content for Ajouter  -->
+            </TabItem>
+        </TabControl>
+
+
+    </StackPanel>
+
 </Window>
