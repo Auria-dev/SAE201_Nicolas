@@ -18,6 +18,18 @@ namespace SAE201_Nicolas.Model
         private int quantiteDemande;
         private EtatCommande etatDemande;
 
+        public Demande(int numDemande, int numVin, int numEmploye, int numCommande, int numClient, DateTime dateDemande, int quantiteDemande, EtatCommande etatDemande)
+        {
+            this.NumDemande = numDemande;
+            this.NumVin = numVin;
+            this.NumEmploye = numEmploye;
+            this.NumCommande = numCommande;
+            this.NumClient = numClient;
+            this.DateDemande = dateDemande;
+            this.QuantiteDemande = quantiteDemande;
+            this.EtatDemande = etatDemande;
+        }
+
         public int NumDemande
         {
             get

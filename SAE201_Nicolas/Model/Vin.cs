@@ -13,6 +13,13 @@ namespace SAE201_Nicolas.Model
         Rosé
     }
 
+    public enum Appelation
+    {
+        Bourgogne, 
+        Bordeaux, 
+        Italien
+    }
+
     public class Vin
     {
         private int numVin;
@@ -20,6 +27,15 @@ namespace SAE201_Nicolas.Model
         private double prixVin;
         private string descriptif;
         private int annee;
+
+        public Vin(int numVin, string nomVin, double prixVin, string descriptif, int annee)
+        {
+            this.NumVin = numVin;
+            this.NomVin = nomVin;
+            this.PrixVin = prixVin;
+            this.Descriptif = descriptif;
+            this.Annee = annee;
+        }
 
         public int NumVin
         {
@@ -87,6 +103,7 @@ namespace SAE201_Nicolas.Model
         }
 
         public int NumTypeVinToEnum() { return 0;  }
-        public TypeVin EnumToNumTypeVin() { return TypeVinBlanc; }
+        public TypeVin EnumToNumTypeVin() { return TypeVin.Blanc; }
+        public Appelation EnumToNumAppelation() { return Appelation.Bourgogne; }
     }
 }

@@ -11,6 +11,12 @@ namespace SAE201_Nicolas.Model
         private int numFournisseur;
         private string nomFournisseur;
 
+        public Fournisseur(int numFournisseur, string nomFournisseur)
+        {
+            this.NumFournisseur = numFournisseur;
+            this.NomFournisseur = nomFournisseur;
+        }
+
         public int NumFournisseur
         {
             get
