@@ -9,8 +9,8 @@ namespace SAE201_Nicolas.Model
     public enum EtatCommande
     {
         Validée,
-        En_attante,
-        Supprimé
+        EnAttante,
+        Supprimée
     }
 
     public class Commande
@@ -21,29 +21,69 @@ namespace SAE201_Nicolas.Model
         private EtatCommande etatCommande;
         private double prixTotal;
 
-        public int NumCommande { 
-            get => numCommande; 
-            set => numCommande = value; 
+        public int NumCommande
+        {
+            get
+            {
+                return this.numCommande;
+            }
+
+            set
+            {
+                this.numCommande = value;
+            }
         }
 
-        public int NumEmploye { 
-            get => numEmploye; 
-            set => numEmploye = value; 
+        public int NumEmploye
+        {
+            get
+            {
+                return this.numEmploye;
+            }
+
+            set
+            {
+                this.numEmploye = value;
+            }
         }
 
-        public DateTime DateCommande { 
-            get => dateCommande; 
-            set => dateCommande = value; 
+        public DateTime DateCommande
+        {
+            get
+            {
+                return this.dateCommande;
+            }
+
+            set
+            {
+                this.dateCommande = value;
+            }
         }
 
-        public EtatCommande EtatCommande { 
-            get => etatCommande; 
-            set => etatCommande = value; 
+        public EtatCommande EtatCommande
+        {
+            get
+            {
+                return this.etatCommande;
+            }
+
+            set
+            {
+                this.etatCommande = value;
+            }
         }
 
-        public double PrixTotal { 
-            get => prixTotal; 
-            set => prixTotal = value; 
+        public double PrixTotal
+        {
+            get
+            {
+                return this.prixTotal;
+            }
+
+            set
+            {
+                this.prixTotal = value;
+            }
         }
 
         public void AjouterCommande() { }
