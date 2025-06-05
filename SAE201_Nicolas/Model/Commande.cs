@@ -21,5 +21,33 @@ namespace SAE201_Nicolas.Model
         private EtatCommande etatCommande;
         private double prixTotal;
 
+        public int NumCommande { 
+            get => numCommande; 
+            set => numCommande = value; 
+        }
+
+        public int NumEmploye { 
+            get => numEmploye; 
+            set => numEmploye = value; 
+        }
+
+        public DateTime DateCommande { 
+            get => dateCommande; 
+            set => dateCommande = value; 
+        }
+
+        public EtatCommande EtatCommande { 
+            get => etatCommande; 
+            set => etatCommande = value; 
+        }
+
+        public double PrixTotal { 
+            get => prixTotal; 
+            set => prixTotal = value; 
+        }
+
+        public void AjouterCommande() { }
+        public void ModifierCommande() { }
+        public void SupprimerCommande() { }
     }
 }
