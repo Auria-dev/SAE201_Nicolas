@@ -15,18 +15,23 @@
             <TabItem Header="Rechercher vin">
                 <!--  Content for Rechercher vin  -->
             </TabItem>
+            
             <TabItem Header="Gestion commandes">
                 <!--  Content for Gestion commandes  -->
             </TabItem>
+            
             <TabItem Header="Historique commandes">
                 <!--  Content for Historique commandes  -->
             </TabItem>
+            
             <TabItem Header="Espace personnel">
                 <!--  Content for Espace personnel  -->
             </TabItem>
+            
             <TabItem Header="Modifier">
                 <!--  Content for Modifier  -->
             </TabItem>
+            
             <TabItem Header="Ajouter">
                 <!--  Content for Ajouter  -->
             </TabItem>
