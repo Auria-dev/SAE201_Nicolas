@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace SAE201_Nicolas.Model
 {
+    public enum TypeVin
+    {
+        Blanc,
+        Rouge,
+        Rosé
+    }
+
     public class Vin
     {
         private int numVin;
@@ -78,5 +85,8 @@ namespace SAE201_Nicolas.Model
                 this.annee = value;
             }
         }
+
+        public int NumTypeVinToEnum() { return 0;  }
+        public TypeVin EnumToNumTypeVin() { return TypeVinBlanc; }
     }
 }
