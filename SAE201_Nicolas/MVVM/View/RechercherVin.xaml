@@ -81,7 +81,8 @@
                         Width="220"
                         Height="40"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
+                        VerticalAlignment="Center"
+                        Style="{StaticResource ComboBoxStyle}">
                         <ComboBoxItem IsSelected="True">Tous</ComboBoxItem>
                         <ComboBoxItem>Savoie</ComboBoxItem>
                         <ComboBoxItem>Jura</ComboBoxItem>
@@ -108,15 +109,15 @@
                 </StackPanel>
             </StackPanel>
         </StackPanel>
-        <DataGrid 
+        <DataGrid
             x:Name="dgVins"
-            ItemsSource="{Binding LesVins}" 
-            HorizontalAlignment="Center" 
+            Width="500"
+            Height="241"
+            Margin="0,50,0,0"
+            HorizontalAlignment="Center"
             AutoGenerateColumns="False"
             IsReadOnly="True"
-            Margin="0,50,0,0" 
-            Height="241" 
-            Width="500">
+            ItemsSource="{Binding LesVins}">
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="*"

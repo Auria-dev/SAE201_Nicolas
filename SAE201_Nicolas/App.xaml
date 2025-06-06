@@ -15,7 +15,7 @@
                 <ResourceDictionary Source="Theme/SidebarMenu.xaml" />
                 <ResourceDictionary Source="Theme/TextBox.xaml" />
                 <ResourceDictionary Source="Theme/Button.xaml" />
-                <!--<ResourceDictionary Source="Theme/ComboBox.xaml" />-->
+                <ResourceDictionary Source="Theme/ComboBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:RechercherVinViewModel}">

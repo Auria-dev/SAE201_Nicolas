@@ -69,7 +69,8 @@
                         x:Name="TxtboxPrix"
                         Width="180"
                         Height="48"
-                        Margin="12,0,0,0">
+                        Margin="12,0,0,0"
+                        Style="{StaticResource ComboBoxStyle}">
                         <ComboBoxItem IsSelected="True">Blanc</ComboBoxItem>
                         <ComboBoxItem>Rouge</ComboBoxItem>
                         <ComboBoxItem>Rosé</ComboBoxItem>
@@ -83,7 +84,10 @@
                 Content="_Fournisseur"
                 FontSize="14"
                 Target="{Binding ElementName=TxtboxPrenomClient}" />
-            <ComboBox Width="380" Height="48">
+            <ComboBox
+                Width="380"
+                Height="48"
+                Style="{StaticResource ComboBoxStyle}">
                 <ComboBoxItem IsSelected="True">Jean Perrier</ComboBoxItem>
                 <ComboBoxItem>Domaine Marnes Blanches</ComboBoxItem>
                 <ComboBoxItem>Domaine Esporao</ComboBoxItem>

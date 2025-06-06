@@ -26,9 +26,7 @@
                                     <Style TargetType="{x:Type TextBlock}">
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
-                                                <!--  If no text  -->
                                                 <Setter Property="Visibility" Value="Visible" />
-                                                <!--  show the text Search from above  -->
                                             </DataTrigger>
                                         </Style.Triggers>
                                         <Setter Property="Visibility" Value="Hidden" />
