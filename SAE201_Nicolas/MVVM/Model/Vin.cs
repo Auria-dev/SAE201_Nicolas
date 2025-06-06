@@ -11,8 +11,8 @@ namespace SAE201_Nicolas.MVVM.Model
 {
     public enum TypeVin
     {
-        Blanc,
         Rouge,
+        Blanc,
         Rosé,
         Champagne,
         Mousseux,
@@ -24,7 +24,9 @@ namespace SAE201_Nicolas.MVVM.Model
     {
         Bourgogne,
         Bordeaux,
-        Italien
+        Champagne,
+        Alsace,
+        Beaujolais
     }
 
     public class Vin
@@ -34,6 +36,8 @@ namespace SAE201_Nicolas.MVVM.Model
         private double prixVin;
         private string descriptif;
         private int annee;
+        private int numTypeVin;
+        private int numAppelation;
 
         public Vin(int numVin, string nomVin, double prixVin, string descriptif, int annee)
         {
@@ -48,6 +52,11 @@ namespace SAE201_Nicolas.MVVM.Model
         {
         }
 
+        public Vin(int numVin, string nomVin, double prixVin, string descriptif, int annee, int numTypeVin, int numAppelation) : this(numVin, nomVin, prixVin, descriptif, annee)
+        {
+            this.NumTypeVin = numTypeVin;
+            this.NumAppelation = numAppelation;
+        }
 
         public int NumVin
         {
@@ -118,41 +127,89 @@ namespace SAE201_Nicolas.MVVM.Model
         {
             get
             {
-                int num=0;
                 string type;
-                using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select * from vin ;"))
+                switch (NumTypeVin)
                 {
-                    DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
-                    foreach (DataRow dr in dt.Rows)
-                    {
-                        num = (int)dr["numtype"];
-                    }
-                }
-                switch (num)
-                {
-                    case 0: type = "type0";
-                        break;
-
                     case 1:
-                        type = "type1";
+                        type = TypeVin.Rouge.ToString();
                         break;
-
                     case 2:
-                        type = "type2";
+                        type = TypeVin.Blanc.ToString();
+                        break;
+                    case 3:
+                        type = TypeVin.Rosé.ToString();
+                        break;
+                    case 4:
+                        type = TypeVin.Champagne.ToString();
+                        break;
+                    case 5:
+                        type = TypeVin.Mousseux.ToString();
+                        break;
+                    case 6:
+                        type = TypeVin.Doux.ToString();
+                        break;
+                    case 7:
+                        type = TypeVin.Liquoreux.ToString();
                         break;
 
-                    default: type = "UNKNOWN"; break; 
+                    default: type = "INCONNU"; break; 
                 }
-                    
                 return type;
             }
         }
 
-        public string Appelation
+        public string NomAppelation
         {
             get
             {
-                return this.NomVin;
+                string appelationVin;
+                switch (NumAppelation)
+                {
+                    case 1:
+                        appelationVin = Appelation.Bordeaux.ToString();
+                        break;
+                    case 2:
+                        appelationVin = Appelation.Bourgogne.ToString();
+                        break;
+                    case 3:
+                        appelationVin = Appelation.Champagne.ToString();
+                        break;
+                    case 4:
+                        appelationVin = Appelation.Alsace.ToString();
+                        break;
+                    case 5:
+                        appelationVin = Appelation.Beaujolais.ToString();
+                        break;
+
+                    default: appelationVin = "Autre"; break;
+                }
+                return appelationVin;
+            }
+        }
+
+        public int NumTypeVin
+        {
+            get
+            {
+                return this.numTypeVin;
+            }
+
+            set
+            {
+                this.numTypeVin = value;
+            }
+        }
+
+        public int NumAppelation
+        {
+            get
+            {
+                return this.numAppelation;
+            }
+
+            set
+            {
+                this.numAppelation = value;
             }
         }
 
@@ -181,7 +238,9 @@ namespace SAE201_Nicolas.MVVM.Model
                             (string)dr["nomvin"],
                             double.Parse(dr["prixvin"].ToString()), 
                             (string)dr["descriptif"],
-                            (int)dr["annee"]
+                            (int)dr["annee"],
+                            (int)dr["numtype"],
+                            (int)dr["numappelation"]
                         )
                     );
                 }

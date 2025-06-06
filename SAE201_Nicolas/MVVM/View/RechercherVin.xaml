@@ -111,7 +111,7 @@
         </StackPanel>
         <DataGrid
             x:Name="dgVins"
-            Width="500"
+            Width="600"
             Height="241"
             Margin="0,50,0,0"
             HorizontalAlignment="Center"
@@ -120,7 +120,7 @@
             ItemsSource="{Binding LesVins}">
             <DataGrid.Columns>
                 <DataGridTextColumn
-                    Width="*"
+                    Width="3.5*"
                     Binding="{Binding NomVin}"
                     Header="Nom" />
                 <DataGridTextColumn
@@ -132,12 +132,12 @@
                     Binding="{Binding Annee}"
                     Header="Année" />
                 <DataGridTextColumn
-                    Width="*"
+                    Width="2*"
                     Binding="{Binding NomTypeVin}"
                     Header="Type de vin" />
                 <DataGridTextColumn
-                    Width="*"
-                    Binding="{Binding Appelation}"
+                    Width="2*"
+                    Binding="{Binding NomAppelation}"
                     Header="Appelation" />
             </DataGrid.Columns>
             
