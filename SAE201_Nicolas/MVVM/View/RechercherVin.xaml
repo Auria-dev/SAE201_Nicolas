@@ -130,7 +130,16 @@
                     Width="*"
                     Binding="{Binding Annee}"
                     Header="Année" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding NomTypeVin}"
+                    Header="Type de vin" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Appelation}"
+                    Header="Appelation" />
             </DataGrid.Columns>
+            
         </DataGrid>
 
     </StackPanel>

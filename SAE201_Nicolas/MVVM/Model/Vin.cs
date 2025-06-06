@@ -118,7 +118,33 @@ namespace SAE201_Nicolas.MVVM.Model
         {
             get
             {
-                return "dhf";
+                int num=0;
+                string type;
+                using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select * from vin ;"))
+                {
+                    DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        num = (int)dr["numtype"];
+                    }
+                }
+                switch (num)
+                {
+                    case 0: type = "type0";
+                        break;
+
+                    case 1:
+                        type = "type1";
+                        break;
+
+                    case 2:
+                        type = "type2";
+                        break;
+
+                    default: type = "UNKNOWN"; break; 
+                }
+                    
+                return type;
             }
         }
 
@@ -126,7 +152,7 @@ namespace SAE201_Nicolas.MVVM.Model
         {
             get
             {
-                return "hghv";
+                return this.NomVin;
             }
         }
 
