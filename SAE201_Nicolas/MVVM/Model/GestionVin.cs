@@ -20,6 +20,10 @@ namespace SAE201_Nicolas.MVVM.Model
             this.lesVins = new ObservableCollection<Vin>(new Vin().FindAll());
         }
 
+        public GestionVin() : this("")
+        {
+        }
+
         public string Nom
         {
             get

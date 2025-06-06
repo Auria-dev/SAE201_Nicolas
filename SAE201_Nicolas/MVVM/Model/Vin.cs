@@ -112,6 +112,7 @@ namespace SAE201_Nicolas.MVVM.Model
         public int NumTypeVinToEnum() { return 0; }
         public TypeVin EnumToNumTypeVin() { return TypeVin.Blanc; }
         public Appelation EnumToNumAppelation() { return Appelation.Bourgogne; }
+        
         public List<Vin> FindAll()
         {
             List<Vin> lesVins = new List<Vin>();
@@ -119,10 +120,43 @@ namespace SAE201_Nicolas.MVVM.Model
             {
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 foreach (DataRow dr in dt.Rows)
-                    lesVins.Add(new Vin((Int32)dr["numvin"], (String)dr["nomvin"],
-                   (Double)dr["prixvin"], (String)dr["descriptif"], (Int32)dr["annee"]));
+                {
+                    Console.WriteLine(dr["nomvin"].ToString());
+                    lesVins.Add(
+                        new Vin(
+                            (int)dr["numvin"], 
+                            (string)dr["nomvin"],
+                            double.Parse(dr["prixvin"].ToString()), 
+                            (string)dr["descriptif"],
+                            (int)dr["annee"]
+                        )
+                    );
+                }
             }
             return lesVins;
+        }
+
+        //public void Read()
+        //{
+        //    using (var cmdSelect = new NpgsqlCommand("select * from vin where numvin =@numvin;"))
+        //    {
+        //        cmdSelect.Parameters.AddWithValue("numvin", this.NumVin);
+
+        //        DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+        //        this.Nom = (String)dt.Rows[0]["nom"];
+        //        this.Maitre = (String)dt.Rows[0]["maitre"];
+        //        this.Poids = (double)dt.Rows[0]["poids"];
+        //    }
+        //}
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Vin vin &&
+                   this.NumVin == vin.NumVin &&
+                   this.NomVin == vin.NomVin &&
+                   this.PrixVin == vin.PrixVin &&
+                   this.Descriptif == vin.Descriptif &&
+                   this.Annee == vin.Annee;
         }
     }
 }

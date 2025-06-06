@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:SAE201_Nicolas"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="clr-namespace:SAE201_Nicolas.MVVM.ViewModel"
+    xmlns:model="clr-namespace:SAE201_Nicolas.MVVM.Model"
     Title="Application Nicolas"
     Width="1000"
     Height="600"
