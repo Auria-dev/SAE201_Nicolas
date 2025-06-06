@@ -134,7 +134,7 @@ create table VIN (
    NOMVIN               VARCHAR(100)         null,
    PRIXVIN              DECIMAL(16,2)        null,
    DESCRIPTIF           VARCHAR(300)         null,
-   MILLESIME            INT4                 null,
+   ANNEE                INT4                 null,
    constraint PK_VIN primary key (NUMVIN)
 );
 
