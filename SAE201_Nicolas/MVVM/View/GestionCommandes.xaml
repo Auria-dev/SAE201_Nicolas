@@ -77,5 +77,29 @@
             </StackPanel>
 
         </StackPanel>
+        <DataGrid 
+             x:Name="dgCommandes"
+             ItemsSource="{Binding LesCommandes}" 
+             HorizontalAlignment="Center" 
+             AutoGenerateColumns="False"
+             IsReadOnly="True"
+             Margin="0,50,0,0" 
+             Height="241" 
+             Width="500">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                     Width="*"
+                     Binding="{Binding DateCommande}"
+                     Header="Date Commande" />
+                <DataGridTextColumn
+                     Width="*"
+                     Binding="{Binding EtatCommande}"
+                     Header="Etat Commande" />
+                <DataGridTextColumn
+                     Width="*"
+                     Binding="{Binding PrixTotal}"
+                     Header="Prix Total" />
+            </DataGrid.Columns>
+        </DataGrid>
     </StackPanel>
 </UserControl>

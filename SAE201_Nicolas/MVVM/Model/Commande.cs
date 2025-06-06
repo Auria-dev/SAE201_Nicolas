@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,10 +20,14 @@ namespace SAE201_Nicolas.MVVM.Model
         private int numCommande;
         private int numEmploye;
         private DateTime dateCommande;
-        private EtatCommande etatCommande;
+        private string etatCommande;
         private double prixTotal;
 
-        public Commande(int numCommande, int numEmploye, DateTime dateCommande, EtatCommande etatCommande, double prixTotal)
+        public Commande()
+        {
+        }
+
+        public Commande(int numCommande, int numEmploye, DateTime dateCommande, string etatCommande, double prixTotal)
         {
             this.NumCommande = numCommande;
             this.NumEmploye = numEmploye;
@@ -69,7 +75,7 @@ namespace SAE201_Nicolas.MVVM.Model
             }
         }
 
-        public EtatCommande EtatCommande
+        public string EtatCommande
         {
             get
             {
@@ -98,5 +104,27 @@ namespace SAE201_Nicolas.MVVM.Model
         public void AjouterCommande() { }
         public void ModifierCommande() { }
         public void SupprimerCommande() { }
+
+        public List<Commande> FindAll()
+        {
+            List<Commande> lesVins = new List<Commande>();
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select * from Commande ;"))
+            {
+                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    lesVins.Add(
+                        new Commande(
+                             (int)dr["numcommande"],
+                             (int)dr["numemploye"],
+                             DateTime.Parse(dr["datecommande"].ToString()),
+                             (string)dr["etatcommande"],
+                             double.Parse(dr["prixtotal"].ToString())
+                        )
+                    );
+                }
+            }
+            return lesVins;
+        }
     }
 }
