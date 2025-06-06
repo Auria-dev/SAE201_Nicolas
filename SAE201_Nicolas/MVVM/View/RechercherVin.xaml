@@ -107,6 +107,11 @@
                 </StackPanel>
             </StackPanel>
         </StackPanel>
+        <DataGrid 
+            ItemsSource="{Binding LesVins}" 
+            HorizontalAlignment="Center" 
+            Margin="0,50,0,0" 
+            Height="241" Width="500"/>
 
     </StackPanel>
 </UserControl>

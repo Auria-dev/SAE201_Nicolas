@@ -130,6 +130,7 @@
                 Grid.Column="1"
                 Margin="12"
                 Content="{Binding CurrentView}" />
+            
         </Grid>
     </Border>
 
