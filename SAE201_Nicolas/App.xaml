@@ -5,6 +5,8 @@
     xmlns:local="clr-namespace:SAE201_Nicolas"
     xmlns:view="clr-namespace:SAE201_Nicolas.MVVM.View"
     xmlns:viewModel="clr-namespace:SAE201_Nicolas.MVVM.ViewModel"
+    xmlns:viewModelUC="clr-namespace:SAE201_Nicolas.MVVM.ViewModel.UC"
+    xmlns:viewUC="clr-namespace:SAE201_Nicolas.MVVM.View.UC"
     StartupUri="MainWindow.xaml">
     <Application.Resources>
 
@@ -28,7 +30,23 @@
                 <view:HistoriqueCommandes />
             </DataTemplate>
 
-        </ResourceDictionary>
+            <DataTemplate DataType="{x:Type viewModel:EspacePersonnelViewModel}">
+                <view:EspacePersonnel />
+            </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:AjouterViewModel}">
+                <view:Ajouter />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModelUC:AjouterClientViewModel}">
+                <viewUC:AjouterClientUC />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModelUC:AjouterFournisseurViewModel}">
+                <viewUC:AjouterFournisseurUC />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModelUC:AjouterVinViewModel}">
+                <viewUC:AjouterVinUC />
+            </DataTemplate>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
