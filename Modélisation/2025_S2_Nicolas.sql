@@ -28,9 +28,9 @@ drop table if exists VIN cascade ;
 /* Table : APPELATION                                           */
 /*==============================================================*/
 create table APPELATION (
-   NUMTYPE2             SERIAL               not null,
-   NOMAPPELATION        VARCHAR(30)          null,
-   constraint PK_APPELATION primary key (NUMTYPE2)
+   NUMAPPELATION             SERIAL               not null,
+   NOMAPPELATION        VARCHAR(50)          null,
+   constraint PK_APPELATION primary key (NUMAPPELATION)
 );
 
 /*==============================================================*/
@@ -51,8 +51,8 @@ create table COMMANDE (
    NUMCOMMANDE          SERIAL               not null,
    NUMEMPLOYE           INT4                 not null,
    DATECOMMANDE         DATE                 null,
-   ETATCOMMANDE         VARCHAR(30)          null,
-   PRIXTOTAL            DECIMAL(6,2)         null,
+   ETATCOMMANDE         VARCHAR(50)          null,
+   PRIXTOTAL            DECIMAL(16,2)         null,
    constraint PK_COMMANDE primary key (NUMCOMMANDE)
 );
 
@@ -67,7 +67,7 @@ create table DEMANDE (
    NUMCLIENT            INT4                 not null,
    DATEDEMANDE          DATE                 null,
    QUANTITEDEMANDE      INT4                 null,
-   ETATDEMANDE          VARCHAR(30)          null,
+   ETATDEMANDE          VARCHAR(50)          null,
    constraint PK_DEMANDE primary key (NUMDEMANDE)
 );
 
@@ -79,7 +79,7 @@ create table DETAILCOMMANDE (
    NUMVIN               INT4                 not null,
    QUANTITE             INT4                 null
       constraint CKC_QUANTITE_DETAILCO check (QUANTITE is null or (QUANTITE between 1 and 100)),
-   PRIX                 DECIMAL(10,2)         null,
+   PRIX                 DECIMAL(16,2)         null,
    constraint PK_DETAILCOMMANDE primary key (NUMCOMMANDE, NUMVIN)
 );
 
@@ -89,10 +89,10 @@ create table DETAILCOMMANDE (
 create table EMPLOYE (
    NUMEMPLOYE           SERIAL               not null,
    NUMROLE              INT4                 not null,
-   NOM                  VARCHAR(30)          null,
-   PRENOM               VARCHAR(30)          null,
-   LOGIN                VARCHAR(30)          null,
-   MDP                  VARCHAR(30)          null,
+   NOM                  VARCHAR(50)          null,
+   PRENOM               VARCHAR(50)          null,
+   LOGIN                VARCHAR(50)          null,
+   MDP                  VARCHAR(50)          null,
    constraint PK_EMPLOYE primary key (NUMEMPLOYE)
 );
 
@@ -101,7 +101,7 @@ create table EMPLOYE (
 /*==============================================================*/
 create table FOURNISSEUR (
    NUMFOURNISSEUR       SERIAL               not null,
-   NOMFOURNISSEUR       VARCHAR(30)          null,
+   NOMFOURNISSEUR       VARCHAR(50)          null,
    constraint PK_FOURNISSEUR primary key (NUMFOURNISSEUR)
 );
 
@@ -110,7 +110,7 @@ create table FOURNISSEUR (
 /*==============================================================*/
 create table ROLE (
    NUMROLE              SERIAL               not null,
-   NOMROLE              VARCHAR(30)          null,
+   NOMROLE              VARCHAR(50)          null,
    constraint PK_ROLE primary key (NUMROLE)
 );
 
@@ -119,7 +119,7 @@ create table ROLE (
 /*==============================================================*/
 create table TYPEVIN (
    NUMTYPE              SERIAL               not null,
-   NOMTYPE              VARCHAR(30)          null,
+   NOMTYPE              VARCHAR(50)          null,
    constraint PK_TYPEVIN primary key (NUMTYPE)
 );
 
@@ -130,9 +130,9 @@ create table VIN (
    NUMVIN               SERIAL               not null,
    NUMFOURNISSEUR       INT4                 not null,
    NUMTYPE              INT4                 not null,
-   NUMTYPE2             INT4                 not null,
+   NUMAPPELATION        INT4                 not null,
    NOMVIN               VARCHAR(100)         null,
-   PRIXVIN              DECIMAL(6,2)         null,
+   PRIXVIN              DECIMAL(16,2)        null,
    DESCRIPTIF           VARCHAR(300)         null,
    MILLESIME            INT4                 null,
    constraint PK_VIN primary key (NUMVIN)
@@ -179,8 +179,8 @@ alter table EMPLOYE
       on delete restrict on update restrict;
 
 alter table VIN
-   add constraint FK_VIN_APPARTIEN_APPELATI foreign key (NUMTYPE2)
-      references APPELATION (NUMTYPE2)
+   add constraint FK_VIN_APPARTIEN_APPELATI foreign key (NUMAPPELATION)
+      references APPELATION (NUMAPPELATION)
       on delete restrict on update restrict;
 
 alter table VIN
