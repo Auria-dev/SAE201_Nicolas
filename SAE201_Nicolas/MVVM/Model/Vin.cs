@@ -13,7 +13,11 @@ namespace SAE201_Nicolas.MVVM.Model
     {
         Blanc,
         Rouge,
-        Rosé
+        Rosé,
+        Champagne,
+        Mousseux,
+        Doux,
+        Liquoreux
     }
 
     public enum Appelation
@@ -43,6 +47,7 @@ namespace SAE201_Nicolas.MVVM.Model
         public Vin()
         {
         }
+
 
         public int NumVin
         {
@@ -109,9 +114,25 @@ namespace SAE201_Nicolas.MVVM.Model
             }
         }
 
+        public string NomTypeVin
+        {
+            get
+            {
+                return "dhf";
+            }
+        }
+
+        public string Appelation
+        {
+            get
+            {
+                return "hghv";
+            }
+        }
+
         public int NumTypeVinToEnum() { return 0; }
         public TypeVin EnumToNumTypeVin() { return TypeVin.Blanc; }
-        public Appelation EnumToNumAppelation() { return Appelation.Bourgogne; }
+        public Appelation EnumToNumAppelation() { return Model.Appelation.Bourgogne; }
         
         public List<Vin> FindAll()
         {
@@ -135,19 +156,6 @@ namespace SAE201_Nicolas.MVVM.Model
             }
             return lesVins;
         }
-
-        //public void Read()
-        //{
-        //    using (var cmdSelect = new NpgsqlCommand("select * from vin where numvin =@numvin;"))
-        //    {
-        //        cmdSelect.Parameters.AddWithValue("numvin", this.NumVin);
-
-        //        DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
-        //        this.Nom = (String)dt.Rows[0]["nom"];
-        //        this.Maitre = (String)dt.Rows[0]["maitre"];
-        //        this.Poids = (double)dt.Rows[0]["poids"];
-        //    }
-        //}
 
         public override bool Equals(object? obj)
         {
