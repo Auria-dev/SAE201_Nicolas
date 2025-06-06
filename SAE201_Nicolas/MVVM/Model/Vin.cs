@@ -231,7 +231,8 @@ namespace SAE201_Nicolas.MVVM.Model
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    Console.WriteLine(dr["nomvin"].ToString());
+                    //  we dont need to be debuggin' no more 😎
+                    // Console.WriteLine(dr["nomvin"].ToString());
                     lesVins.Add(
                         new Vin(
                             (int)dr["numvin"], 
