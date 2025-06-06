@@ -1,28 +1,28 @@
 /*==============================================================*/
 /* Nom de SGBD :  PostgreSQL 8                                  */
-/* Date de création :  05/06/2025 15:27:19                      */
+/* Date de crÃ©ation :  05/06/2025 15:27:19                      */
 /*==============================================================*/
 
 
-drop table APPELATION;
+drop table if exists APPELATION cascade ;
 
-drop table CLIENT;
+drop table if exists CLIENT cascade ;
 
-drop table COMMANDE;
+drop table if exists COMMANDE cascade  ;
 
-drop table DEMANDE;
+drop table if exists DEMANDE cascade  ;
 
-drop table DETAILCOMMANDE;
+drop table if exists DETAILCOMMANDE cascade  ;
 
-drop table EMPLOYE;
+drop table if exists EMPLOYE cascade ;
 
-drop table FOURNISSEUR;
+drop table if exists FOURNISSEUR cascade ;
 
-drop table ROLE;
+drop table if exists ROLE cascade ;
 
-drop table TYPEVIN;
+drop table if exists TYPEVIN cascade ;
 
-drop table VIN;
+drop table if exists VIN cascade ;
 
 /*==============================================================*/
 /* Table : APPELATION                                           */
@@ -79,7 +79,7 @@ create table DETAILCOMMANDE (
    NUMVIN               INT4                 not null,
    QUANTITE             INT4                 null
       constraint CKC_QUANTITE_DETAILCO check (QUANTITE is null or (QUANTITE between 1 and 100)),
-   PRIX                 DECIMAL(6,2)         null,
+   PRIX                 DECIMAL(10,2)         null,
    constraint PK_DETAILCOMMANDE primary key (NUMCOMMANDE, NUMVIN)
 );
 
@@ -192,4 +192,3 @@ alter table VIN
    add constraint FK_VIN_FOURNIT_FOURNISS foreign key (NUMFOURNISSEUR)
       references FOURNISSEUR (NUMFOURNISSEUR)
       on delete restrict on update restrict;
-
