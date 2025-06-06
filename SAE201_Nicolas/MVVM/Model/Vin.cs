@@ -130,8 +130,14 @@ namespace SAE201_Nicolas.MVVM.Model
             }
         }
 
-        public int NumTypeVinToEnum() { return 0; }
-        public TypeVin EnumToNumTypeVin() { return TypeVin.Blanc; }
+        public int EnumToNumTypeVin(TypeVin vin) {
+            return ((int)vin) + 1; // index starts at 1
+        }
+
+        public TypeVin NumTypeVinToEnum(int val) { 
+            return (TypeVin) val-1; // make index starts at 0
+        }
+
         public Appelation EnumToNumAppelation() { return Model.Appelation.Bourgogne; }
         
         public List<Vin> FindAll()
