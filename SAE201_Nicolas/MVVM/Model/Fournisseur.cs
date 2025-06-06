@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAE201_Nicolas.Model
+namespace SAE201_Nicolas.MVVM.Model
 {
     public class Fournisseur
     {

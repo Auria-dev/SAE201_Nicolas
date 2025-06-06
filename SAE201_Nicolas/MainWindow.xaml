@@ -5,39 +5,132 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:SAE201_Nicolas"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="clr-namespace:SAE201_Nicolas.MVVM.ViewModel"
     Title="Application Nicolas"
-    Width="800"
-    Height="450"
+    Width="1000"
+    Height="600"
+    AllowsTransparency="True"
+    Background="Transparent"
+    ResizeMode="NoResize"
+    WindowStyle="None"
     mc:Ignorable="d">
 
-    <StackPanel>
-        <TabControl>
-            <TabItem Header="Rechercher vin">
-                <!--  Content for Rechercher vin  -->
-            </TabItem>
-            
-            <TabItem Header="Gestion commandes">
-                <!--  Content for Gestion commandes  -->
-            </TabItem>
-            
-            <TabItem Header="Historique commandes">
-                <!--  Content for Historique commandes  -->
-            </TabItem>
-            
-            <TabItem Header="Espace personnel">
-                <!--  Content for Espace personnel  -->
-            </TabItem>
-            
-            <TabItem Header="Modifier">
-                <!--  Content for Modifier  -->
-            </TabItem>
-            
-            <TabItem Header="Ajouter">
-                <!--  Content for Ajouter  -->
-            </TabItem>
-        </TabControl>
+    <Window.DataContext>
+        <viewModel:MainViewModel />
+    </Window.DataContext>
 
 
-    </StackPanel>
+    <Border Background="#FFFFFF" CornerRadius="30, 30, 16, 30">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="230" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <!--  Invisible border that spans across the full window, so we can drag it  -->
+            <Border
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Background="#8f0e2a"
+                CornerRadius="16,16,0,0"
+                MouseDown="TitleBar_MouseDown">
+                <Grid>
+                    <TextBlock
+                        Margin="20,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="16"
+                        Foreground="#efefef"
+                        Text="Nicolas - Outil de gestion de demandes et de commandes" />
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <Ellipse
+                            Width="16"
+                            Height="16"
+                            Margin="0,0,10,0"
+                            Cursor="Hand"
+                            Fill="#f2be4e"
+                            MouseLeftButtonDown="MinimizeEllipse_Click" />
+                        <Ellipse
+                            Width="16"
+                            Height="16"
+                            Margin="0,0,10,0"
+                            Cursor="Hand"
+                            Fill="#ea695d"
+                            MouseLeftButtonDown="CloseEllipse_Click" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Border
+                Grid.Row="1"
+                Grid.Column="0"
+                Background="#8f0e2a"
+                CornerRadius="0,0,0,16">
+
+                <StackPanel>
+                    <!--  Define each tab, we set their source (styling) as well as the command they will call when clicked on.  -->
+                    <RadioButton
+                        Height="42"
+                        Margin="0,48,0,0"
+                        Command="{Binding RechercherVinVC}"
+                        Content="Rechercher vin"
+                        FontSize="18"
+                        Foreground="White"
+                        IsChecked="True"
+                        Style="{StaticResource SidebarMenu}" />
+
+                    <RadioButton
+                        Height="42"
+                        Command="{Binding GestionCommandesVC}"
+                        Content="Gestion commandes"
+                        FontSize="18"
+                        Foreground="White"
+                        Style="{StaticResource SidebarMenu}" />
+
+                    <RadioButton
+                        Height="42"
+                        Command="{Binding HistoriqueCommandesVC}"
+                        Content="Historique commandes"
+                        FontSize="18"
+                        Foreground="White"
+                        Style="{StaticResource SidebarMenu}" />
+
+                    <RadioButton
+                        Height="42"
+                        Command="{Binding EspacePersonnelVC}"
+                        Content="Espace personnel"
+                        FontSize="18"
+                        Foreground="White"
+                        Style="{StaticResource SidebarMenu}" />
+
+                    <RadioButton
+                        Height="42"
+                        Command="{Binding ModifierVC}"
+                        Content="Modifier"
+                        FontSize="18"
+                        Foreground="White"
+                        Style="{StaticResource SidebarMenu}" />
+
+                    <RadioButton
+                        Height="42"
+                        Command="{Binding AjouterVC}"
+                        Content="Ajouter"
+                        FontSize="18"
+                        Foreground="White"
+                        Style="{StaticResource SidebarMenu}" />
+                </StackPanel>
+            </Border>
+
+            <ContentControl
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="12"
+                Content="{Binding CurrentView}" />
+        </Grid>
+    </Border>
 
 </Window>

@@ -20,5 +20,21 @@ namespace SAE201_Nicolas
         {
             InitializeComponent();
         }
+
+        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
+
+        private void MinimizeEllipse_Click(object sender, MouseButtonEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void CloseEllipse_Click(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

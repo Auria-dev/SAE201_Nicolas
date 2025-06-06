@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAE201_Nicolas.Model
+namespace SAE201_Nicolas.MVVM.Model
 {
     public enum TypeVin
     {
@@ -15,8 +15,8 @@ namespace SAE201_Nicolas.Model
 
     public enum Appelation
     {
-        Bourgogne, 
-        Bordeaux, 
+        Bourgogne,
+        Bordeaux,
         Italien
     }
 
@@ -102,7 +102,7 @@ namespace SAE201_Nicolas.Model
             }
         }
 
-        public int NumTypeVinToEnum() { return 0;  }
+        public int NumTypeVinToEnum() { return 0; }
         public TypeVin EnumToNumTypeVin() { return TypeVin.Blanc; }
         public Appelation EnumToNumAppelation() { return Appelation.Bourgogne; }
     }
