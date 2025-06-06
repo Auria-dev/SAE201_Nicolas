@@ -18,6 +18,7 @@ namespace SAE201_Nicolas.Core
             if (_currentView != null) _history.Push(_currentView);
             
             _currentView = newView;
+            Console.WriteLine($"Switching to view: {_currentView.GetType().Name} @ position 0x{_currentView.GetHashCode():x}");
             OnViewChangeRequested?.Invoke(newView);
         }
 

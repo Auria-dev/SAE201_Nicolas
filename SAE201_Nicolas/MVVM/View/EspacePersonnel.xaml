@@ -15,6 +15,48 @@
             FontSize="26"
             Foreground="Black"
             Text=" Espace personnel" />
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
 
+                <Label
+                    Margin="8,14,0,0"
+                    Content="_Nom"
+                    FontSize="14"
+                    Target="{Binding ElementName=TxtboxNom}" />
+                <TextBox
+                    x:Name="TxtboxNom"
+                    Width="380"
+                    Height="48"
+                    Style="{StaticResource TextBox}" />
+
+                <Label
+                Margin="8,14,0,0"
+                Content="_Prénom"
+                FontSize="14"
+                Target="{Binding ElementName=TxtboxPrenom}" />
+                <TextBox
+                x:Name="TxtboxPrenom"
+                Width="380"
+                Height="48"
+                Style="{StaticResource TextBox}" />
+
+                <Label
+                Margin="8,14,0,0"
+                Content="_Mail"
+                FontSize="14"
+                Target="{Binding ElementName=TxtboxMail}" />
+                <TextBox
+                x:Name="TxtboxMail"
+                Width="380"
+                Height="48"
+                Style="{StaticResource TextBox}" />
+
+                <Button
+                Width="380"
+                Height="48"
+                Margin="0,34,0,50"
+                Content="Confirmer"
+                FontSize="16"
+                Style="{StaticResource DefaultButton}" />
+        </StackPanel>
     </StackPanel>
 </UserControl>

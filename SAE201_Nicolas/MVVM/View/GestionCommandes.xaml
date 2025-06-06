@@ -53,7 +53,8 @@
                         Width="220"
                         Height="40"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
+                        VerticalAlignment="Center"
+                        Style="{StaticResource ComboBoxStyle}">
                         <ComboBoxItem IsSelected="True">Tous</ComboBoxItem>
                     </ComboBox>
                 </StackPanel>

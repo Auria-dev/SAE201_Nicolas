@@ -25,10 +25,10 @@
 
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="ButtonBg" Property="Background" Value="#4A4860" />
+                                <Setter TargetName="ButtonBg" Property="Background" Value="#C33131" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="ButtonBg" Property="Background" Value="#5A5870" />
+                                <Setter TargetName="ButtonBg" Property="Background" Value="#E54040" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

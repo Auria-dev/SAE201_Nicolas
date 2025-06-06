@@ -30,7 +30,7 @@ namespace SAE201_Nicolas.MVVM.ViewModel
 
         public MainViewModel()
         {
-            // dont forget to init every new pages
+            // init every pages
             RechercherVinVM = new RechercherVinViewModel();
             HistoriqueCommandesVM = new HistoriqueCommandesViewModel();
             GestionCommandesVM = new GestionCommandesViewModel();
@@ -42,7 +42,6 @@ namespace SAE201_Nicolas.MVVM.ViewModel
 
             // init theme switcher
             ViewSwitcher.OnViewChangeRequested += (newView) => { CurrentView = newView; };
-
 
             // when we receive a command fomr the home view, swap to that one
             RechercherVinVC = new RelayCommand(o => { ViewSwitcher.RequestViewChange(RechercherVinVM); });
