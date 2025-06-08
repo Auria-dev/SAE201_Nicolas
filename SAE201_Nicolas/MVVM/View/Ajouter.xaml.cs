@@ -25,34 +25,24 @@ namespace SAE201_Nicolas.MVVM.View
     /// </summary>
     public partial class Ajouter : UserControl
     {
-        // private static AjouterClientViewModel AjouterClientVM { get; set; }
-        // private static AjouterFournisseurViewModel AjouterFournisseurVM { get; set; }
-        // private static AjouterVinViewModel AjouterVinVM { get; set; }
 
         public Ajouter()
         {
             InitializeComponent();
-
-            // AjouterClientVM = new AjouterClientViewModel();
-            // AjouterFournisseurVM = new AjouterFournisseurViewModel();
-            // AjouterVinVM = new AjouterVinViewModel();
         }
 
         private void BtnAjouterVinClick(object sender, RoutedEventArgs e)
         {
-            // ViewSwitcher.RequestViewChange(AjouterVinVM);
             ViewSwitcher.ChangeViewTo("AjouterVin");
         }
 
         private void BtnAjouterClientClick(object sender, RoutedEventArgs e)
         {
-            // ViewSwitcher.RequestViewChange(AjouterClientVM);
             ViewSwitcher.ChangeViewTo("AjouterClient");
         }
 
         private void BtnAjouterFournisseurClick(object sender, RoutedEventArgs e)
         {
-            // ViewSwitcher.RequestViewChange(AjouterFournisseurVM);
             ViewSwitcher.ChangeViewTo("AjouterFournisseur");
         }
     }

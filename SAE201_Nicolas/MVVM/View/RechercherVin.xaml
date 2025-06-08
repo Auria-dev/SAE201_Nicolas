@@ -111,10 +111,9 @@
         </StackPanel>
         <DataGrid
             x:Name="dgVins"
-            Width="600"
-            Height="241"
-            Margin="0,50,0,0"
-            HorizontalAlignment="Center"
+            Height="350"
+            Margin="0,14,0,0"
+            HorizontalAlignment="Stretch"
             AutoGenerateColumns="False"
             IsReadOnly="True"
             ItemsSource="{Binding LesVins}">

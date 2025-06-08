@@ -20,7 +20,7 @@ namespace SAE201_Nicolas.Core
 
             _currentView = newView;
             OnViewChangeRequested?.Invoke(newView);
-            Console.WriteLine($"Switching to view: {_currentView.GetType().Name} @ position 0x{_currentView.GetHashCode():x}");
+            //Console.WriteLine($"Switching to view: {_currentView.GetType().Name} @ position 0x{_currentView.GetHashCode():x}");
         }
 
         public static void GoBack()
@@ -30,7 +30,6 @@ namespace SAE201_Nicolas.Core
                 _currentView = _history.Pop();
                 OnViewChangeRequested?.Invoke(_currentView);
             }
-            else { }
         }
 
         // load each view in a dictionary, and with a key so we can easily find them
