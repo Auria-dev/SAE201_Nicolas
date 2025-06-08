@@ -71,9 +71,9 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
-                    <CheckBox VerticalAlignment="Center">Blanc</CheckBox>
-                    <CheckBox Margin="8,0,0,0" VerticalAlignment="Center">Rouge</CheckBox>
-                    <CheckBox Margin="8,0,0,0" VerticalAlignment="Center">Rosé</CheckBox>
+                    <CheckBox Style="{StaticResource CheckboxStyle}" VerticalAlignment="Center">Blanc</CheckBox>
+                    <CheckBox Style="{StaticResource CheckboxStyle}" Margin="8,0,0,0" VerticalAlignment="Center">Rouge</CheckBox>
+                    <CheckBox Style="{StaticResource CheckboxStyle}" Margin="8,0,0,0" VerticalAlignment="Center">Rosé</CheckBox>
                 </StackPanel>
             </StackPanel>
 

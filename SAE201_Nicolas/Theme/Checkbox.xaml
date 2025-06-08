@@ -1,63 +1,69 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style x:Key="DefaultCheckBox" TargetType="CheckBox">
-    <Setter Property="Template">
-        <Setter.Value>
-            <ControlTemplate TargetType="CheckBox">
-                <Grid
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Background="{TemplateBinding Background}">
-                    <Border
-                        x:Name="CheckBoxBorder"
-                        Width="{TemplateBinding Width}"
-                        Height="{TemplateBinding Height}"
-                        Background="#8f0e2a"
-                        CornerRadius="16">
-                        <StackPanel
-                            Orientation="Horizontal"
-                            HorizontalAlignment="Center"
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="CheckboxStyle" TargetType="{x:Type CheckBox}">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Stretch"
                             VerticalAlignment="Center"
-                            Margin="8,0">
-                            <Rectangle
-                                x:Name="CheckMark"
-                                Width="12"
-                                Height="12"
-                                Fill="White"
-                                Visibility="Collapsed"
-                                Margin="0,0,6,0"
-                                RadiusX="2"
-                                RadiusY="2" />
-                            <TextBlock
-                                Text="{TemplateBinding Content}"
-                                FontSize="{TemplateBinding FontSize}"
-                                Foreground="White"
-                                VerticalAlignment="Center" />
-                        </StackPanel>
-                    </Border>
-                </Grid>
+                            Background="{TemplateBinding Background}">
+                            <Border
+                                x:Name="ButtonBg"
+                                Width="16"
+                                Height="16"
+                                Background="Transparent"
+                                BorderThickness="1"
+                                BorderBrush="#888"
+                                CornerRadius="4">
+                                <Path
+                                    x:Name="CheckMark"
+                                    Data="M 1 7 L 5 11 L 13 3"
+                                    Stroke="Black"
+                                    StrokeThickness="2"
+                                    Visibility="Collapsed" />
+                            </Border>
 
-                <ControlTemplate.Triggers>
-                    <Trigger Property="IsChecked" Value="True">
-                        <Setter TargetName="CheckMark" Property="Visibility" Value="Visible" />
-                    </Trigger>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter TargetName="CheckBoxBorder" Property="Background" Value="#4A4860" />
-                    </Trigger>
-                    <Trigger Property="IsPressed" Value="True">
-                        <Setter TargetName="CheckBoxBorder" Property="Background" Value="#5A5870" />
-                    </Trigger>
-                </ControlTemplate.Triggers>
-            </ControlTemplate>
-        </Setter.Value>
-    </Setter>
-    <Setter Property="Background" Value="Transparent" />
-    <Setter Property="BorderThickness" Value="0" />
-    <Setter Property="Cursor" Value="Arrow" />
-    <Style.Triggers>
-        <Trigger Property="IsMouseOver" Value="True">
-            <Setter Property="Cursor" Value="Hand" />
-        </Trigger>
-    </Style.Triggers>
-</Style>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Margin="4,0,0,0"
+                                FontSize="{TemplateBinding Property=FontSize}"
+                                Foreground="Black"
+                                Text="{TemplateBinding Property=Content}" />
+                        </StackPanel>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBg" Property="BorderBrush" Value="#AAA" />
+                            </Trigger>
+                            
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="ButtonBg" Property="BorderBrush" Value="#CCC" />
+                            </Trigger>
+                            
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible" />
+                            </Trigger>
+                            
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="ButtonBg" Property="BorderBrush" Value="#DDD" />
+                                <Setter Property="Foreground" Value="#B0B0B0" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Cursor" Value="Arrow" />
+        </Style.Setters>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

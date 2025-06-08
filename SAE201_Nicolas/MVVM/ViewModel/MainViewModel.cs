@@ -11,6 +11,7 @@ namespace SAE201_Nicolas.MVVM.ViewModel
         public RelayCommand HistoriqueCommandesVC { get; set; }
         public RelayCommand GestionCommandesVC { get; set; }
         public RelayCommand EspacePersonnelVC { get; set; }
+        public RelayCommand ModifierVC { get; set; }
         public RelayCommand AjouterVC { get; set; }
 
         // the main view that gets replaces
@@ -28,7 +29,7 @@ namespace SAE201_Nicolas.MVVM.ViewModel
             ViewSwitcher.LoadView(new HistoriqueCommandesViewModel(), "HistoriqueCommandes");
             ViewSwitcher.LoadView(new GestionCommandesViewModel(), "GestionCommandes");
             ViewSwitcher.LoadView(new EspacePersonnelViewModel(), "EspacePersonnel");
-            // // todo: ModifierVM
+            ViewSwitcher.LoadView(new ModifierViewModel(), "Modifier"); // TODO: all select & edit screens
             ViewSwitcher.LoadView(new AjouterViewModel(), "Ajouter");
             ViewSwitcher.LoadView(new AjouterClientViewModel(), "AjouterClient");
             ViewSwitcher.LoadView(new AjouterFournisseurViewModel(), "AjouterFournisseur");
@@ -45,6 +46,7 @@ namespace SAE201_Nicolas.MVVM.ViewModel
             HistoriqueCommandesVC = new RelayCommand(o => { ViewSwitcher.ChangeViewTo("HistoriqueCommandes"); });
             GestionCommandesVC = new RelayCommand(o => { ViewSwitcher.ChangeViewTo("GestionCommandes"); });
             EspacePersonnelVC = new RelayCommand(o => { ViewSwitcher.ChangeViewTo("EspacePersonnel"); });
+            ModifierVC = new RelayCommand(o => { ViewSwitcher.ChangeViewTo("Modifier"); });
             AjouterVC = new RelayCommand(o => { ViewSwitcher.ChangeViewTo("Ajouter"); });
         }
     }

@@ -9,7 +9,15 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-
+    
+    <UserControl.Resources>
+        <x:Array x:Key="DebugVins" Type="{x:Type model:Vin}">
+            <model:Vin NomVin="Château Margaux" PrixVin="450" Annee="2015"/>
+            <model:Vin NomVin="Domaine de la Romanée-Conti" PrixVin="1200" Annee="2012"/>
+            <model:Vin NomVin="Sancerre Blanc" PrixVin="30" Annee="2020"/>
+        </x:Array>
+    </UserControl.Resources>
+    
     <StackPanel VerticalAlignment="Top">
         <TextBlock
             HorizontalAlignment="Left"
@@ -103,9 +111,9 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
-                    <CheckBox VerticalAlignment="Center">Blanc</CheckBox>
-                    <CheckBox Margin="8,0,0,0" VerticalAlignment="Center">Rouge</CheckBox>
-                    <CheckBox Margin="8,0,0,0" VerticalAlignment="Center">Rosé</CheckBox>
+                    <CheckBox Style="{StaticResource CheckboxStyle}" VerticalAlignment="Center">Blanc</CheckBox>
+                    <CheckBox Style="{StaticResource CheckboxStyle}" Margin="8,0,0,0" VerticalAlignment="Center">Rouge</CheckBox>
+                    <CheckBox Style="{StaticResource CheckboxStyle}" Margin="8,0,0,0" VerticalAlignment="Center">Rosé</CheckBox>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
@@ -115,8 +123,9 @@
             Margin="0,14,0,0"
             HorizontalAlignment="Stretch"
             AutoGenerateColumns="False"
-            IsReadOnly="True"
-            ItemsSource="{Binding LesVins}">
+            IsReadOnly="True"            
+            ItemsSource="{StaticResource DebugVins}">
+            <!--ItemsSource="{Binding LesVins}">-->
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="3.5*"
@@ -139,7 +148,6 @@
                     Binding="{Binding NomAppelation}"
                     Header="Appelation" />
             </DataGrid.Columns>
-            
         </DataGrid>
 
     </StackPanel>

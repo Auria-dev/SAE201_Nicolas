@@ -16,6 +16,8 @@
                 <ResourceDictionary Source="Theme/TextBox.xaml" />
                 <ResourceDictionary Source="Theme/Button.xaml" />
                 <ResourceDictionary Source="Theme/ComboBox.xaml" />
+                <ResourceDictionary Source="Theme/Checkbox.xaml" />
+                <ResourceDictionary Source="Theme/Datagrid.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:RechercherVinViewModel}">
@@ -32,6 +34,10 @@
 
             <DataTemplate DataType="{x:Type viewModel:EspacePersonnelViewModel}">
                 <view:EspacePersonnel />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ModifierViewModel}">
+                <view:Modifier />
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:AjouterViewModel}">
