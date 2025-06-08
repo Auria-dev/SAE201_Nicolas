@@ -14,11 +14,14 @@ namespace SAE201_Nicolas.MVVM.ViewModel
         public RelayCommand AjouterVC { get; set; }
 
         // the actual view models (pages)
-        public RechercherVinViewModel RechercherVinVM { get; set; }
-        public HistoriqueCommandesViewModel HistoriqueCommandesVM { get; set; }
-        public GestionCommandesViewModel GestionCommandesVM { get; set; }
-        public EspacePersonnelViewModel EspacePersonnelVM { get; set; }
-        public AjouterViewModel AjouterVM { get; set; }
+        // public RechercherVinViewModel RechercherVinVM { get; set; }
+        // public HistoriqueCommandesViewModel HistoriqueCommandesVM { get; set; }
+        // public GestionCommandesViewModel GestionCommandesVM { get; set; }
+        // public EspacePersonnelViewModel EspacePersonnelVM { get; set; }
+        // public AjouterViewModel AjouterVM { get; set; }
+        // public AjouterClientViewModel AjouterClientVM { get; set; }
+        // public AjouterFournisseurViewModel AjouterFournisseurVM { get; set; }
+        // public AjouterVinViewModel AjouterVinVM { get; set; }
 
         // the main view that gets replaces
         private object _currentView;
@@ -31,24 +34,43 @@ namespace SAE201_Nicolas.MVVM.ViewModel
         public MainViewModel()
         {
             // init every pages
-            RechercherVinVM = new RechercherVinViewModel();
-            HistoriqueCommandesVM = new HistoriqueCommandesViewModel();
-            GestionCommandesVM = new GestionCommandesViewModel();
-            AjouterVM = new AjouterViewModel();
-            EspacePersonnelVM = new EspacePersonnelViewModel();
+            // RechercherVinVM = new RechercherVinViewModel();
+            // HistoriqueCommandesVM = new HistoriqueCommandesViewModel();
+            // GestionCommandesVM = new GestionCommandesViewModel();
+            // EspacePersonnelVM = new EspacePersonnelViewModel();
+            // // todo: ModifierVM
+            // AjouterVM = new AjouterViewModel();
+            // AjouterClientVM = new AjouterClientViewModel();
+            // AjouterFournisseurVM = new AjouterFournisseurViewModel();
+            // AjouterVinVM = new AjouterVinViewModel();
+
+            ViewSwitcher.LoadView(new RechercherVinViewModel(), "RechercherVin");
+            ViewSwitcher.LoadView(new HistoriqueCommandesViewModel(), "HistoriqueCommandes");
+            ViewSwitcher.LoadView(new GestionCommandesViewModel(), "GestionCommandes");
+            ViewSwitcher.LoadView(new EspacePersonnelViewModel(), "EspacePersonnel");
+            ViewSwitcher.LoadView(new AjouterViewModel(), "Ajouter");
+            ViewSwitcher.LoadView(new AjouterClientViewModel(), "AjouterClient");
+            ViewSwitcher.LoadView(new AjouterFournisseurViewModel(), "AjouterFournisseur");
+            ViewSwitcher.LoadView(new AjouterVinViewModel(), "AjouterVin");
 
             // set the default one
-            CurrentView = RechercherVinVM;
+            //CurrentView = RechercherVinVM;
+            ViewSwitcher.ChangeViewTo("RechercherVin");
 
-            // init theme switcher
+            // init view switcher
             ViewSwitcher.OnViewChangeRequested += (newView) => { CurrentView = newView; };
 
-            // when we receive a command fomr the home view, swap to that one
-            RechercherVinVC = new RelayCommand(o => { ViewSwitcher.RequestViewChange(RechercherVinVM); });
-            HistoriqueCommandesVC = new RelayCommand(o => { ViewSwitcher.RequestViewChange(HistoriqueCommandesVM); });
-            GestionCommandesVC = new RelayCommand(o => { ViewSwitcher.RequestViewChange(GestionCommandesVM); });
-            EspacePersonnelVC = new RelayCommand(o => { ViewSwitcher.RequestViewChange(EspacePersonnelVM); });
-            AjouterVC = new RelayCommand(o => { ViewSwitcher.RequestViewChange(AjouterVM); });
+            // when we receive a command from the menu, swap to that one
+            // RechercherVinVC = new RelayCommand(o => { ViewSwitcher.RequestViewChange(RechercherVinVM); });
+            // HistoriqueCommandesVC = new RelayCommand(o => { ViewSwitcher.RequestViewChange(HistoriqueCommandesVM); });
+            // GestionCommandesVC = new RelayCommand(o => { ViewSwitcher.RequestViewChange(GestionCommandesVM); });
+            // EspacePersonnelVC = new RelayCommand(o => { ViewSwitcher.RequestViewChange(EspacePersonnelVM); });
+            // AjouterVC = new RelayCommand(o => { ViewSwitcher.RequestViewChange(AjouterVM); });
+            RechercherVinVC = new RelayCommand(o => { ViewSwitcher.ChangeViewTo("RechercherVin"); });
+            HistoriqueCommandesVC = new RelayCommand(o => { ViewSwitcher.ChangeViewTo("HistoriqueCommandes"); });
+            GestionCommandesVC = new RelayCommand(o => { ViewSwitcher.ChangeViewTo("GestionCommandes"); });
+            EspacePersonnelVC = new RelayCommand(o => { ViewSwitcher.ChangeViewTo("EspacePersonnel"); });
+            AjouterVC = new RelayCommand(o => { ViewSwitcher.ChangeViewTo("Ajouter"); });
         }
     }
 }
