@@ -42,8 +42,8 @@ namespace SAE201_Nicolas.MVVM.View.UC
         private void BtnAjouterVinValider(object sender, RoutedEventArgs e)
         {
             Vin unVin = new Vin();
-            unVin.NumFournisseur = 1;
-            unVin.NumTypeVin = 1;
+            unVin.NumFournisseur = cbFournisseur.SelectedIndex;
+            unVin.NumTypeVin = cbTypeVin.SelectedIndex;
             unVin.NumAppelation = 1;
             unVin.NomVin = TxtboxNomVin.Text;
             unVin.PrixVin = double.Parse(TxtboxPrixVin.Text);
