@@ -40,6 +40,10 @@ namespace SAE201_Nicolas.MVVM.Model
         private int numAppelation;
         private int numFournisseur;
 
+        public Vin()
+        {
+        }
+
         public Vin(int numVin, string nomVin, double prixVin, string descriptif, int annee)
         {
             this.NumVin = numVin;
@@ -246,8 +250,11 @@ namespace SAE201_Nicolas.MVVM.Model
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 foreach (DataRow dr in dt.Rows)
                 {
+<<<<<<< Updated upstream
                     //  we dont need to be debuggin' no more 😎 nice 
                     // Console.WriteLine(dr["nomvin"].ToString());
+=======
+>>>>>>> Stashed changes
                     lesVins.Add(
                         new Vin(
                             (int)dr["numvin"], 
@@ -263,6 +270,29 @@ namespace SAE201_Nicolas.MVVM.Model
                 }
             }
             return lesVins;
+        }
+
+        public Vin FindFromID(int id)
+        {
+            Vin res;
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select * from vin where numvin = @targetNumVin"))
+            {
+                cmdSelect.Parameters.AddWithValue("targetNumVin", id);
+                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                DataRow dr = dt.Rows[0];
+                res = new Vin(
+                    (int)dr["numvin"],
+                    (string)dr["nomvin"],
+                    double.Parse(dr["prixvin"].ToString()),
+                    (string)dr["descriptif"],
+                    (int)dr["annee"],
+                    (int)dr["numtype"],
+                    (int)dr["numappelation"],
+                    (int)dr["numfournisseur"]
+                );
+            }
+
+            return res;
         }
 
         public int AjouterVin()
