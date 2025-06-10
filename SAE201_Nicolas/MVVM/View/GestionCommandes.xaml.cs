@@ -53,7 +53,11 @@ namespace SAE201_Nicolas.MVVM.View
 
             // rechercher 
             if (!string.IsNullOrEmpty(barDeRechercheCommandes.Text) && !string.IsNullOrWhiteSpace(barDeRechercheCommandes.Text))
-                rechercherVin = uneCommande.NomVin.Contains(barDeRechercheCommandes.Text) || uneCommande.Vin.Annee.ToString().Contains(barDeRechercheCommandes.Text) || uneCommande.FournisseurVin.ToString().Contains(barDeRechercheCommandes.Text);
+                rechercherVin = 
+                       uneCommande.NomVin.Contains(barDeRechercheCommandes.Text) 
+                    || uneCommande.Vin.NumVin.ToString().Contains(barDeRechercheCommandes.Text) 
+                    || uneCommande.Vin.Annee.ToString().Contains(barDeRechercheCommandes.Text) 
+                    || uneCommande.FournisseurVin.ToString().Contains(barDeRechercheCommandes.Text);
 
             return verifType && verifAppellation && rechercherVin;
         }

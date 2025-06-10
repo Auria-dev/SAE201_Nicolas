@@ -27,16 +27,18 @@
                 Width="605"
                 Height="42"
                 Margin="0,0,0,0"
+                core:PlaceholderService.Placeholder="Rechercher"
                 FontSize="14"
                 Style="{StaticResource TextBox}" />
             <Button
                 Width="120"
                 Height="42"
                 Margin="12,0,0,0"
+                Click="updateRechercheCommande"
                 Content="Rechercher"
                 FontSize="14"
                 IsDefault="True"
-                Style="{StaticResource DefaultButton}" Click="updateRechercheCommande" />
+                Style="{StaticResource DefaultButton}" />
         </StackPanel>
 
 
