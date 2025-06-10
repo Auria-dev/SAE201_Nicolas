@@ -21,9 +21,13 @@ namespace SAE201_Nicolas.MVVM.View
     /// </summary>
     public partial class GestionCommandes : UserControl
     {
+        private ListCollectionView listGestionsVins;
+
         public GestionCommandes()
         {
             InitializeComponent();
+            listGestionsVins = new ListCollectionView(MainWindow.LaGestionDeVins.LesDetailsCommandes);
+            dgCommandes.ItemsSource = listGestionsVins;
         }
     }
 }

@@ -250,14 +250,6 @@ namespace SAE201_Nicolas.MVVM.Model
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 foreach (DataRow dr in dt.Rows)
                 {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                    //  we dont need to be debuggin' no more 😎 nice 
-                    // Console.WriteLine(dr["nomvin"].ToString());
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
                     lesVins.Add(
                         new Vin(
                             (int)dr["numvin"], 
