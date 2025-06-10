@@ -138,19 +138,23 @@
             HorizontalAlignment="Stretch"
             AutoGenerateColumns="False"
             IsReadOnly="True"
-            ItemsSource="{Binding LesCommandes}">
+            ItemsSource="{Binding LesDetailsCommandes}">
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding DateCommande}"
-                    Header="Date Commande" />
+                    Binding="{Binding NumCommande}"
+                    Header="Commande numéro" />
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding EtatCommande}"
-                    Header="Etat Commande" />
+                    Binding="{Binding NumVin}"
+                    Header="Vin" />
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding PrixTotal}"
+                    Binding="{Binding Quantite}"
+                    Header="Quantité" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Prix}"
                     Header="Prix Total" />
             </DataGrid.Columns>
         </DataGrid>

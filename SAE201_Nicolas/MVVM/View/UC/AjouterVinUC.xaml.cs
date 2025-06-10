@@ -1,4 +1,5 @@
 ﻿using SAE201_Nicolas.Core;
+using SAE201_Nicolas.MVVM.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,12 @@ namespace SAE201_Nicolas.MVVM.View.UC
         public AjouterVinUC()
         {
             InitializeComponent();
+        }
+
+        public AjouterVinUC(Vin unVin)
+        {
+            InitializeComponent();
+            this.DataContext = unVin;
         }
 
         private void ClickedReturn(object sender, MouseButtonEventArgs e)

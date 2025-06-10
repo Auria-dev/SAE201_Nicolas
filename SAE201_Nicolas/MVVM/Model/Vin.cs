@@ -260,9 +260,8 @@ namespace SAE201_Nicolas.MVVM.Model
                             (string)dr["descriptif"],
                             (int)dr["annee"],
                             (int)dr["numtype"],
-                            (int)dr["numappelation"]
-                            //,
-                            //(int)dr["numfournisseur"]
+                            (int)dr["numappelation"],
+                            (int)dr["numfournisseur"]
                         )
                     );
                 }
@@ -273,19 +272,19 @@ namespace SAE201_Nicolas.MVVM.Model
         public int AjouterVin()
         {
             int nb = 0;
-            //using (var cmdInsert = new NpgsqlCommand("insert into vin (numvin, numfournisseur, numtype, numappelation, nomvin, prixvin, descriptif, annee) values (@numvin, @numfournisseur, @numtype, @numappelation, @nomvin, @prixvin, @descriptif, @annee) RETURNING numvin"))
-            //{
-            //    cmdInsert.Parameters.AddWithValue("numvin", this.NumVin);
-            //    cmdInsert.Parameters.AddWithValue("numfournisseur", this.a_voir_jsp);
-            //    cmdInsert.Parameters.AddWithValue("numtype", this.NumTypeVin);
-            //    cmdInsert.Parameters.AddWithValue("numappelation", this.NumAppelation);
-            //    cmdInsert.Parameters.AddWithValue("nomvin", this.NomVin);
-            //    cmdInsert.Parameters.AddWithValue("prixvin", this.PrixVin);
-            //    cmdInsert.Parameters.AddWithValue("descriptif", this.Descriptif);
-            //    cmdInsert.Parameters.AddWithValue("annee", this.Annee);
-            //    nb = DataAccess.Instance.ExecuteInsert(cmdInsert);
-            //}
-            //this.NumVin = nb;
+            using (var cmdInsert = new NpgsqlCommand("insert into vin (numvin, numfournisseur, numtype, numappelation, nomvin, prixvin, descriptif, annee) values (@numvin, @numfournisseur, @numtype, @numappelation, @nomvin, @prixvin, @descriptif, @annee) RETURNING numvin"))
+            {
+                cmdInsert.Parameters.AddWithValue("numvin", this.NumVin);
+                cmdInsert.Parameters.AddWithValue("numfournisseur", this.NumFournisseur);
+                cmdInsert.Parameters.AddWithValue("numtype", this.NumTypeVin);
+                cmdInsert.Parameters.AddWithValue("numappelation", this.NumAppelation);
+                cmdInsert.Parameters.AddWithValue("nomvin", this.NomVin);
+                cmdInsert.Parameters.AddWithValue("prixvin", this.PrixVin);
+                cmdInsert.Parameters.AddWithValue("descriptif", this.Descriptif);
+                cmdInsert.Parameters.AddWithValue("annee", this.Annee);
+                nb = DataAccess.Instance.ExecuteInsert(cmdInsert);
+            }
+            this.NumVin = nb;
             return nb;
         }
 
