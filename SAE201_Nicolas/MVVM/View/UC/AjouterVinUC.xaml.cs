@@ -37,5 +37,10 @@ namespace SAE201_Nicolas.MVVM.View.UC
         {
             ViewSwitcher.GoBack();
         }
+
+        private void BtnAjouterVinValider(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine(TxtboxNomClient.Text);
+        }
     }
 }
