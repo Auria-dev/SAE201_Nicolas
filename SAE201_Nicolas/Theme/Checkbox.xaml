@@ -4,17 +4,18 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="CheckBox">
-                        <StackPanel Orientation="Horizontal"
+                        <StackPanel
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Center"
-                            Background="{TemplateBinding Background}">
+                            Background="{TemplateBinding Background}"
+                            Orientation="Horizontal">
                             <Border
                                 x:Name="ButtonBg"
                                 Width="16"
                                 Height="16"
                                 Background="Transparent"
-                                BorderThickness="1"
                                 BorderBrush="#888"
+                                BorderThickness="1"
                                 CornerRadius="4">
                                 <Path
                                     x:Name="CheckMark"
@@ -25,9 +26,9 @@
                             </Border>
 
                             <TextBlock
+                                Margin="4,0,0,0"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                Margin="4,0,0,0"
                                 FontSize="{TemplateBinding Property=FontSize}"
                                 Foreground="Black"
                                 Text="{TemplateBinding Property=Content}" />
@@ -37,15 +38,15 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="ButtonBg" Property="BorderBrush" Value="#AAA" />
                             </Trigger>
-                            
+
                             <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="ButtonBg" Property="BorderBrush" Value="#CCC" />
                             </Trigger>
-                            
+
                             <Trigger Property="IsChecked" Value="True">
                                 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible" />
                             </Trigger>
-                            
+
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter TargetName="ButtonBg" Property="BorderBrush" Value="#DDD" />
                                 <Setter Property="Foreground" Value="#B0B0B0" />

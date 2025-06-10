@@ -38,6 +38,7 @@ namespace SAE201_Nicolas.MVVM.Model
         private int annee;
         private int numTypeVin;
         private int numAppelation;
+        private int numFournisseur;
 
         public Vin(int numVin, string nomVin, double prixVin, string descriptif, int annee)
         {
@@ -56,6 +57,11 @@ namespace SAE201_Nicolas.MVVM.Model
         {
             this.NumTypeVin = numTypeVin;
             this.NumAppelation = numAppelation;
+        }
+
+        public Vin(int numVin, string nomVin, double prixVin, string descriptif, int annee, int numTypeVin, int numAppelation, int numFournisseur) : this(numVin, nomVin, prixVin, descriptif, annee, numTypeVin, numAppelation)
+        {
+            this.NumFournisseur = numFournisseur;
         }
 
         public int NumVin
@@ -213,6 +219,19 @@ namespace SAE201_Nicolas.MVVM.Model
             }
         }
 
+        public int NumFournisseur
+        {
+            get
+            {
+                return this.numFournisseur;
+            }
+
+            set
+            {
+                this.numFournisseur = value;
+            }
+        }
+
         public int EnumToNumTypeVin(TypeVin vin) {
             return ((int)vin) + 1; // index starts at 1
         }
@@ -231,7 +250,7 @@ namespace SAE201_Nicolas.MVVM.Model
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    //  we dont need to be debuggin' no more 😎
+                    //  we dont need to be debuggin' no more 😎 nice
                     // Console.WriteLine(dr["nomvin"].ToString());
                     lesVins.Add(
                         new Vin(
@@ -242,11 +261,32 @@ namespace SAE201_Nicolas.MVVM.Model
                             (int)dr["annee"],
                             (int)dr["numtype"],
                             (int)dr["numappelation"]
+                            //,
+                            //(int)dr["numfournisseur"]
                         )
                     );
                 }
             }
             return lesVins;
+        }
+
+        public int AjouterVin()
+        {
+            int nb = 0;
+            //using (var cmdInsert = new NpgsqlCommand("insert into vin (numvin, numfournisseur, numtype, numappelation, nomvin, prixvin, descriptif, annee) values (@numvin, @numfournisseur, @numtype, @numappelation, @nomvin, @prixvin, @descriptif, @annee) RETURNING numvin"))
+            //{
+            //    cmdInsert.Parameters.AddWithValue("numvin", this.NumVin);
+            //    cmdInsert.Parameters.AddWithValue("numfournisseur", this.a_voir_jsp);
+            //    cmdInsert.Parameters.AddWithValue("numtype", this.NumTypeVin);
+            //    cmdInsert.Parameters.AddWithValue("numappelation", this.NumAppelation);
+            //    cmdInsert.Parameters.AddWithValue("nomvin", this.NomVin);
+            //    cmdInsert.Parameters.AddWithValue("prixvin", this.PrixVin);
+            //    cmdInsert.Parameters.AddWithValue("descriptif", this.Descriptif);
+            //    cmdInsert.Parameters.AddWithValue("annee", this.Annee);
+            //    nb = DataAccess.Instance.ExecuteInsert(cmdInsert);
+            //}
+            //this.NumVin = nb;
+            return nb;
         }
 
         public override bool Equals(object? obj)
