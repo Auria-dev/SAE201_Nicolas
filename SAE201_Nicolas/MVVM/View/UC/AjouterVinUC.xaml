@@ -30,7 +30,7 @@
                 FontSize="14"
                 Target="{Binding ElementName=TxtboxNomClient}" />
             <TextBox
-                x:Name="TxtboxNomClient"
+                x:Name="TxtboxNomVin"
                 Width="380"
                 Height="48"
                 Style="{StaticResource TextBox}" />
@@ -41,7 +41,7 @@
                 FontSize="14"
                 Target="{Binding ElementName=TxtboxPrenomClient}" />
             <TextBox
-                x:Name="TxtboxPrenomClient"
+                x:Name="TxtboxAnnee"
                 Width="380"
                 Height="48"
                 Style="{StaticResource TextBox}" />
@@ -53,7 +53,7 @@
                         FontSize="14"
                         Target="{Binding ElementName=TxtboxMailClient}" />
                     <TextBox
-                        x:Name="TxtboxMailClient"
+                        x:Name="TxtboxPrixVin"
                         Width="180"
                         Height="48"
                         Margin="0,0,12,0"
@@ -66,7 +66,7 @@
                         FontSize="14"
                         Target="{Binding ElementName=TxtboxMailClient}" />
                     <ComboBox
-                        x:Name="TxtboxPrix"
+                        x:Name="cbTypeVin"
                         Width="180"
                         Height="48"
                         Margin="12,0,0,0"
@@ -85,6 +85,7 @@
                 FontSize="14"
                 Target="{Binding ElementName=TxtboxPrenomClient}" />
             <ComboBox
+                x:Name="cbFournisseur"
                 Width="380"
                 Height="48"
                 Style="{StaticResource ComboBoxStyle}">

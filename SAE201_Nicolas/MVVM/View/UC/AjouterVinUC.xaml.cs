@@ -22,6 +22,7 @@ namespace SAE201_Nicolas.MVVM.View.UC
     /// </summary>
     public partial class AjouterVinUC : UserControl
     {
+        public GestionVin LaGestionDeVins { get; set; }
         public AjouterVinUC()
         {
             InitializeComponent();
@@ -31,7 +32,6 @@ namespace SAE201_Nicolas.MVVM.View.UC
         {
             InitializeComponent();
             this.DataContext = unVin;
-
         }
 
         private void ClickedReturn(object sender, MouseButtonEventArgs e)
@@ -41,7 +41,17 @@ namespace SAE201_Nicolas.MVVM.View.UC
 
         private void BtnAjouterVinValider(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine(TxtboxNomClient.Text);
+            Vin unVin = new Vin();
+            unVin.NumFournisseur = 1;
+            unVin.NumTypeVin = 1;
+            unVin.NumAppelation = 1;
+            unVin.NomVin = TxtboxNomVin.Text;
+            unVin.PrixVin = double.Parse(TxtboxPrixVin.Text);
+            unVin.Descriptif = "";
+            unVin.Annee = int.Parse(TxtboxAnnee.Text);
+
+            unVin.NumVin = unVin.AjouterVin();
+            LaGestionDeVins.LesVins.Add(unVin);
         }
     }
 }
