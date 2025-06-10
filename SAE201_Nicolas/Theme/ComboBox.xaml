@@ -49,9 +49,6 @@
                 <Setter TargetName="Arrow" Property="Shape.Fill" Value="#FF8D979E" />
             </Trigger>
             <Trigger Property="UIElement.IsEnabled" Value="False">
-                <!--<Setter TargetName="Border" Property="Panel.Background" Value="{StaticResource ComboBoxDisabledBackgroundBrush}" />-->
-                <!--<Setter TargetName="ButtonBorder" Property="Panel.Background" Value="{StaticResource ComboBoxDisabledBackgroundBrush}" />-->
-                <!--<Setter TargetName="ButtonBorder" Property="Border.BorderBrush" Value="{StaticResource ComboBoxDisabledBorderBrush}" />-->
                 <Setter Property="TextElement.Foreground" Value="{StaticResource ComboBoxDisabledForegroundBrush}" />
                 <Setter TargetName="Arrow" Property="Shape.Fill" Value="#999" />
             </Trigger>
