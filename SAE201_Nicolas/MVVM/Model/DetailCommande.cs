@@ -29,9 +29,9 @@ namespace SAE201_Nicolas.MVVM.Model
             this.Prix = prix;
 
             // refence the other things 
-            this.vin = gestionVin.LesVins.SingleOrDefault(w => w.NumVin == this.NumVin);
-            this.commande = gestionVin.LesCommandes.SingleOrDefault(w => w.NumCommande == this.NumCommande);
-            if (this.vin != null) this.fournisseur = gestionVin.LesFournisseurs.SingleOrDefault(w => w.NumFournisseur == this.vin.NumFournisseur);
+            this.Vin = gestionVin.LesVins.SingleOrDefault(w => w.NumVin == this.NumVin);
+            this.Commande = gestionVin.LesCommandes.SingleOrDefault(w => w.NumCommande == this.NumCommande);
+            if (this.Vin != null) this.Fournisseur = gestionVin.LesFournisseurs.SingleOrDefault(w => w.NumFournisseur == this.Vin.NumFournisseur);
         }
 
         public DetailCommande() { }
@@ -92,7 +92,7 @@ namespace SAE201_Nicolas.MVVM.Model
         {
             get
             {
-                return this.vin == null ? "Erreur" : this.vin.NomVin;
+                return this.Vin == null ? "Erreur" : this.Vin.NomVin;
             }
         }
 
@@ -100,7 +100,7 @@ namespace SAE201_Nicolas.MVVM.Model
         {
             get
             {
-                return this.vin == null ? -1 : this.vin.Annee;
+                return this.Vin == null ? -1 : this.Vin.Annee;
             }
         }
 
@@ -108,7 +108,7 @@ namespace SAE201_Nicolas.MVVM.Model
         {
             get
             {
-                return this.vin == null ? "Erreur" : this.vin.NomTypeVin;
+                return this.Vin == null ? "Erreur" : this.Vin.NomTypeVin;
             }
         }
 
@@ -116,7 +116,7 @@ namespace SAE201_Nicolas.MVVM.Model
         {
             get
             {
-                return this.fournisseur == null ? "Erreur" : this.fournisseur.NomFournisseur;
+                return this.Fournisseur == null ? "Erreur" : this.Fournisseur.NomFournisseur;
             }
         }
 
@@ -124,7 +124,46 @@ namespace SAE201_Nicolas.MVVM.Model
         {
             get
             {
-                return this.commande == null ? "Erreur" : this.commande.EtatCommande;
+                return this.Commande == null ? "Erreur" : this.Commande.EtatCommande;
+            }
+        }
+
+        public Vin Vin
+        {
+            get
+            {
+                return this.vin;
+            }
+
+            set
+            {
+                this.vin = value;
+            }
+        }
+
+        public Commande Commande
+        {
+            get
+            {
+                return this.commande;
+            }
+
+            set
+            {
+                this.commande = value;
+            }
+        }
+
+        public Fournisseur Fournisseur
+        {
+            get
+            {
+                return this.fournisseur;
+            }
+
+            set
+            {
+                this.fournisseur = value;
             }
         }
 

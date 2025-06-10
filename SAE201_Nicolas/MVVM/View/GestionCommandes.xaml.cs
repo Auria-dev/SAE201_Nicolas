@@ -28,6 +28,53 @@ namespace SAE201_Nicolas.MVVM.View
             InitializeComponent();
             listGestionsVins = new ListCollectionView(MainWindow.LaGestionDeVins.LesDetailsCommandes);
             dgCommandes.ItemsSource = listGestionsVins;
+            listGestionsVins.Filter = FiltrerCommandes;
+        }
+
+        private bool FiltrerCommandes(object obj)
+        {
+            DetailCommande uneCommande = (DetailCommande)obj;
+            bool verifType = true;
+            bool verifAppellation = true;
+            bool rechercherVin = true;
+
+            // filtre type vin
+            if (uneCommande.Vin.NumTypeVin == uneCommande.Vin.EnumToInt(TypeVin.Blanc)) verifType = (bool)FiltreBlanc.IsChecked;
+            if (uneCommande.Vin.NumTypeVin == uneCommande.Vin.EnumToInt(TypeVin.Rouge)) verifType = (bool)FiltreRouge.IsChecked;
+            if (uneCommande.Vin.NumTypeVin == uneCommande.Vin.EnumToInt(TypeVin.Rosé)) verifType = (bool)FiltreRose.IsChecked;
+            if (uneCommande.Vin.NumTypeVin == uneCommande.Vin.EnumToInt(TypeVin.Champagne)) verifType = (bool)FiltreChampagne.IsChecked;
+            if (uneCommande.Vin.NumTypeVin == uneCommande.Vin.EnumToInt(TypeVin.Mousseux)) verifType = (bool)FiltreMousseux.IsChecked;
+            if (uneCommande.Vin.NumTypeVin == uneCommande.Vin.EnumToInt(TypeVin.Doux)) verifType = (bool)FiltreDoux.IsChecked;
+            if (uneCommande.Vin.NumTypeVin == uneCommande.Vin.EnumToInt(TypeVin.Liquoreux)) verifType = (bool)FiltreLiquoreux.IsChecked;
+
+            // filtre appellation
+            if (ComboxBoxAppellation.SelectedIndex != 0)
+                verifAppellation = (uneCommande.Vin.NumAppelation == ComboxBoxAppellation.SelectedIndex);
+
+            // rechercher 
+            if (!string.IsNullOrEmpty(barDeRechercheCommandes.Text) && !string.IsNullOrWhiteSpace(barDeRechercheCommandes.Text))
+                rechercherVin = uneCommande.NomVin.Contains(barDeRechercheCommandes.Text) || uneCommande.Vin.Annee.ToString().Contains(barDeRechercheCommandes.Text) || uneCommande.FournisseurVin.ToString().Contains(barDeRechercheCommandes.Text);
+
+            return verifType && verifAppellation && rechercherVin;
+        }
+
+        private void updateFiltreTypeVin(object sender, RoutedEventArgs e)
+        {
+
+            if (dgCommandes != null)
+                CollectionViewSource.GetDefaultView(dgCommandes.ItemsSource).Refresh();
+        }
+
+        private void updateFiltreAppellationVin(object sender, SelectionChangedEventArgs e)
+        {
+            if (dgCommandes != null)
+                CollectionViewSource.GetDefaultView(dgCommandes.ItemsSource).Refresh();
+        }
+
+        private void updateRechercheCommande(object sender, RoutedEventArgs e)
+        {
+            if (dgCommandes != null)
+                CollectionViewSource.GetDefaultView(dgCommandes.ItemsSource).Refresh();
         }
     }
 }
