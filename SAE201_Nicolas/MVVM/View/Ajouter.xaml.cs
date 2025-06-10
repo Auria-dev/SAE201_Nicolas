@@ -1,4 +1,5 @@
 ﻿using SAE201_Nicolas.Core;
+using SAE201_Nicolas.MVVM.Model;
 using SAE201_Nicolas.MVVM.View.UC;
 using SAE201_Nicolas.MVVM.ViewModel;
 using SAE201_Nicolas.MVVM.ViewModel.UC;
@@ -33,7 +34,22 @@ namespace SAE201_Nicolas.MVVM.View
 
         private void BtnAjouterVinClick(object sender, RoutedEventArgs e)
         {
+            Vin unVin = new Vin();
             ViewSwitcher.ChangeViewTo("AjouterVin");
+            //AjouterVinUC uCAjouterVin = new AjouterVinUC(unVin);
+            //bool? result = uCAjouterVin.ShowDialog();
+            //if (result == true)
+            //{
+            //    try
+            //    {
+            //        unVin.Id = unVin.AjouterVin();
+            //        GestionVin.LesVins.Add(unChien);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(this, "n'a pas pu être créé.", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
+            //    }
+            //}
         }
 
         private void BtnAjouterClientClick(object sender, RoutedEventArgs e)
