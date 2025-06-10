@@ -35,7 +35,7 @@ namespace SAE201_Nicolas
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Problème lors de récupération des données, veuillez consulter votre admin");
+                MessageBox.Show("Problème lors de récupération des données, veuillez consulter votre admin\n" + ex);
                 Application.Current.Shutdown();
             }
         }

@@ -20,6 +20,7 @@ namespace SAE201_Nicolas.MVVM.Model
         {
             this.Nom = nom;
             this.lesVins = new ObservableCollection<Vin>(new Vin().FindAll());
+            this.lesDemandes = new ObservableCollection<Demande>(new Demande().FindAll());
             this.lesCommandes = new ObservableCollection<Commande>(new Commande().FindAll());
             this.lesFournisseurs = new ObservableCollection<Fournisseur>(new Fournisseur().FindAll());
             this.lesDetailsCommandes = new ObservableCollection<DetailCommande>(new DetailCommande().FindAll(this));

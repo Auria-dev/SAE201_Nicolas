@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SAE201_Nicolas.MVVM.Model
 {
-    public enum EtatCommande
+    public enum EnumEtatCommande
     {
         Validée,
         EnAttante,
@@ -99,6 +99,28 @@ namespace SAE201_Nicolas.MVVM.Model
             {
                 this.prixTotal = value;
             }
+        }
+
+        public EnumEtatCommande StringToEtatCommande(string s) {
+            switch (s)
+            {
+                case "Validée":
+                    return EnumEtatCommande.Validée;
+
+                case "EnAttante":
+                    return EnumEtatCommande.EnAttante;
+
+                case "Supprimée":
+                    return EnumEtatCommande.Supprimée;
+
+                default:
+                    return EnumEtatCommande.EnAttante;
+            }
+        }
+
+        public string EtatCommandeToString(EnumEtatCommande e) {
+            if (e == EnumEtatCommande.EnAttante) return "En attante";
+            else return e.ToString();
         }
 
         public void AjouterCommande() { }

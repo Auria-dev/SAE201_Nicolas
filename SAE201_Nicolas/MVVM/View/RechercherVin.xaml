@@ -7,7 +7,7 @@
     xmlns:local="clr-namespace:SAE201_Nicolas.MVVM.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:model="clr-namespace:SAE201_Nicolas.MVVM.Model"
-    d:DesignHeight="450"
+    d:DesignHeight="650"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <StackPanel VerticalAlignment="Top">
@@ -15,7 +15,7 @@
             HorizontalAlignment="Left"
             FontSize="26"
             Foreground="Black"
-            Text=" Rechercher des vins" />
+            Text=" Demander des vins" />
 
         <StackPanel
             Margin="0,8,0,0"
@@ -187,7 +187,7 @@
         </StackPanel>
         <DataGrid
             x:Name="dgVins"
-            Height="350"
+            Height="315"
             Margin="0,14,0,0"
             HorizontalAlignment="Stretch"
             AutoGenerateColumns="False"
@@ -216,6 +216,30 @@
                     Header="Appelation" />
             </DataGrid.Columns>
         </DataGrid>
+
+        <StackPanel
+            Margin="0,14,0,0"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <TextBox
+                x:Name="TxtboxQuantiteVins"
+                Width="275"
+                Height="40"
+                Margin="8,0,0,0"
+                core:PlaceholderService.Placeholder="Quantié"
+                FontSize="14"
+                Style="{StaticResource TextBox}"
+                TextChanged="updateFiltrePrix" />
+            <Button
+                Width="120"
+                Height="42"
+                Margin="12,0,0,0"
+                Click="btnCommanderClick"
+                Content="Demander"
+                FontSize="14"
+                IsDefault="True"
+                Style="{StaticResource DefaultButton}" />
+        </StackPanel>
 
     </StackPanel>
 </UserControl>

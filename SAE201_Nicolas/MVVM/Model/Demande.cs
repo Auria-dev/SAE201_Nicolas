@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,9 +17,9 @@ namespace SAE201_Nicolas.MVVM.Model
         private int numClient;
         private DateTime dateDemande;
         private int quantiteDemande;
-        private EtatCommande etatDemande;
+        private EnumEtatCommande etatDemande;
 
-        public Demande(int numDemande, int numVin, int numEmploye, int numCommande, int numClient, DateTime dateDemande, int quantiteDemande, EtatCommande etatDemande)
+        public Demande(int numDemande, int numVin, int numEmploye, int numCommande, int numClient, DateTime dateDemande, int quantiteDemande, EnumEtatCommande etatDemande)
         {
             this.NumDemande = numDemande;
             this.NumVin = numVin;
@@ -28,6 +30,8 @@ namespace SAE201_Nicolas.MVVM.Model
             this.QuantiteDemande = quantiteDemande;
             this.EtatDemande = etatDemande;
         }
+
+        public Demande() { }
 
         public int NumDemande
         {
@@ -120,7 +124,7 @@ namespace SAE201_Nicolas.MVVM.Model
             }
         }
 
-        public EtatCommande EtatDemande
+        public EnumEtatCommande EtatDemande
         {
             get
             {
@@ -131,6 +135,63 @@ namespace SAE201_Nicolas.MVVM.Model
             {
                 this.etatDemande = value;
             }
+        }
+
+        public string NomEtatDemande
+        {
+            get
+            {
+                return EtatCommandeToString(EtatDemande);
+            }
+        }
+
+        public EnumEtatCommande StringToEtatCommande(string s)
+        {
+            switch (s)
+            {
+                case "Validée":
+                    return EnumEtatCommande.Validée;
+
+                case "EnAttante":
+                    return EnumEtatCommande.EnAttante;
+
+                case "Supprimée":
+                    return EnumEtatCommande.Supprimée;
+
+                default:
+                    return EnumEtatCommande.EnAttante;
+            }
+        }
+
+        public string EtatCommandeToString(EnumEtatCommande e)
+        {
+            if (e == EnumEtatCommande.EnAttante) return "En attante";
+            else return e.ToString();
+        }
+
+        public List<Demande> FindAll()
+        {
+            List<Demande> lesDemandes = new List<Demande>();
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select * from demande;"))
+            {
+                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    lesDemandes.Add(
+                        new Demande(
+                             (int)dr["numdemande"],
+                             (int)dr["numvin"],
+                             (int)dr["numemploye"],
+                             (int)dr["numcommande"],
+                             (int)dr["numclient"],
+                             DateTime.Parse(dr["datedemande"].ToString()),
+                             (int)dr["quantitedemande"],
+                             StringToEtatCommande(dr["etatdemande"].ToString())
+                        )
+                    );
+                }
+            }
+            return lesDemandes;
         }
     }
 }

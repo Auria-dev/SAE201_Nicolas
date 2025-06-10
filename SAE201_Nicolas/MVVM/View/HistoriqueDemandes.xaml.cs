@@ -20,9 +20,13 @@ namespace SAE201_Nicolas.MVVM.View
     /// </summary>
     public partial class HistoriqueCommandes : UserControl
     {
+        private ListCollectionView listCommandes;
+
         public HistoriqueCommandes()
         {
             InitializeComponent();
+            listCommandes = new ListCollectionView(MainWindow.LaGestionDeVins.LesDemandes);
+            dgDemandes.ItemsSource = listCommandes;
         }
     }
 }

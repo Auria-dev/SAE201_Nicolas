@@ -91,5 +91,12 @@ namespace SAE201_Nicolas.MVVM.View
             if (dgVins != null)
                 CollectionViewSource.GetDefaultView(dgVins.ItemsSource).Refresh();
         }
+
+        private void btnCommanderClick(object sender, RoutedEventArgs e)
+        {
+            // TODO: Check the selected VINs for if they the same, & for fournisseur
+
+            // if valid then create the Commande and set it to "En attente"
+        }
     }
 }

@@ -5,8 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:SAE201_Nicolas"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewModel="clr-namespace:SAE201_Nicolas.MVVM.ViewModel"
     xmlns:model="clr-namespace:SAE201_Nicolas.MVVM.Model"
+    xmlns:viewModel="clr-namespace:SAE201_Nicolas.MVVM.ViewModel"
     Title="Application Nicolas"
     Width="1000"
     Height="600"
@@ -18,7 +18,6 @@
     <Window.DataContext>
         <viewModel:MainViewModel />
     </Window.DataContext>
-
 
     <Border Background="#FFFFFF" CornerRadius="30, 30, 16, 30">
         <Grid>
@@ -38,6 +37,7 @@
                 Background="#8f0e2a"
                 CornerRadius="16,16,0,0"
                 MouseDown="TitleBar_MouseDown">
+
                 <Grid>
                     <TextBlock
                         Margin="20,0,0,0"

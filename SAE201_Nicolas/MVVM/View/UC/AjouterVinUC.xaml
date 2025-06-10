@@ -119,6 +119,7 @@
                 Width="380"
                 Height="48"
                 Margin="0,8,0,50"
+                Click="BtnAjouterVinValider"
                 Content="Confirmer"
                 FontSize="16"
                 Style="{StaticResource DefaultButton}" />
