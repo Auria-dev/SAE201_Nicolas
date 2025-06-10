@@ -22,36 +22,21 @@ namespace SAE201_Nicolas.MVVM.View
     public partial class RechercherVin : UserControl
     {
         private ListCollectionView listVins;
-        public GestionVin LaGestionDeVins { get; set; }
         
         public RechercherVin()
         {
-            ChargeData();
             InitializeComponent();
-            listVins = new ListCollectionView(LaGestionDeVins.LesVins);
+            listVins = new ListCollectionView(MainWindow.LaGestionDeVins.LesVins);
             dgVins.ItemsSource = listVins;
             listVins.Filter = FiltrerVins;
-        }
-
-        public void ChargeData()
-        {
-            try
-            {
-                LaGestionDeVins = new GestionVin("Gestion Vins");
-                this.DataContext = LaGestionDeVins;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Problème lors de récupération des données, veuillez consulter votre admin");
-                Application.Current.Shutdown();
-            }
         }
 
         private bool FiltrerVins(object obj)
         {
             Vin unVin = (Vin)obj;
             bool verifType = true;
-            bool verifPrix = true;
+            bool verifPrixMin = true;
+            bool verifPrixMax = true;
             bool verifAppellation = true;
             bool rechercherVin = true;
             int prixMin = 0, prixMax = int.MaxValue;
@@ -66,11 +51,11 @@ namespace SAE201_Nicolas.MVVM.View
             if (unVin.NumTypeVin == unVin.EnumToInt(TypeVin.Liquoreux)) verifType = (bool)FiltreLiquoreux.IsChecked;
 
             // filtre prix vin
-            if (!string.IsNullOrEmpty(FiltrePrixMin.Text) && !string.IsNullOrWhiteSpace(FiltrePrixMin.Text) && int.TryParse(FiltrePrixMin.Text, out prixMin)) 
-                verifPrix = unVin.PrixVin >= prixMin;
+            if (int.TryParse(FiltrePrixMin.Text, out prixMin)) 
+                verifPrixMin = unVin.PrixVin >= prixMin;
             
-            if (!string.IsNullOrEmpty(FiltrePrixMax.Text) && !string.IsNullOrWhiteSpace(FiltrePrixMax.Text) && int.TryParse(FiltrePrixMax.Text, out prixMax)) 
-                verifPrix = unVin.PrixVin <= prixMax;
+            if (int.TryParse(FiltrePrixMax.Text, out prixMax)) 
+                verifPrixMax = unVin.PrixVin <= prixMax;
             
             // filtre appellation
             if (ComboxBoxAppellation.SelectedIndex != 0)
@@ -80,7 +65,7 @@ namespace SAE201_Nicolas.MVVM.View
             if (!string.IsNullOrEmpty(barDeRechercheVins.Text) && !string.IsNullOrWhiteSpace(barDeRechercheVins.Text))
                 rechercherVin = unVin.NomVin.Contains(barDeRechercheVins.Text) || unVin.Annee.ToString().Contains(barDeRechercheVins.Text);
 
-            return verifType && verifPrix && verifAppellation && rechercherVin;
+            return verifType && verifPrixMin && verifPrixMax && verifAppellation && rechercherVin;
         }
 
         private void updateFiltreTypeVin(object sender, RoutedEventArgs e)

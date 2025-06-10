@@ -49,10 +49,6 @@ namespace SAE201_Nicolas.MVVM.Model
             this.Annee = annee;
         }
 
-        public Vin()
-        {
-        }
-
         public Vin(int numVin, string nomVin, double prixVin, string descriptif, int annee, int numTypeVin, int numAppelation) : this(numVin, nomVin, prixVin, descriptif, annee)
         {
             this.NumTypeVin = numTypeVin;

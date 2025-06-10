@@ -126,5 +126,25 @@ namespace SAE201_Nicolas.MVVM.Model
             }
             return lesVins;
         }
+
+        public Commande FindFromID(int id)
+        {
+            Commande res;
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select * from Commande where numcommande = @targetNumCmd"))
+            {
+                cmdSelect.Parameters.AddWithValue("targetNumCmd", id);
+                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                DataRow dr = dt.Rows[0];
+                res = new Commande(
+                    (int)dr["numcommande"],
+                    (int)dr["numemploye"],
+                    DateTime.Parse(dr["datecommande"].ToString()),
+                    (string)dr["etatcommande"],
+                    double.Parse(dr["prixtotal"].ToString())
+                );
+            }
+
+            return res;
+        }
     }
 }

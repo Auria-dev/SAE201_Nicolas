@@ -21,24 +21,9 @@ namespace SAE201_Nicolas.MVVM.View
     /// </summary>
     public partial class GestionCommandes : UserControl
     {
-        public GestionVin LaGestionDeVins { get; set; }
         public GestionCommandes()
         {
-            ChargeData();
             InitializeComponent();
-        }
-        public void ChargeData()
-        {
-            try
-            {
-                LaGestionDeVins = new GestionVin("Gestion Vins");
-                this.DataContext = LaGestionDeVins;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Problème lors de récupération des données, veuillez consulter votre admin");
-                Application.Current.Shutdown();
-            }
         }
     }
 }

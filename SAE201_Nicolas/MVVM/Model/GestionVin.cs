@@ -13,6 +13,7 @@ namespace SAE201_Nicolas.MVVM.Model
         private ObservableCollection<Vin> lesVins;
         private ObservableCollection<Demande> lesDemandes;
         private ObservableCollection<Commande> lesCommandes;
+        private ObservableCollection<Fournisseur> lesFournisseurs;
         private ObservableCollection<DetailCommande> lesDetailsCommandes;
 
         public GestionVin(string nom)
@@ -20,6 +21,7 @@ namespace SAE201_Nicolas.MVVM.Model
             this.Nom = nom;
             this.lesVins = new ObservableCollection<Vin>(new Vin().FindAll());
             this.lesCommandes = new ObservableCollection<Commande>(new Commande().FindAll());
+            this.lesFournisseurs = new ObservableCollection<Fournisseur>(new Fournisseur().FindAll());
             this.lesDetailsCommandes = new ObservableCollection<DetailCommande>(new DetailCommande().FindAll());
         }
 
@@ -76,6 +78,19 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.lesCommandes = value;
+            }
+        }
+
+        public ObservableCollection<Fournisseur> LesFournisseurs
+        {
+            get
+            {
+                return this.lesFournisseurs;
+            }
+
+            set
+            {
+                this.lesFournisseurs = value;
             }
         }
 

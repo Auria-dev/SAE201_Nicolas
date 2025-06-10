@@ -143,19 +143,35 @@
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding NumCommande}"
-                    Header="Commande numéro" />
+                    Header="Num" />
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding NumVin}"
+                    Binding="{Binding NomVin}"
                     Header="Vin" />
                 <DataGridTextColumn
                     Width="*"
+                    Binding="{Binding AnneeVin}"
+                    Header="Année" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding TypeVin}"
+                    Header="Type" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding FournisseurVin}"
+                    Header="Fournisseur" />
+                <DataGridTextColumn
+                    Width="*"
                     Binding="{Binding Quantite}"
-                    Header="Quantité" />
+                    Header="Qté" />
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding Prix}"
                     Header="Prix Total" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding EtatCommande}"
+                    Header="État" />
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>

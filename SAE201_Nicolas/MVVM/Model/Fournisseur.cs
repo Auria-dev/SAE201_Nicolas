@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +12,8 @@ namespace SAE201_Nicolas.MVVM.Model
     {
         private int numFournisseur;
         private string nomFournisseur;
+
+        public Fournisseur() { }
 
         public Fournisseur(int numFournisseur, string nomFournisseur)
         {
@@ -41,6 +45,25 @@ namespace SAE201_Nicolas.MVVM.Model
             {
                 this.nomFournisseur = value;
             }
+        }
+
+        public List<Fournisseur> FindAll()
+        {
+            List<Fournisseur> lesFournisseurs = new List<Fournisseur>();
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select * from Fournisseur;"))
+            {
+                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    lesFournisseurs.Add(
+                        new Fournisseur(
+                            (int)dr["numfournisseur"],
+                            (string)dr["nomfournisseur"]
+                        )
+                    );
+                }
+            }
+            return lesFournisseurs;
         }
     }
 }

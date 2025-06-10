@@ -18,25 +18,27 @@ namespace SAE201_Nicolas
     /// </summary>
     public partial class MainWindow : Window
     {
-        //public GestionVin LaGestionDeVins { get; set; }
+        public static GestionVin LaGestionDeVins { get; set; }
+        
         public MainWindow()
         {
+            ChargeData();
             InitializeComponent();
         }
 
-        //public void ChargeData()
-        //{
-        //    try
-        //    {
-        //        LaGestionDeVins = new GestionVin("Gestion Vins");
-        //        this.DataContext = LaGestionDeVins;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Problème lors de récupération des données, veuillez consulter votre admin");
-        //        Application.Current.Shutdown();
-        //    }
-        //}
+        public void ChargeData()
+        {
+            try
+            {
+                LaGestionDeVins = new GestionVin("Gestion Vins");
+                this.DataContext = LaGestionDeVins;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Problème lors de récupération des données, veuillez consulter votre admin");
+                Application.Current.Shutdown();
+            }
+        }
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
