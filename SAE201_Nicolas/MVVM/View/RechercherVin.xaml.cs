@@ -63,19 +63,15 @@ namespace SAE201_Nicolas.MVVM.View
             if (unVin.NumTypeVin == unVin.EnumToNumTypeVin(TypeVin.Liquoreux)) verifType = (bool)FiltreLiquoreux.IsChecked;
 
             if (!string.IsNullOrEmpty(FiltrePrixMin.Text) && !string.IsNullOrWhiteSpace(FiltrePrixMin.Text)) {
-                Console.WriteLine($"prix min {prixMin} prix max {prixMax}");
 
                 int.TryParse(FiltrePrixMin.Text, out prixMin);
-                verifPrix = false;
-                // unVin.PrixVin < prixMin
+                verifPrix = unVin.PrixVin > prixMin;
             }
 
             if (!string.IsNullOrEmpty(FiltrePrixMax.Text) && !string.IsNullOrWhiteSpace(FiltrePrixMax.Text)) {
                 int.TryParse(FiltrePrixMax.Text, out prixMax);
-                verifPrix = false;
-                // unVin.PrixVin < prixMax
+                verifPrix = unVin.PrixVin < prixMax;
             }
-
 
             return verifType && verifPrix;
         }
