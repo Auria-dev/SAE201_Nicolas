@@ -22,7 +22,7 @@
             HorizontalAlignment="Center"
             Orientation="Horizontal">
             <TextBox
-                x:Name="BarDeRechercheVins"
+                x:Name="barDeRechercheVins"
                 Width="605"
                 Height="42"
                 Margin="0,0,0,0"
@@ -33,9 +33,10 @@
                 Width="120"
                 Height="42"
                 Margin="12,0,0,0"
+                
                 Content="Rechercher"
                 FontSize="14"
-                Style="{StaticResource DefaultButton}" />
+                Style="{StaticResource DefaultButton}" Click="updateRechercheVin" />
         </StackPanel>
 
         <StackPanel Margin="0,14,0,0" Orientation="Horizontal">
@@ -55,7 +56,8 @@
                         Margin="0,0,0,0"
                         core:PlaceholderService.Placeholder="Min"
                         FontSize="14"
-                        Style="{StaticResource TextBox}" />
+                        Style="{StaticResource TextBox}"
+                        TextChanged="updateFiltrePrix" />
 
                     <TextBox
                         x:Name="FiltrePrixMax"
@@ -64,7 +66,8 @@
                         Margin="8,0,0,0"
                         core:PlaceholderService.Placeholder="Max"
                         FontSize="14"
-                        Style="{StaticResource TextBox}" />
+                        Style="{StaticResource TextBox}"
+                        TextChanged="updateFiltrePrix" />
                 </StackPanel>
             </StackPanel>
 
@@ -81,15 +84,19 @@
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
                     <ComboBox
+                        x:Name="ComboxBoxAppellation"
                         Width="220"
                         Height="40"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
+                        SelectionChanged="updateFiltreAppellationVin"
                         Style="{StaticResource ComboBoxStyle}">
                         <ComboBoxItem IsSelected="True">Tous</ComboBoxItem>
-                        <ComboBoxItem>Savoie</ComboBoxItem>
-                        <ComboBoxItem>Jura</ComboBoxItem>
+                        <ComboBoxItem>Bordeaux</ComboBoxItem>
                         <ComboBoxItem>Bourgogne</ComboBoxItem>
+                        <ComboBoxItem>Champagne</ComboBoxItem>
+                        <ComboBoxItem>Alsace</ComboBoxItem>
+                        <ComboBoxItem>Beaujolais</ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
             </StackPanel>
@@ -111,6 +118,7 @@
                         <CheckBox
                             x:Name="FiltreBlanc"
                             VerticalAlignment="Center"
+                            Click="updateFiltreTypeVin"
                             IsChecked="True"
                             Style="{StaticResource CheckboxStyle}">
                             Blanc
@@ -119,6 +127,7 @@
                             x:Name="FiltreRouge"
                             Margin="8,0,0,0"
                             VerticalAlignment="Center"
+                            Click="updateFiltreTypeVin"
                             IsChecked="True"
                             Style="{StaticResource CheckboxStyle}">
                             Rouge
@@ -127,6 +136,7 @@
                             x:Name="FiltreRose"
                             Margin="8,0,0,0"
                             VerticalAlignment="Center"
+                            Click="updateFiltreTypeVin"
                             IsChecked="True"
                             Style="{StaticResource CheckboxStyle}">
                             Rosé
@@ -135,6 +145,7 @@
                             x:Name="FiltreChampagne"
                             Margin="8,0,0,0"
                             VerticalAlignment="Center"
+                            Click="updateFiltreTypeVin"
                             IsChecked="True"
                             Style="{StaticResource CheckboxStyle}">
                             Champagne
@@ -145,6 +156,7 @@
                         <CheckBox
                             x:Name="FiltreMousseux"
                             VerticalAlignment="Center"
+                            Click="updateFiltreTypeVin"
                             IsChecked="True"
                             Style="{StaticResource CheckboxStyle}">
                             Mousseux
@@ -153,6 +165,7 @@
                             x:Name="FiltreDoux"
                             Margin="8,0,0,0"
                             VerticalAlignment="Center"
+                            Click="updateFiltreTypeVin"
                             IsChecked="True"
                             Style="{StaticResource CheckboxStyle}">
                             Doux
@@ -161,6 +174,7 @@
                             x:Name="FiltreLiquoreux"
                             Margin="8,0,0,0"
                             VerticalAlignment="Center"
+                            Click="updateFiltreTypeVin"
                             IsChecked="True"
                             Style="{StaticResource CheckboxStyle}">
                             Liquoreux

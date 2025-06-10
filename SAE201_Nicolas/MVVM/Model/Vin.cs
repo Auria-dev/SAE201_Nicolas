@@ -232,11 +232,11 @@ namespace SAE201_Nicolas.MVVM.Model
             }
         }
 
-        public int EnumToNumTypeVin(TypeVin vin) {
+        public int EnumToInt(TypeVin vin) {
             return ((int)vin) + 1; // index starts at 1
         }
 
-        public TypeVin NumTypeVinToEnum(int val) { 
+        public TypeVin IntToEnum(int val) { 
             return (TypeVin) val-1; // make index starts at 0
         }
 

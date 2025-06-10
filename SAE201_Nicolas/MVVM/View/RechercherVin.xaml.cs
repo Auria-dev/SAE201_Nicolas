@@ -30,7 +30,7 @@ namespace SAE201_Nicolas.MVVM.View
             InitializeComponent();
             listVins = new ListCollectionView(LaGestionDeVins.LesVins);
             dgVins.ItemsSource = listVins;
-            listVins.Filter = RechercherListVin;
+            listVins.Filter = FiltrerVins;
         }
 
         public void ChargeData()
@@ -47,33 +47,64 @@ namespace SAE201_Nicolas.MVVM.View
             }
         }
 
-        private bool RechercherListVin(object obj)
+        private bool FiltrerVins(object obj)
         {
             Vin unVin = (Vin)obj;
             bool verifType = true;
             bool verifPrix = true;
+            bool verifAppellation = true;
+            bool rechercherVin = true;
             int prixMin = 0, prixMax = int.MaxValue;
 
-            if (unVin.NumTypeVin == unVin.EnumToNumTypeVin(TypeVin.Blanc)) verifType = (bool)FiltreBlanc.IsChecked;
-            if (unVin.NumTypeVin == unVin.EnumToNumTypeVin(TypeVin.Rouge)) verifType = (bool)FiltreRouge.IsChecked;
-            if (unVin.NumTypeVin == unVin.EnumToNumTypeVin(TypeVin.Rosé)) verifType = (bool)FiltreRose.IsChecked;
-            if (unVin.NumTypeVin == unVin.EnumToNumTypeVin(TypeVin.Champagne)) verifType = (bool)FiltreChampagne.IsChecked;
-            if (unVin.NumTypeVin == unVin.EnumToNumTypeVin(TypeVin.Mousseux)) verifType = (bool)FiltreMousseux.IsChecked;
-            if (unVin.NumTypeVin == unVin.EnumToNumTypeVin(TypeVin.Doux)) verifType = (bool)FiltreDoux.IsChecked;
-            if (unVin.NumTypeVin == unVin.EnumToNumTypeVin(TypeVin.Liquoreux)) verifType = (bool)FiltreLiquoreux.IsChecked;
+            // filtre type vin
+            if (unVin.NumTypeVin == unVin.EnumToInt(TypeVin.Blanc)) verifType = (bool)FiltreBlanc.IsChecked;
+            if (unVin.NumTypeVin == unVin.EnumToInt(TypeVin.Rouge)) verifType = (bool)FiltreRouge.IsChecked;
+            if (unVin.NumTypeVin == unVin.EnumToInt(TypeVin.Rosé)) verifType = (bool)FiltreRose.IsChecked;
+            if (unVin.NumTypeVin == unVin.EnumToInt(TypeVin.Champagne)) verifType = (bool)FiltreChampagne.IsChecked;
+            if (unVin.NumTypeVin == unVin.EnumToInt(TypeVin.Mousseux)) verifType = (bool)FiltreMousseux.IsChecked;
+            if (unVin.NumTypeVin == unVin.EnumToInt(TypeVin.Doux)) verifType = (bool)FiltreDoux.IsChecked;
+            if (unVin.NumTypeVin == unVin.EnumToInt(TypeVin.Liquoreux)) verifType = (bool)FiltreLiquoreux.IsChecked;
 
-            if (!string.IsNullOrEmpty(FiltrePrixMin.Text) && !string.IsNullOrWhiteSpace(FiltrePrixMin.Text)) {
+            // filtre prix vin
+            if (!string.IsNullOrEmpty(FiltrePrixMin.Text) && !string.IsNullOrWhiteSpace(FiltrePrixMin.Text) && int.TryParse(FiltrePrixMin.Text, out prixMin)) 
+                verifPrix = unVin.PrixVin >= prixMin;
+            
+            if (!string.IsNullOrEmpty(FiltrePrixMax.Text) && !string.IsNullOrWhiteSpace(FiltrePrixMax.Text) && int.TryParse(FiltrePrixMax.Text, out prixMax)) 
+                verifPrix = unVin.PrixVin <= prixMax;
+            
+            // filtre appellation
+            if (ComboxBoxAppellation.SelectedIndex != 0)
+                verifAppellation = (unVin.NumAppelation == ComboxBoxAppellation.SelectedIndex);
 
-                int.TryParse(FiltrePrixMin.Text, out prixMin);
-                verifPrix = unVin.PrixVin > prixMin;
-            }
+            // rechercher 
+            if (!string.IsNullOrEmpty(barDeRechercheVins.Text) && !string.IsNullOrWhiteSpace(barDeRechercheVins.Text))
+                rechercherVin = unVin.NomVin.Contains(barDeRechercheVins.Text) || unVin.Annee.ToString().Contains(barDeRechercheVins.Text);
 
-            if (!string.IsNullOrEmpty(FiltrePrixMax.Text) && !string.IsNullOrWhiteSpace(FiltrePrixMax.Text)) {
-                int.TryParse(FiltrePrixMax.Text, out prixMax);
-                verifPrix = unVin.PrixVin < prixMax;
-            }
+            return verifType && verifPrix && verifAppellation && rechercherVin;
+        }
 
-            return verifType && verifPrix;
+        private void updateFiltreTypeVin(object sender, RoutedEventArgs e)
+        {
+            if (dgVins != null)
+                CollectionViewSource.GetDefaultView(dgVins.ItemsSource).Refresh();
+        }
+
+        private void updateFiltreAppellationVin(object sender, SelectionChangedEventArgs e)
+        {
+            if (dgVins != null)
+                CollectionViewSource.GetDefaultView(dgVins.ItemsSource).Refresh();
+        }
+
+        private void updateFiltrePrix(object sender, TextChangedEventArgs e)
+        {
+            if (dgVins != null)
+                CollectionViewSource.GetDefaultView(dgVins.ItemsSource).Refresh();
+        }
+
+        private void updateRechercheVin(object sender, RoutedEventArgs e)
+        {
+            if (dgVins != null)
+                CollectionViewSource.GetDefaultView(dgVins.ItemsSource).Refresh();
         }
     }
 }
