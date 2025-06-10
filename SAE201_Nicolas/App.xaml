@@ -7,7 +7,7 @@
     xmlns:viewModel="clr-namespace:SAE201_Nicolas.MVVM.ViewModel"
     xmlns:viewModelUC="clr-namespace:SAE201_Nicolas.MVVM.ViewModel.UC"
     xmlns:viewUC="clr-namespace:SAE201_Nicolas.MVVM.View.UC"
-    StartupUri="MainWindow.xaml">
+    StartupUri="ConnectionWindow.xaml">
     <Application.Resources>
 
         <ResourceDictionary>

@@ -44,7 +44,7 @@ namespace SAE201_Nicolas.MVVM.View.UC
             Vin unVin = new Vin();
             unVin.NumFournisseur = cbFournisseur.SelectedIndex;
             unVin.NumTypeVin = cbTypeVin.SelectedIndex;
-            unVin.NumAppelation = 1;
+            unVin.NumAppelation = ComboxBoxAppellation.SelectedIndex;
             unVin.NomVin = TxtboxNomVin.Text;
             unVin.PrixVin = double.Parse(TxtboxPrixVin.Text);
             unVin.Descriptif = "";
