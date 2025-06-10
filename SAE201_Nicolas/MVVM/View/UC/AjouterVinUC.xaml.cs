@@ -31,6 +31,7 @@ namespace SAE201_Nicolas.MVVM.View.UC
         {
             InitializeComponent();
             this.DataContext = unVin;
+
         }
 
         private void ClickedReturn(object sender, MouseButtonEventArgs e)

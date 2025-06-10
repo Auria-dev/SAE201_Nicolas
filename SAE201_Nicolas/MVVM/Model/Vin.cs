@@ -250,7 +250,7 @@ namespace SAE201_Nicolas.MVVM.Model
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    //  we dont need to be debuggin' no more 😎 nice
+                    //  we dont need to be debuggin' no more 😎 nice 
                     // Console.WriteLine(dr["nomvin"].ToString());
                     lesVins.Add(
                         new Vin(

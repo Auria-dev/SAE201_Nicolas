@@ -34,22 +34,7 @@ namespace SAE201_Nicolas.MVVM.View
 
         private void BtnAjouterVinClick(object sender, RoutedEventArgs e)
         {
-            Vin unVin = new Vin();
             ViewSwitcher.ChangeViewTo("AjouterVin");
-            //AjouterVinUC uCAjouterVin = new AjouterVinUC(unVin);
-            //bool? result = uCAjouterVin.ShowDialog();
-            //if (result == true)
-            //{
-            //    try
-            //    {
-            //        unVin.Id = unVin.AjouterVin();
-            //        GestionVin.LesVins.Add(unChien);
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(this, "n'a pas pu être créé.", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
-            //    }
-            //}
         }
 
         private void BtnAjouterClientClick(object sender, RoutedEventArgs e)
