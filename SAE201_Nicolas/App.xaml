@@ -18,6 +18,7 @@
                 <ResourceDictionary Source="Theme/ComboBox.xaml" />
                 <ResourceDictionary Source="Theme/Checkbox.xaml" />
                 <ResourceDictionary Source="Theme/Datagrid.xaml" />
+                <ResourceDictionary Source="Theme/PassBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:RechercherVinViewModel}">

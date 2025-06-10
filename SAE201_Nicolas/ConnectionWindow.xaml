@@ -2,19 +2,33 @@
     x:Class="SAE201_Nicolas.ConnectionWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:core="clr-namespace:SAE201_Nicolas.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:SAE201_Nicolas"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="ConnectionWindow"
-    Width="800"
-    Height="450"
-    ResizeMode="NoResize"
+    xmlns:model="clr-namespace:SAE201_Nicolas.MVVM.Model"
+    xmlns:viewModel="clr-namespace:SAE201_Nicolas.MVVM.ViewModel"
+    Title="Application Nicolas"
+    Width="1000"
+    Height="600"
+    AllowsTransparency="True"
+    Background="Transparent"
     WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
     mc:Ignorable="d">
-    <Grid>
+
+    <Window.DataContext>
+        <viewModel:MainViewModel />
+    </Window.DataContext>
+
+    <Border
+        Margin="0,0,0,10"
+        Background="#FFFFFF"
+        CornerRadius="30">
+
         <StackPanel
             Width="300"
-            Height="250"
+            Height="330"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
             <Label
@@ -23,12 +37,33 @@
                 Content="Connexion"
                 FontSize="20"
                 FontWeight="Bold" />
-            <Label Content="Nom d'utilisateur" FontSize="16" Margin="0,10,0,0" />
-            <TextBox x:Name="tbLogin" FontSize="14" />
-            <Label Content="Mot de passe" FontSize="16" Margin="0,10,0,0" />
-            <PasswordBox x:Name="pswrdBox" FontSize="14"/>
-            <Button x:Name="butConnexion" Content="Se Connecter" FontSize="16" Margin="0,40,0,0" Click="butConnexion_Click"/>
+            <Label
+                Margin="0,10,0,0"
+                Content="Nom d'utilisateur"
+                FontSize="16" />
+            <TextBox
+                x:Name="tbLogin"
+                Height="48"
+                FontSize="14"
+                Style="{StaticResource TextBox}" />
+            <Label
+                Margin="0,10,0,0"
+                Content="Mot de passe"
+                FontSize="16" />
+            <PasswordBox
+                x:Name="pswrdBox"
+                Height="48"
+                FontSize="14"
+                Style="{StaticResource PasswordBoxStyle}" />
+            <Button
+                x:Name="butConnexion"
+                Height="48"
+                Margin="0,40,0,0"
+                Click="butConnexion_Click"
+                Content="Se Connecter"
+                FontSize="16"
+                Style="{StaticResource DefaultButton}" />
         </StackPanel>
 
-    </Grid>
+    </Border>
 </Window>

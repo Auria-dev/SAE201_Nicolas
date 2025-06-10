@@ -12,6 +12,7 @@
     Height="600"
     AllowsTransparency="True"
     Background="Transparent"
+    WindowStartupLocation="CenterScreen"
     WindowStyle="None"
     mc:Ignorable="d">
 
