@@ -79,6 +79,14 @@ namespace SAE201_Nicolas.MVVM.Model
             }
         }
 
+        public string NomVin
+        {
+            get
+            {
+                return "le vin";
+            }
+        }
+
         public List<DetailCommande> FindAll()
         {
             List<DetailCommande> lesDetailsDeCommandes = new List<DetailCommande>();
