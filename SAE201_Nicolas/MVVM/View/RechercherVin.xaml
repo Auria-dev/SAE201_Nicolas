@@ -9,15 +9,6 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    
-    <UserControl.Resources>
-        <x:Array x:Key="DebugVins" Type="{x:Type model:Vin}">
-            <model:Vin NomVin="Château Margaux" PrixVin="450" Annee="2015"/>
-            <model:Vin NomVin="Domaine de la Romanée-Conti" PrixVin="1200" Annee="2012"/>
-            <model:Vin NomVin="Sancerre Blanc" PrixVin="30" Annee="2020"/>
-        </x:Array>
-    </UserControl.Resources>
-    
     <StackPanel VerticalAlignment="Top">
         <TextBlock
             HorizontalAlignment="Left"
@@ -108,14 +99,72 @@
                 <TextBlock Text="Filre de type" />
                 <StackPanel
                     Height="42"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Orientation="Horizontal">
-                    <CheckBox Style="{StaticResource CheckboxStyle}" VerticalAlignment="Center">Blanc</CheckBox>
-                    <CheckBox Style="{StaticResource CheckboxStyle}" Margin="8,0,0,0" VerticalAlignment="Center">Rouge</CheckBox>
-                    <CheckBox Style="{StaticResource CheckboxStyle}" Margin="8,0,0,0" VerticalAlignment="Center">Rosé</CheckBox>
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+
+                        <CheckBox
+                            x:Name="FiltreBlanc"
+                            VerticalAlignment="Center"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Blanc
+                        </CheckBox>
+                        <CheckBox
+                            x:Name="FiltreRouge"
+                            Margin="8,0,0,0"
+                            VerticalAlignment="Center"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Rouge
+                        </CheckBox>
+                        <CheckBox
+                            x:Name="FiltreRose"
+                            Margin="8,0,0,0"
+                            VerticalAlignment="Center"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Rosé
+                        </CheckBox>
+                        <CheckBox
+                            x:Name="FiltreChampagne"
+                            Margin="8,0,0,0"
+                            VerticalAlignment="Center"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Champagne
+                        </CheckBox>
+                    </StackPanel>
+
+                    <StackPanel Margin="0,8,0,0" Orientation="Horizontal">
+                        <CheckBox
+                            x:Name="FiltreMousseux"
+                            VerticalAlignment="Center"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Mousseux
+                        </CheckBox>
+                        <CheckBox
+                            x:Name="FiltreDoux"
+                            Margin="8,0,0,0"
+                            VerticalAlignment="Center"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Doux
+                        </CheckBox>
+                        <CheckBox
+                            x:Name="FiltreLiquoreux"
+                            Margin="8,0,0,0"
+                            VerticalAlignment="Center"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Liquoreux
+                        </CheckBox>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
+
         </StackPanel>
         <DataGrid
             x:Name="dgVins"
@@ -123,9 +172,8 @@
             Margin="0,14,0,0"
             HorizontalAlignment="Stretch"
             AutoGenerateColumns="False"
-            IsReadOnly="True"            
-            ItemsSource="{StaticResource DebugVins}">
-            <!--ItemsSource="{Binding LesVins}">-->
+            IsReadOnly="True"
+            ItemsSource="{Binding LesVins}">
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="3.5*"

@@ -39,6 +39,10 @@ namespace SAE201_Nicolas.MVVM.Model
         private int numTypeVin;
         private int numAppelation;
 
+        public Vin()
+        {
+        }
+
         public Vin(int numVin, string nomVin, double prixVin, string descriptif, int annee)
         {
             this.NumVin = numVin;
@@ -46,10 +50,6 @@ namespace SAE201_Nicolas.MVVM.Model
             this.PrixVin = prixVin;
             this.Descriptif = descriptif;
             this.Annee = annee;
-        }
-
-        public Vin()
-        {
         }
 
         public Vin(int numVin, string nomVin, double prixVin, string descriptif, int annee, int numTypeVin, int numAppelation) : this(numVin, nomVin, prixVin, descriptif, annee)
@@ -231,7 +231,6 @@ namespace SAE201_Nicolas.MVVM.Model
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    //  we dont need to be debuggin' no more 😎
                     // Console.WriteLine(dr["nomvin"].ToString());
                     lesVins.Add(
                         new Vin(
