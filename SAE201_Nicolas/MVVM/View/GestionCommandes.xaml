@@ -37,7 +37,10 @@
         </StackPanel>
 
 
-        <StackPanel Margin="0,14,0,0" Orientation="Horizontal" HorizontalAlignment="Left">
+        <StackPanel
+            Margin="0,14,0,0"
+            HorizontalAlignment="Left"
+            Orientation="Horizontal">
             <StackPanel
                 Margin="0,0,0,0"
                 HorizontalAlignment="Center"
@@ -68,37 +71,87 @@
                 <TextBlock Text="Filre de type" />
                 <StackPanel
                     Height="42"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Orientation="Horizontal">
-                    <CheckBox Style="{StaticResource CheckboxStyle}" VerticalAlignment="Center">Blanc</CheckBox>
-                    <CheckBox Style="{StaticResource CheckboxStyle}" Margin="8,0,0,0" VerticalAlignment="Center">Rouge</CheckBox>
-                    <CheckBox Style="{StaticResource CheckboxStyle}" Margin="8,0,0,0" VerticalAlignment="Center">Rosé</CheckBox>
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+
+                        <CheckBox
+                            VerticalAlignment="Center"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Blanc
+                        </CheckBox>
+                        <CheckBox
+                            Margin="8,0,0,0"
+                            VerticalAlignment="Center"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Rouge
+                        </CheckBox>
+                        <CheckBox
+                            Margin="8,0,0,0"
+                            VerticalAlignment="Center"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Rosé
+                        </CheckBox>
+                        <CheckBox
+                            Margin="8,0,0,0"
+                            VerticalAlignment="Center"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Champagne
+                        </CheckBox>
+                    </StackPanel>
+
+                    <StackPanel Margin="0,8,0,0" Orientation="Horizontal">
+                        <CheckBox
+                            VerticalAlignment="Center"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Mousseux
+                        </CheckBox>
+                        <CheckBox
+                            Margin="8,0,0,0"
+                            VerticalAlignment="Center"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Doux
+                        </CheckBox>
+                        <CheckBox
+                            Margin="8,0,0,0"
+                            VerticalAlignment="Center"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Liquoreux
+                        </CheckBox>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
 
         </StackPanel>
-        <DataGrid 
-             x:Name="dgCommandes"
-             ItemsSource="{Binding LesCommandes}" 
-             AutoGenerateColumns="False"
-             IsReadOnly="True"
+        <DataGrid
+            x:Name="dgCommandes"
             Height="350"
             Margin="0,14,0,0"
-            HorizontalAlignment="Stretch">
+            HorizontalAlignment="Stretch"
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
+            ItemsSource="{Binding LesCommandes}">
             <DataGrid.Columns>
                 <DataGridTextColumn
-                     Width="*"
-                     Binding="{Binding DateCommande}"
-                     Header="Date Commande" />
+                    Width="*"
+                    Binding="{Binding DateCommande}"
+                    Header="Date Commande" />
                 <DataGridTextColumn
-                     Width="*"
-                     Binding="{Binding EtatCommande}"
-                     Header="Etat Commande" />
+                    Width="*"
+                    Binding="{Binding EtatCommande}"
+                    Header="Etat Commande" />
                 <DataGridTextColumn
-                     Width="*"
-                     Binding="{Binding PrixTotal}"
-                     Header="Prix Total" />
+                    Width="*"
+                    Binding="{Binding PrixTotal}"
+                    Header="Prix Total" />
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>
