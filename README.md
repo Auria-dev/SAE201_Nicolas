@@ -7,7 +7,7 @@ TODO:
 - Interface for all of the FindAll, Ajouter all that
 - Login (data base accounts things)
 - Login (C# part)
-
+```
 Partie "Rechercher/Demander des vin"
 	data grid avec tt les vins
 	1) Selectionner vin
@@ -29,3 +29,4 @@ Partie "Gestion demandes"
 
 Partie "Gestion de commandes"
 	1) Il peut modifier les commandes, à voir comment il fait
+```
