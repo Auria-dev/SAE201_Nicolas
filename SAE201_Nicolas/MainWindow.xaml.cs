@@ -55,5 +55,12 @@ namespace SAE201_Nicolas
         {
             this.Close();
         }
+
+        private void butDeconnexion_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            ConnectionWindow connectionWindow = new ConnectionWindow();
+            connectionWindow.Show();
+        }
     }
 }

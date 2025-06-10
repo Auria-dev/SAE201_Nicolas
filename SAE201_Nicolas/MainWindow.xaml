@@ -123,6 +123,8 @@
                         FontSize="18"
                         Foreground="White"
                         Style="{StaticResource SidebarMenu}" />
+
+                    <Button x:Name="butDeconnexion" Content="SE DECONNECTER" Margin="20,150,20,0" Click="butDeconnexion_Click"/>
                 </StackPanel>
             </Border>
 
