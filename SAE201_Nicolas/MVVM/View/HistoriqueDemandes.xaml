@@ -134,7 +134,7 @@
 
         <DataGrid
             x:Name="dgDemandes"
-            Height="315"
+            Height="380"
             Margin="0,14,0,0"
             HorizontalAlignment="Stretch"
             AutoGenerateColumns="False"

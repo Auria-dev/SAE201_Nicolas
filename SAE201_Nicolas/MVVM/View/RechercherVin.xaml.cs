@@ -63,8 +63,9 @@ namespace SAE201_Nicolas.MVVM.View
                 verifAppellation = (unVin.NumAppelation == ComboxBoxAppellation.SelectedIndex);
 
             // rechercher 
-            if (!string.IsNullOrEmpty(barDeRechercheVins.Text) && !string.IsNullOrWhiteSpace(barDeRechercheVins.Text))
-                rechercherVin = unVin.NomVin.Contains(barDeRechercheVins.Text) || unVin.Annee.ToString().Contains(barDeRechercheVins.Text);
+            string motclefs = barDeRechercheVins.Text.ToLower();
+            if (!string.IsNullOrEmpty(motclefs) && !string.IsNullOrWhiteSpace(motclefs))
+                rechercherVin = unVin.NomVin.ToLower().Contains(motclefs) || unVin.Annee.ToString().ToLower().Contains(motclefs);
 
             return verifType && verifPrixMin && verifPrixMax && verifAppellation && rechercherVin;
         }

@@ -34,36 +34,25 @@ namespace SAE201_Nicolas.MVVM.View
         private bool FiltrerDemandes(object obj)
         {
             Demande d = (Demande)obj;
-
             bool recherche = true;
             bool filtrePrixMin = true, filtrePrixMax = true;
             bool filtreDateDebut = true, filtreDateFin = true;
             bool filtreEtat = true;
-
-            int prixMin, prixMax;
             DateTime dateDebut, dateFin;
+            int prixMin, prixMax;
 
-            recherche 
-                =  d.NomVin.Contains(BarDeRechercheDemandes.Text) 
-                || d.NomEmploye.Contains(BarDeRechercheDemandes.Text)
-                || d.NumDemande.ToString().Contains(BarDeRechercheDemandes.Text) 
-                || d.NumCommande.ToString().Contains(BarDeRechercheDemandes.Text) 
-                || d.QuantiteDemande.ToString().Contains(BarDeRechercheDemandes.Text);
+            string motclefs = BarDeRechercheDemandes.Text.ToLower();
+            recherche = d.NomVin.ToLower().Contains(motclefs) 
+                     || d.NomEmploye.ToLower().Contains(motclefs)
+                     || d.NumDemande.ToString().ToLower().Contains(motclefs) 
+                     || d.NumCommande.ToString().ToLower().Contains(motclefs) 
+                     || d.QuantiteDemande.ToString().ToLower().Contains(motclefs);
 
-            if (int.TryParse(TextboxFiltrePrixMin.Text, out prixMin))
-                filtrePrixMin = (d.PrixDemande >= prixMin);
-
-            if (int.TryParse(TextboxFiltrePrixMax.Text, out prixMax))
-                filtrePrixMax = (d.PrixDemande <= prixMax);
-
-            if (DateTime.TryParse(TxtboxDateDebut.Text, out dateDebut))
-                filtreDateDebut = d.DateDemande >= dateDebut;
-
-            if (DateTime.TryParse(TxtboxDateFin.Text, out dateFin))
-                filtreDateFin = d.DateDemande <= dateFin;
-
-            if (ComboxBoxEtat.SelectedIndex != 0)
-                filtreEtat = ComboxBoxEtat.SelectedIndex == d.EtatDemandeToInt(d.EtatDemande);
+            if (int.TryParse(TextboxFiltrePrixMin.Text, out prixMin)) filtrePrixMin = (d.PrixDemande >= prixMin);
+            if (int.TryParse(TextboxFiltrePrixMax.Text, out prixMax)) filtrePrixMax = (d.PrixDemande <= prixMax);
+            if (DateTime.TryParse(TxtboxDateDebut.Text, out dateDebut)) filtreDateDebut = d.DateDemande >= dateDebut;
+            if (DateTime.TryParse(TxtboxDateFin.Text, out dateFin)) filtreDateFin = d.DateDemande <= dateFin;
+            if (ComboxBoxEtat.SelectedIndex != 0) filtreEtat = ComboxBoxEtat.SelectedIndex == d.EtatDemandeToInt(d.EtatDemande);
 
             return recherche && filtrePrixMin && filtrePrixMax && filtreDateDebut && filtreDateFin && filtreEtat;
         }

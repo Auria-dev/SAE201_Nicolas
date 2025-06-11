@@ -52,12 +52,13 @@ namespace SAE201_Nicolas.MVVM.View
                 verifAppellation = (uneCommande.Vin.NumAppelation == ComboxBoxAppellation.SelectedIndex);
 
             // rechercher 
-            if (!string.IsNullOrEmpty(barDeRechercheCommandes.Text) && !string.IsNullOrWhiteSpace(barDeRechercheCommandes.Text))
+            string motclefs = barDeRechercheCommandes.Text.ToLower();
+            if (!string.IsNullOrEmpty(motclefs) && !string.IsNullOrWhiteSpace(motclefs))
                 rechercherVin = 
-                       uneCommande.NomVin.Contains(barDeRechercheCommandes.Text) 
-                    || uneCommande.Vin.NumVin.ToString().Contains(barDeRechercheCommandes.Text) 
-                    || uneCommande.Vin.Annee.ToString().Contains(barDeRechercheCommandes.Text) 
-                    || uneCommande.FournisseurVin.ToString().Contains(barDeRechercheCommandes.Text);
+                       uneCommande.NomVin.ToLower().Contains(motclefs) 
+                    || uneCommande.Vin.NumVin.ToString().ToLower().Contains(motclefs) 
+                    || uneCommande.Vin.Annee.ToString().ToLower().Contains(motclefs) 
+                    || uneCommande.FournisseurVin.ToLower().ToString().Contains(motclefs);
 
             return verifType && verifAppellation && rechercherVin;
         }
@@ -79,6 +80,15 @@ namespace SAE201_Nicolas.MVVM.View
         {
             if (dgCommandes != null)
                 CollectionViewSource.GetDefaultView(dgCommandes.ItemsSource).Refresh();
+        }
+
+        private void commanderDemande(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void supprimerDemandes(object sender, RoutedEventArgs e)
+        {
+     
         }
     }
 }
