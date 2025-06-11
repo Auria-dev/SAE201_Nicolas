@@ -1,4 +1,5 @@
 ﻿using SAE201_Nicolas.Core;
+using SAE201_Nicolas.MVVM.View.UC;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,17 +29,17 @@ namespace SAE201_Nicolas.MVVM.View
 
         private void BtnModifierVinClick(object sender, RoutedEventArgs e)
         {
-            //ViewManager.LoadView("ModifierVin");
+            //ViewManager.Instance.RequestMainContentChange(null, nameof(ModifierVinUC));
         }
 
         private void BtnModifierClientClick(object sender, RoutedEventArgs e)
         {
-            //ViewManager.LoadView("ModifierClient");
+            ViewManager.Instance.RequestMainContentChange(null, nameof(ModifierClientUC));
         }
 
         private void BtnModifierFournisseurClick(object sender, RoutedEventArgs e)
         {
-            //ViewManager.LoadView("ModifierFournisseur");
+            //ViewManager.Instance.RequestMainContentChange(null, nameof(ModifierFournisseurUC));
         }
     }
 }
