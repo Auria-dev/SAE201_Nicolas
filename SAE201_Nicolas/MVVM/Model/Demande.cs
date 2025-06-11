@@ -15,9 +15,25 @@ namespace SAE201_Nicolas.MVVM.Model
         private int numVin;
         private int numEmploye;
         private int numCommande;
+        private int numClient;
         private DateTime dateDemande;
         private int quantiteDemande;
         private EnumEtatCommande etatDemande;
+        
+
+        public Demande() { }
+
+        public Demande(int numDemande, int numVin, int numEmploye, int numCommande, DateTime dateDemande, int quantiteDemande, EnumEtatCommande etatDemande, int numClient)
+        {
+            this.NumDemande = numDemande;
+            this.NumVin = numVin;
+            this.NumEmploye = numEmploye;
+            this.NumCommande = numCommande;
+            this.DateDemande = dateDemande;
+            this.QuantiteDemande = quantiteDemande;
+            this.EtatDemande = etatDemande;
+            this.NumClient = numClient;
+        }
 
         public Demande(int numDemande, int numVin, int numEmploye, int numCommande, DateTime dateDemande, int quantiteDemande, EnumEtatCommande etatDemande)
         {
@@ -29,8 +45,6 @@ namespace SAE201_Nicolas.MVVM.Model
             this.QuantiteDemande = quantiteDemande;
             this.EtatDemande = etatDemande;
         }
-
-        public Demande() { }
 
         public int NumDemande
         {
@@ -94,6 +108,19 @@ namespace SAE201_Nicolas.MVVM.Model
             get { return (int) MainWindow.LaGestionDeVins.LesVins.SingleOrDefault(w => w.NumVin == this.NumVin).PrixVin * this.QuantiteDemande;  }
         }
 
+        public int NumClient
+        {
+            get
+            {
+                return this.numClient;
+            }
+
+            set
+            {
+                this.numClient = value;
+            }
+        }
+
         public EnumEtatCommande StringToEtatCommande(string s)
         {
             switch (s)
@@ -142,12 +169,31 @@ namespace SAE201_Nicolas.MVVM.Model
                              (int)dr["numcommande"],
                              DateTime.Parse(dr["datedemande"].ToString()),
                              (int)dr["quantitedemande"],
-                             StringToEtatCommande(dr["etatdemande"].ToString())
+                             StringToEtatCommande(dr["etatdemande"].ToString()),
+                             (int)dr["numclient"]
                         )
                     );
                 }
             }
             return lesDemandes;
+        }
+
+        public int AjouterDemande()
+        {
+            int nb = 0;
+            using (var cmdInsert = new NpgsqlCommand("insert into demande (numvin, numemploye, numcommande, numclient, datedemande, quantitedemande, etatdemande) values (@numvin, @numemploye, @numcommande, @numclient, @datedemande, @quantitedemande, @etatdemande) RETURNING numdemande"))
+            {
+                cmdInsert.Parameters.AddWithValue("numvin", this.NumVin);
+                cmdInsert.Parameters.AddWithValue("numemploye", this.NumEmploye);
+                cmdInsert.Parameters.AddWithValue("numcommande", this.NumCommande);
+                cmdInsert.Parameters.AddWithValue("numclient", this.NumClient);
+                cmdInsert.Parameters.AddWithValue("datedemande", this.DateDemande);
+                cmdInsert.Parameters.AddWithValue("quantitedemande", this.QuantiteDemande);
+                cmdInsert.Parameters.AddWithValue("etatdemande", this.EtatDemande);
+                nb = DataAccess.Instance.ExecuteInsert(cmdInsert);
+            }
+            this.NumDemande = nb;
+            return nb;
         }
     }
 }

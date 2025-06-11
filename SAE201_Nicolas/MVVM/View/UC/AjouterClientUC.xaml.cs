@@ -42,6 +42,8 @@ namespace SAE201_Nicolas.MVVM.View.UC
             unClient.NumClient = unClient.AjouterClient();
 
             MainWindow.LaGestionDeVins.LesClients.Add(unClient);
+
+            MessageBox.Show("Client inséré.", "Insertion réussite");
         }
     }
 }

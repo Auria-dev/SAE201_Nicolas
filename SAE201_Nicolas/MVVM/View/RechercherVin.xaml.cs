@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -96,7 +97,7 @@ namespace SAE201_Nicolas.MVVM.View
 
         private void btnDemanderClick(object sender, RoutedEventArgs e)
         {
-            int qte;
+            int qte = 0;
             if (!int.TryParse(TxtboxQuantiteVins.Text, out qte))
             {
                 MessageBox.Show("Selectionner un vin et indiqué une quantité.", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -108,7 +109,12 @@ namespace SAE201_Nicolas.MVVM.View
 
             int numDemande = MainWindow.LaGestionDeVins.LesDemandes.OrderBy(w => w.NumDemande).Last().NumDemande + 1;
             int numCommande = MainWindow.LaGestionDeVins.LesCommandes.OrderBy(w => w.NumCommande).Last().NumCommande+ 1;
-            MainWindow.LaGestionDeVins.LesDemandes.Add(new Demande(numDemande, ((Vin)dgVins.SelectedItem).NumVin, 1, numCommande, DateTime.Now, qte, EnumEtatCommande.EnAttante));
+            Demande uneDemande = new Demande(numDemande, ((Vin)dgVins.SelectedItem).NumVin, 1, numCommande, DateTime.Now, qte, EnumEtatCommande.EnAttante);
+            //Demande uneDemande = new Demande();
+            //uneDemande.NumVin = 1;
+
+            MainWindow.LaGestionDeVins.LesDemandes.Add(uneDemande);
+            //uneDemande.NumDemande = uneDemande.AjouterDemande();
         }
     }
 }
