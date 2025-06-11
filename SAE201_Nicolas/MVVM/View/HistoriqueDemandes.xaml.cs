@@ -1,4 +1,6 @@
-﻿using SAE201_Nicolas.MVVM.Model;
+﻿using Microsoft.Ajax.Utilities;
+using Npgsql.PostgresTypes;
+using SAE201_Nicolas.MVVM.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,6 +75,60 @@ namespace SAE201_Nicolas.MVVM.View
         {
             if (dgDemandes != null)
                 CollectionViewSource.GetDefaultView(dgDemandes.ItemsSource).Refresh();
+        }
+
+
+        private void commanderDemande(object sender, RoutedEventArgs e)
+        {
+            List<Demande> demandes = dgDemandes.SelectedItems.Cast<Demande>().ToList();
+
+            bool isValid = true;
+            int qteTotal = 0;
+            string nomVinVerif = "";
+            int numFournisseurVerif = -1;
+
+            foreach (Demande de in demandes)
+            {
+                int deNumFournisseur = MainWindow.LaGestionDeVins.LesVins.SingleOrDefault(w => w.NumVin == de.NumVin).NumFournisseur;
+                if (numFournisseurVerif == -1) numFournisseurVerif = deNumFournisseur;
+                else if (numFournisseurVerif != deNumFournisseur) {
+                    MessageBox.Show("Impossible de commander plusieurs vins de fournisseurs differents.", "Erreur lors de la creation de la commande", MessageBoxButton.OK, MessageBoxImage.Error);
+                    isValid = false;
+                    break;
+                }
+
+                if (nomVinVerif.IsNullOrWhiteSpace()) nomVinVerif = de.NomVin;
+                else if (nomVinVerif != de.NomVin && numFournisseurVerif != deNumFournisseur)
+                {
+                    MessageBox.Show("Impossible de commander plusieurs vins differents.", "Erreur lors de la creation de la commande", MessageBoxButton.OK, MessageBoxImage.Error);
+                    isValid = false;
+                    break;
+                }
+
+                if (de.EtatDemande != EnumEtatCommande.EnAttante)
+                {
+                    // if isvalid cause we dont wanna show 10 errors to the user
+                    if (isValid) MessageBox.Show("Impossible de commander une demande déjà validé ou supprimer.", "Erreur lors de la creation de la commande", MessageBoxButton.OK, MessageBoxImage.Error);
+                    isValid = false;
+                    break;
+                }
+
+                qteTotal += de.QuantiteDemande;
+            }
+
+            // if isvalid cause we dont wanna show 10 errors to the user
+            if (qteTotal > 100 && isValid)
+            {
+                MessageBox.Show("Une demande ne dois pas contenire plus de 100 vins.", "Erreur lors de la creation de la commande", MessageBoxButton.OK, MessageBoxImage.Error);
+                isValid = false;
+            }
+
+            if (isValid) Console.WriteLine("Twin!! (towers)");
+        }
+
+        private void supprimerDemandes(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

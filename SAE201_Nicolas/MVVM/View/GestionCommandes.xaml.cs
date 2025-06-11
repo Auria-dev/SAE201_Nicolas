@@ -82,13 +82,5 @@ namespace SAE201_Nicolas.MVVM.View
                 CollectionViewSource.GetDefaultView(dgCommandes.ItemsSource).Refresh();
         }
 
-        private void commanderDemande(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void supprimerDemandes(object sender, RoutedEventArgs e)
-        {
-     
-        }
     }
 }
