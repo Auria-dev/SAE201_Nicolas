@@ -8,6 +8,9 @@ TODO:
 - Login (data base accounts things)
 - Login (C# part)
 ```
+System de comptes (employer)
+	lors du login on instancie la class Employer correctement & on la stock en static dans le mainwindow
+
 Partie "Rechercher/Demander des vin"
 	data grid avec tt les vins
 	1) Selectionner vin
