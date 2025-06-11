@@ -89,9 +89,21 @@
                 Width="380"
                 Height="48"
                 Style="{StaticResource ComboBoxStyle}">
-                <ComboBoxItem IsSelected="True">Jean Perrier</ComboBoxItem>
-                <ComboBoxItem>Domaine Marnes Blanches</ComboBoxItem>
-                <ComboBoxItem>Domaine Esporao</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">Château Margaux</ComboBoxItem>
+                <ComboBoxItem>Domaine de la Romanée-Conti</ComboBoxItem>
+                <ComboBoxItem>Moët et Chandon</ComboBoxItem>
+                <ComboBoxItem>Hugel et Fils</ComboBoxItem>
+                <ComboBoxItem>Georges Duboeuf</ComboBoxItem>
+                <ComboBoxItem>Guigal</ComboBoxItem>
+                <ComboBoxItem>Château Cheval Blanc</ComboBoxItem>
+                <ComboBoxItem>Château Lafite Rothschild</ComboBoxItem>
+                <ComboBoxItem>Château Mouton Rothschild</ComboBoxItem>
+                <ComboBoxItem>Château Haut-Brion</ComboBoxItem>
+                <ComboBoxItem>Château d'Yquem</ComboBoxItem>
+                <ComboBoxItem>Château Petrus</ComboBoxItem>
+                <ComboBoxItem>Château Latour</ComboBoxItem>
+                <ComboBoxItem>Château Lynch-Bages</ComboBoxItem>
+                <ComboBoxItem>Château Pichon Longueville</ComboBoxItem>
             </ComboBox>
 
             <Label
