@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SAE201_Nicolas.MVVM.ViewModel
 {
-    internal class HistoriqueCommandesViewModel
+    internal class HistoriqueDemandesViewModel
     {
     }
 }

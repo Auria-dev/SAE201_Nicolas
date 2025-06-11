@@ -29,7 +29,7 @@
                 <view:GestionCommandes />
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewModel:HistoriqueCommandesViewModel}">
+            <DataTemplate DataType="{x:Type viewModel:HistoriqueDemandesViewModel}">
                 <view:HistoriqueCommandes />
             </DataTemplate>
 

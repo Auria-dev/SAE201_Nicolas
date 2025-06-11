@@ -234,7 +234,7 @@
                 Width="120"
                 Height="42"
                 Margin="12,0,0,0"
-                Click="btnCommanderClick"
+                Click="btnDemanderClick"
                 Content="Demander"
                 FontSize="14"
                 IsDefault="True"

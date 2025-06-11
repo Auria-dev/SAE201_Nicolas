@@ -95,7 +95,7 @@
                     <RadioButton
                         Height="42"
                         Command="{Binding HistoriqueCommandesVC}"
-                        Content="Historique commandes"
+                        Content="Historique demandes"
                         FontSize="18"
                         Foreground="White"
                         Style="{StaticResource SidebarMenu}" />
@@ -124,7 +124,11 @@
                         Foreground="White"
                         Style="{StaticResource SidebarMenu}" />
 
-                    <Button x:Name="butDeconnexion" Content="SE DECONNECTER" Margin="20,150,20,0" Click="butDeconnexion_Click"/>
+                    <Button
+                        x:Name="butDeconnexion"
+                        Margin="20,150,20,0"
+                        Click="butDeconnexion_Click"
+                        Content="SE DECONNECTER" />
                 </StackPanel>
             </Border>
 

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -92,11 +93,21 @@ namespace SAE201_Nicolas.MVVM.View
                 CollectionViewSource.GetDefaultView(dgVins.ItemsSource).Refresh();
         }
 
-        private void btnCommanderClick(object sender, RoutedEventArgs e)
+        private void btnDemanderClick(object sender, RoutedEventArgs e)
         {
-            // TODO: Check the selected VINs for if they the same, & for fournisseur
+            int qte;
+            if (!int.TryParse(TxtboxQuantiteVins.Text, out qte))
+            {
+                MessageBox.Show("Selectionner un vin et indiqué une quantité.", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
-            // if valid then create the Commande and set it to "En attente"
+            //MessageBox.Show($"Nouvelle demande de {qte} vin ({((Vin)dgVins.SelectedItem).NomVin})", "Demande de vin", MessageBoxButton.OK, MessageBoxImage.Information);
+            TxtboxQuantiteVins.Text = "";
+
+            int numDemande = MainWindow.LaGestionDeVins.LesDemandes.OrderBy(w => w.NumDemande).Last().NumDemande + 1;
+            int numCommande = MainWindow.LaGestionDeVins.LesCommandes.OrderBy(w => w.NumCommande).Last().NumCommande+ 1;
+            MainWindow.LaGestionDeVins.LesDemandes.Add(new Demande(numDemande, ((Vin)dgVins.SelectedItem).NumVin, 1, numCommande, DateTime.Now, qte, EnumEtatCommande.EnAttante));
         }
     }
 }

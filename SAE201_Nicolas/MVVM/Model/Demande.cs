@@ -14,18 +14,16 @@ namespace SAE201_Nicolas.MVVM.Model
         private int numVin;
         private int numEmploye;
         private int numCommande;
-        private int numClient;
         private DateTime dateDemande;
         private int quantiteDemande;
         private EnumEtatCommande etatDemande;
 
-        public Demande(int numDemande, int numVin, int numEmploye, int numCommande, int numClient, DateTime dateDemande, int quantiteDemande, EnumEtatCommande etatDemande)
+        public Demande(int numDemande, int numVin, int numEmploye, int numCommande, DateTime dateDemande, int quantiteDemande, EnumEtatCommande etatDemande)
         {
             this.NumDemande = numDemande;
             this.NumVin = numVin;
             this.NumEmploye = numEmploye;
             this.NumCommande = numCommande;
-            this.NumClient = numClient;
             this.DateDemande = dateDemande;
             this.QuantiteDemande = quantiteDemande;
             this.EtatDemande = etatDemande;
@@ -82,19 +80,6 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.numCommande = value;
-            }
-        }
-
-        public int NumClient
-        {
-            get
-            {
-                return this.numClient;
-            }
-
-            set
-            {
-                this.numClient = value;
             }
         }
 
@@ -183,7 +168,6 @@ namespace SAE201_Nicolas.MVVM.Model
                              (int)dr["numvin"],
                              (int)dr["numemploye"],
                              (int)dr["numcommande"],
-                             (int)dr["numclient"],
                              DateTime.Parse(dr["datedemande"].ToString()),
                              (int)dr["quantitedemande"],
                              StringToEtatCommande(dr["etatdemande"].ToString())

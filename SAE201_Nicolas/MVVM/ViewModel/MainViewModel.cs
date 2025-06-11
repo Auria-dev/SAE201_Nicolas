@@ -26,7 +26,7 @@ namespace SAE201_Nicolas.MVVM.ViewModel
         {
             // init every pages
             ViewSwitcher.LoadView(new RechercherVinViewModel(), "RechercherVin");
-            ViewSwitcher.LoadView(new HistoriqueCommandesViewModel(), "HistoriqueCommandes");
+            ViewSwitcher.LoadView(new HistoriqueDemandesViewModel(), "HistoriqueCommandes");
             ViewSwitcher.LoadView(new GestionCommandesViewModel(), "GestionCommandes");
             ViewSwitcher.LoadView(new EspacePersonnelViewModel(), "EspacePersonnel");
             ViewSwitcher.LoadView(new ModifierViewModel(), "Modifier"); // TODO: all select & edit screens

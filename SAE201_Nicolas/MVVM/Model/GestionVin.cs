@@ -24,6 +24,15 @@ namespace SAE201_Nicolas.MVVM.Model
             this.lesCommandes = new ObservableCollection<Commande>(new Commande().FindAll());
             this.lesFournisseurs = new ObservableCollection<Fournisseur>(new Fournisseur().FindAll());
             this.lesDetailsCommandes = new ObservableCollection<DetailCommande>(new DetailCommande().FindAll(this));
+
+            Console.WriteLine(
+                "Found:\n" +
+                this.lesVins.Count + " vins\n"             +
+                this.lesDemandes.Count + " demandes\n"         +
+                this.lesCommandes.Count + " commandes\n"        +
+                this.lesFournisseurs.Count + " fournisseurs\n"     +
+                this.lesDetailsCommandes.Count + " detailscommandes\n" 
+            );
         }
 
         public GestionVin() : this("")
