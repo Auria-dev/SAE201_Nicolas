@@ -1,4 +1,7 @@
-﻿using SAE201_Nicolas.MVVM.Model;
+﻿using SAE201_Nicolas.Core;
+using SAE201_Nicolas.MVVM.Model;
+using SAE201_Nicolas.MVVM.View;
+using SAE201_Nicolas.MVVM.View.UC;
 using System;
 using System.Text;
 using System.Windows;
@@ -19,11 +22,26 @@ namespace SAE201_Nicolas
     public partial class MainWindow : Window
     {
         public static GestionVin LaGestionDeVins { get; set; }
-        
+
         public MainWindow()
         {
             ChargeData();
             InitializeComponent();
+
+            ViewManager.Instance.OnMainContentChangeRequested += SetMainContent;
+
+            ViewManager.Instance.RegisterView<RechercherVin>(nameof(RechercherVin));
+            ViewManager.Instance.RegisterView<HistoriqueCommandes>(nameof(HistoriqueCommandes));
+            ViewManager.Instance.RegisterView<GestionCommandes>(nameof(GestionCommandes));
+            ViewManager.Instance.RegisterView<EspacePersonnel>(nameof(EspacePersonnel));
+            ViewManager.Instance.RegisterView<Modifier>(nameof(Modifier));
+
+            ViewManager.Instance.RegisterView<Ajouter>(nameof(Ajouter));
+            ViewManager.Instance.RegisterView<AjouterVinUC>(nameof(AjouterVinUC));
+            ViewManager.Instance.RegisterView<AjouterClientUC>(nameof(AjouterClientUC));
+            ViewManager.Instance.RegisterView<AjouterFournisseurUC>(nameof(AjouterFournisseurUC));
+
+            ViewManager.Instance.RequestMainContentChange(MainContentControl, nameof(RechercherVin));
         }
 
         public void ChargeData()
@@ -71,6 +89,42 @@ namespace SAE201_Nicolas
                 ConnectionWindow connectionWindow = new ConnectionWindow();
                 connectionWindow.Show();
             }
+        }
+
+        private void SetMainContent(ContentControl contentControl, string viewName)
+        {
+            UserControl view = ViewManager.Instance.GetView(viewName);
+            MainContentControl.Content = view;
+        }
+
+        private void RechercherVinClick(object sender, RoutedEventArgs e)
+        {
+            ViewManager.Instance.RequestMainContentChange(MainContentControl, nameof(RechercherVin));
+        }
+
+        private void ModifierClick(object sender, RoutedEventArgs e)
+        {
+            ViewManager.Instance.RequestMainContentChange(MainContentControl, nameof(Modifier));
+        }
+
+        private void HistoriqueCommandesClick(object sender, RoutedEventArgs e)
+        {
+            ViewManager.Instance.RequestMainContentChange(MainContentControl, nameof(HistoriqueCommandes));
+        }
+
+        private void GestionCommandesClick(object sender, RoutedEventArgs e)
+        {
+            ViewManager.Instance.RequestMainContentChange(MainContentControl, nameof(GestionCommandes));
+        }
+
+        private void EspacePersonnelClick(object sender, RoutedEventArgs e)
+        {
+            ViewManager.Instance.RequestMainContentChange(MainContentControl, nameof(EspacePersonnel));
+        }
+
+        private void AjouterClick(object sender, RoutedEventArgs e)
+        {
+            ViewManager.Instance.RequestMainContentChange(MainContentControl, nameof(Ajouter));
         }
     }
 }

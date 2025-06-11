@@ -1,8 +1,6 @@
 ﻿using SAE201_Nicolas.Core;
 using SAE201_Nicolas.MVVM.Model;
 using SAE201_Nicolas.MVVM.View.UC;
-using SAE201_Nicolas.MVVM.ViewModel;
-using SAE201_Nicolas.MVVM.ViewModel.UC;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,17 +32,17 @@ namespace SAE201_Nicolas.MVVM.View
 
         private void BtnAjouterVinClick(object sender, RoutedEventArgs e)
         {
-            ViewSwitcher.LoadView("AjouterVin");
+            ViewManager.Instance.RequestMainContentChange(null, nameof(AjouterVinUC));
         }
 
         private void BtnAjouterClientClick(object sender, RoutedEventArgs e)
         {
-            ViewSwitcher.LoadView("AjouterClient");
+            ViewManager.Instance.RequestMainContentChange(null, nameof(AjouterClientUC));
         }
 
         private void BtnAjouterFournisseurClick(object sender, RoutedEventArgs e)
         {
-            ViewSwitcher.LoadView("AjouterFournisseur");
+            ViewManager.Instance.RequestMainContentChange(null, nameof(AjouterFournisseurUC));
         }
     }
 }

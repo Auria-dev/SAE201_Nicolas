@@ -7,7 +7,6 @@
     xmlns:local="clr-namespace:SAE201_Nicolas"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:model="clr-namespace:SAE201_Nicolas.MVVM.Model"
-    xmlns:viewModel="clr-namespace:SAE201_Nicolas.MVVM.ViewModel"
     Title="Application Nicolas"
     Width="1000"
     Height="600"
@@ -17,10 +16,6 @@
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
     mc:Ignorable="d">
-
-    <Window.DataContext>
-        <viewModel:MainViewModel />
-    </Window.DataContext>
 
     <Border
         Margin="0,0,0,10"
