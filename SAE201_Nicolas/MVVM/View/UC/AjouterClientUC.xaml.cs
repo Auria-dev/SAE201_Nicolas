@@ -1,4 +1,5 @@
 ﻿using SAE201_Nicolas.Core;
+using SAE201_Nicolas.MVVM.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,18 @@ namespace SAE201_Nicolas.MVVM.View.UC
         private void ClickedReturn(object sender, MouseButtonEventArgs e)
         {
             ViewManager.Instance.GoBack(null);
+        }
+
+        private void butAjouterClient_Click(object sender, RoutedEventArgs e)
+        {
+            Client unClient = new Client();
+            unClient.NomClient = TxtboxNomClient.Text;
+            unClient.PrenomClient = TxtboxPrenomClient.Text;
+            unClient.MailClient = TxtboxMailClient.Text;
+
+            unClient.NumClient = unClient.AjouterClient();
+
+            MainWindow.LaGestionDeVins.LesClients.Add(unClient);
         }
     }
 }

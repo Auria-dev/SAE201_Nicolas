@@ -99,5 +99,19 @@ namespace SAE201_Nicolas.MVVM.Model
             }
             return lesClients;
         }
+
+        public int AjouterClient()
+        {
+            int nb = 0;
+            using (var cmdInsert = new NpgsqlCommand("insert into client (nomclient, prenomclient, mailclient) values (@nomclient, @prenomclient, @mailclient) RETURNING numclient"))
+            {
+                cmdInsert.Parameters.AddWithValue("nomclient", this.NomClient);
+                cmdInsert.Parameters.AddWithValue("prenomclient", this.PrenomClient);
+                cmdInsert.Parameters.AddWithValue("mailclient", this.MailClient);
+                nb = DataAccess.Instance.ExecuteInsert(cmdInsert);
+            }
+            this.NumClient = nb;
+            return nb;
+        }
     }
 }
