@@ -8,6 +8,8 @@ TODO:
 - Login (data base accounts things)
 - Login (C# part)
 ```
+PUT IMAGES IN THE WINE DATAGRID!!!!
+
 System de comptes (employer)
 	Lors du login on crée un Employer correctement
 
