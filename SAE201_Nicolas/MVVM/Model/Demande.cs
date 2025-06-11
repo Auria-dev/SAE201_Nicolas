@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace SAE201_Nicolas.MVVM.Model
 {
@@ -33,101 +34,64 @@ namespace SAE201_Nicolas.MVVM.Model
 
         public int NumDemande
         {
-            get
-            {
-                return this.numDemande;
-            }
-
-            set
-            {
-                this.numDemande = value;
-            }
+            get { return this.numDemande; }
+            set { this.numDemande = value; }
         }
 
         public int NumVin
         {
-            get
-            {
-                return this.numVin;
-            }
-
-            set
-            {
-                this.numVin = value;
-            }
+            get { return this.numVin; }
+            set { this.numVin = value; }
         }
 
         public int NumEmploye
         {
-            get
-            {
-                return this.numEmploye;
-            }
-
-            set
-            {
-                this.numEmploye = value;
-            }
+            get { return this.numEmploye; }
+            set { this.numEmploye = value; }
         }
 
         public int NumCommande
         {
-            get
-            {
-                return this.numCommande;
-            }
-
-            set
-            {
-                this.numCommande = value;
-            }
+            get { return this.numCommande; }
+            set { this.numCommande = value; }
         }
 
         public DateTime DateDemande
         {
-            get
-            {
-                return this.dateDemande;
-            }
-
-            set
-            {
-                this.dateDemande = value;
-            }
+            get { return this.dateDemande; } 
+            set { this.dateDemande = value; }
         }
 
         public int QuantiteDemande
         {
-            get
-            {
-                return this.quantiteDemande;
-            }
-
-            set
-            {
-                this.quantiteDemande = value;
-            }
+            get { return this.quantiteDemande; }
+            set { this.quantiteDemande = value; }
         }
 
         public EnumEtatCommande EtatDemande
         {
-            get
-            {
-                return this.etatDemande;
-            }
-
-            set
-            {
-                this.etatDemande = value;
-            }
+            get { return this.etatDemande; }
+            set { this.etatDemande = value; }
         }
-
+        
         public string NomEtatDemande
         {
-            get
-            {
-                return EtatCommandeToString(EtatDemande);
-            }
+            get { return EtatCommandeToString(EtatDemande); }
+        }
+
+        public string NomEmploye
+        {
+            get { return MainWindow.LaGestionDeVins.LesEmployes.SingleOrDefault(w => w.NumEmploye == this.NumEmploye).NomEmployerCourt; ; }
+        }
+
+        public string NomVin
+        {
+            get { return MainWindow.LaGestionDeVins.LesVins.SingleOrDefault(w => w.NumVin == this.NumVin).NomVin; }
+        }
+
+        public int PrixDemande
+        {
+            get { return (int) MainWindow.LaGestionDeVins.LesVins.SingleOrDefault(w => w.NumVin == this.NumVin).PrixVin * this.QuantiteDemande;  }
         }
 
         public EnumEtatCommande StringToEtatCommande(string s)
@@ -152,6 +116,14 @@ namespace SAE201_Nicolas.MVVM.Model
         {
             if (e == EnumEtatCommande.EnAttante) return "En attante";
             else return e.ToString();
+        }
+
+        public int EtatDemandeToInt(EnumEtatCommande Enum)
+        {
+            if (Enum == EnumEtatCommande.Validée) return 1;
+            if (Enum == EnumEtatCommande.EnAttante) return 2;
+            if (Enum == EnumEtatCommande.Supprimée) return 3;
+            return 0;
         }
 
         public List<Demande> FindAll()

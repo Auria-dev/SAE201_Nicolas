@@ -34,17 +34,17 @@ namespace SAE201_Nicolas.MVVM.View
 
         private void BtnAjouterVinClick(object sender, RoutedEventArgs e)
         {
-            ViewSwitcher.ChangeViewTo("AjouterVin");
+            ViewSwitcher.LoadView("AjouterVin");
         }
 
         private void BtnAjouterClientClick(object sender, RoutedEventArgs e)
         {
-            ViewSwitcher.ChangeViewTo("AjouterClient");
+            ViewSwitcher.LoadView("AjouterClient");
         }
 
         private void BtnAjouterFournisseurClick(object sender, RoutedEventArgs e)
         {
-            ViewSwitcher.ChangeViewTo("AjouterFournisseur");
+            ViewSwitcher.LoadView("AjouterFournisseur");
         }
     }
 }

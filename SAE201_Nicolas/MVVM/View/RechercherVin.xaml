@@ -201,7 +201,7 @@
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding PrixVin}"
-                    Header="Prix" />
+                    Header="Prix (€)" />
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding Annee}"

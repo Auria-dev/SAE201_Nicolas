@@ -78,24 +78,22 @@
                         Height="42"
                         Margin="0,48,0,0"
                         Command="{Binding RechercherVinVC}"
-                        Content="Rechercher vin"
+                        Content="Demander des vins"
                         FontSize="18"
                         Foreground="White"
                         IsChecked="True"
                         Style="{StaticResource SidebarMenu}" />
-
-                    <RadioButton
-                        Height="42"
-                        Command="{Binding GestionCommandesVC}"
-                        Content="Gestion commandes"
-                        FontSize="18"
-                        Foreground="White"
-                        Style="{StaticResource SidebarMenu}" />
-
                     <RadioButton
                         Height="42"
                         Command="{Binding HistoriqueCommandesVC}"
                         Content="Historique demandes"
+                        FontSize="18"
+                        Foreground="White"
+                        Style="{StaticResource SidebarMenu}" />
+                    <RadioButton
+                        Height="42"
+                        Command="{Binding GestionCommandesVC}"
+                        Content="Gestion commandes"
                         FontSize="18"
                         Foreground="White"
                         Style="{StaticResource SidebarMenu}" />
