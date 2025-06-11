@@ -6,7 +6,6 @@
     xmlns:local="clr-namespace:SAE201_Nicolas"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:model="clr-namespace:SAE201_Nicolas.MVVM.Model"
-    xmlns:viewModel="clr-namespace:SAE201_Nicolas.MVVM.ViewModel"
     Title="Application Nicolas"
     Width="1000"
     Height="600"
@@ -16,9 +15,9 @@
     WindowStyle="None"
     mc:Ignorable="d">
 
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <viewModel:MainViewModel />
-    </Window.DataContext>
+    </Window.DataContext>-->
 
     <Border Background="#FFFFFF" CornerRadius="30, 30, 16, 30">
         <Grid>
@@ -77,6 +76,7 @@
                     <RadioButton
                         Height="42"
                         Margin="0,48,0,0"
+                        Click="RechercherVinClick"
                         Command="{Binding RechercherVinVC}"
                         Content="Demander des vins"
                         FontSize="18"
@@ -85,6 +85,7 @@
                         Style="{StaticResource SidebarMenu}" />
                     <RadioButton
                         Height="42"
+                        Click="HistoriqueCommandesClick"
                         Command="{Binding HistoriqueCommandesVC}"
                         Content="Historique demandes"
                         FontSize="18"
@@ -92,6 +93,7 @@
                         Style="{StaticResource SidebarMenu}" />
                     <RadioButton
                         Height="42"
+                        Click="GestionCommandesClick"
                         Command="{Binding GestionCommandesVC}"
                         Content="Gestion commandes"
                         FontSize="18"
@@ -100,6 +102,7 @@
 
                     <RadioButton
                         Height="42"
+                        Click="EspacePersonnelClick"
                         Command="{Binding EspacePersonnelVC}"
                         Content="Espace personnel"
                         FontSize="18"
@@ -112,7 +115,7 @@
                         Content="Modifier"
                         FontSize="18"
                         Foreground="White"
-                        Style="{StaticResource SidebarMenu}" />
+                        Style="{StaticResource SidebarMenu}" Click="ModifierClick" />
 
                     <RadioButton
                         Height="42"
@@ -120,7 +123,7 @@
                         Content="Ajouter"
                         FontSize="18"
                         Foreground="White"
-                        Style="{StaticResource SidebarMenu}" />
+                        Style="{StaticResource SidebarMenu}" Click="AjouterClick" />
 
                     <Button
                         x:Name="butDeconnexion"
@@ -131,6 +134,7 @@
             </Border>
 
             <ContentControl
+                x:Name="MainContentControl"
                 Grid.Row="1"
                 Grid.Column="1"
                 Margin="12"

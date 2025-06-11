@@ -4,12 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:SAE201_Nicolas"
     xmlns:view="clr-namespace:SAE201_Nicolas.MVVM.View"
-    xmlns:viewModel="clr-namespace:SAE201_Nicolas.MVVM.ViewModel"
-    xmlns:viewModelUC="clr-namespace:SAE201_Nicolas.MVVM.ViewModel.UC"
     xmlns:viewUC="clr-namespace:SAE201_Nicolas.MVVM.View.UC"
     StartupUri="ConnectionWindow.xaml">
     <Application.Resources>
-
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/SidebarMenu.xaml" />
@@ -20,40 +17,6 @@
                 <ResourceDictionary Source="Theme/Datagrid.xaml" />
                 <ResourceDictionary Source="Theme/PassBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
-            <DataTemplate DataType="{x:Type viewModel:RechercherVinViewModel}">
-                <view:RechercherVin />
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type viewModel:GestionCommandesViewModel}">
-                <view:GestionCommandes />
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type viewModel:HistoriqueDemandesViewModel}">
-                <view:HistoriqueCommandes />
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type viewModel:EspacePersonnelViewModel}">
-                <view:EspacePersonnel />
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type viewModel:ModifierViewModel}">
-                <view:Modifier />
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type viewModel:AjouterViewModel}">
-                <view:Ajouter />
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModelUC:AjouterClientViewModel}">
-                <viewUC:AjouterClientUC />
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModelUC:AjouterFournisseurViewModel}">
-                <viewUC:AjouterFournisseurUC />
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModelUC:AjouterVinViewModel}">
-                <viewUC:AjouterVinUC />
-            </DataTemplate>
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>

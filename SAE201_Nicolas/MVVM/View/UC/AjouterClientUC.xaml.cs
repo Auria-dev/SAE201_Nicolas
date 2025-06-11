@@ -28,7 +28,7 @@ namespace SAE201_Nicolas.MVVM.View.UC
 
         private void ClickedReturn(object sender, MouseButtonEventArgs e)
         {
-            ViewSwitcher.GoBack();
+            //ViewManager.GoBack();
         }
     }
 }

@@ -28,17 +28,17 @@ namespace SAE201_Nicolas.MVVM.View
 
         private void BtnModifierVinClick(object sender, RoutedEventArgs e)
         {
-            ViewSwitcher.LoadView("ModifierVin");
+            //ViewManager.LoadView("ModifierVin");
         }
 
         private void BtnModifierClientClick(object sender, RoutedEventArgs e)
         {
-            ViewSwitcher.LoadView("ModifierClient");
+            //ViewManager.LoadView("ModifierClient");
         }
 
         private void BtnModifierFournisseurClick(object sender, RoutedEventArgs e)
         {
-            ViewSwitcher.LoadView("ModifierFournisseur");
+            //ViewManager.LoadView("ModifierFournisseur");
         }
     }
 }
