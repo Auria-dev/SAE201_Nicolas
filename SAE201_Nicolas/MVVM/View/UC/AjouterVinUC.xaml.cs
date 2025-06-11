@@ -35,7 +35,7 @@ namespace SAE201_Nicolas.MVVM.View.UC
 
         private void ClickedReturn(object sender, MouseButtonEventArgs e)
         {
-            //ViewManager.GoBack();
+            ViewManager.Instance.GoBack(null);
         }
 
         private void BtnAjouterVinValider(object sender, RoutedEventArgs e)

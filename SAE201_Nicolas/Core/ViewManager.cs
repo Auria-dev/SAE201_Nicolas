@@ -1,16 +1,12 @@
-﻿using SAE201_Nicolas.MVVM.View;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace SAE201_Nicolas.Core
 {
     public class ViewManager
     {
         private Dictionary<string, Lazy<UserControl>> _views;
+        private Stack<string> _viewHistory;
+
         public event Action<ContentControl, string> OnMainContentChangeRequested;
 
         private static ViewManager _instance;
@@ -18,6 +14,7 @@ namespace SAE201_Nicolas.Core
         private ViewManager()
         {
             _views = new Dictionary<string, Lazy<UserControl>>();
+            _viewHistory = new Stack<string>();
         }
 
         public static ViewManager Instance
@@ -43,7 +40,19 @@ namespace SAE201_Nicolas.Core
 
         public void RequestMainContentChange(ContentControl contentControl, string viewName)
         {
+            if (_viewHistory.Count == 0 || _viewHistory.Peek() != viewName)
+                _viewHistory.Push(viewName);
+            
             OnMainContentChangeRequested?.Invoke(contentControl, viewName);
+        }
+
+        public void GoBack(ContentControl contentControl)
+        {
+            if (_viewHistory.Count > 1) {
+                _viewHistory.Pop();
+                string previousView = _viewHistory.Peek();
+                OnMainContentChangeRequested?.Invoke(contentControl, previousView);
+            }
         }
     }
 }
