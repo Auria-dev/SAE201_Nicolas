@@ -58,9 +58,19 @@ namespace SAE201_Nicolas
 
         private void butDeconnexion_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-            ConnectionWindow connectionWindow = new ConnectionWindow();
-            connectionWindow.Show();
+            MessageBoxResult deconnexion = MessageBox.Show(
+                this, 
+                "Etes-vous sur de vous déconnecter ?", 
+                "Déconexion",
+                MessageBoxButton.YesNoCancel, 
+                MessageBoxImage.Warning
+                );
+            if (deconnexion == MessageBoxResult.Yes)
+            {
+                this.Hide();
+                ConnectionWindow connectionWindow = new ConnectionWindow();
+                connectionWindow.Show();
+            }
         }
     }
 }
