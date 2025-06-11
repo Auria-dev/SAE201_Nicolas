@@ -293,9 +293,8 @@ namespace SAE201_Nicolas.MVVM.Model
         public int AjouterVin()
         {
             int nb = 0;
-            using (var cmdInsert = new NpgsqlCommand("insert into vin (numvin, numfournisseur, numtype, numappelation, nomvin, prixvin, descriptif, annee) values (@numvin, @numfournisseur, @numtype, @numappelation, @nomvin, @prixvin, @descriptif, @annee) RETURNING numvin"))
+            using (var cmdInsert = new NpgsqlCommand("insert into vin (numfournisseur, numtype, numappelation, nomvin, prixvin, descriptif, annee) values (@numfournisseur, @numtype, @numappelation, @nomvin, @prixvin, @descriptif, @annee) RETURNING numvin"))
             {
-                cmdInsert.Parameters.AddWithValue("numvin", this.NumVin);
                 cmdInsert.Parameters.AddWithValue("numfournisseur", this.NumFournisseur);
                 cmdInsert.Parameters.AddWithValue("numtype", this.NumTypeVin);
                 cmdInsert.Parameters.AddWithValue("numappelation", this.NumAppelation);
