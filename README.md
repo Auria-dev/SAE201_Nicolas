@@ -10,6 +10,10 @@ TODO:
 ```
 PUT IMAGES IN THE WINE DATAGRID!!!!
 
+Context menu on all datagrids that lets you edit/delete them.
+	editing: new window pops up
+	remove: msgbox to confirm
+
 System de comptes (employer)
 	Lors du login on crée un Employer correctement
 
