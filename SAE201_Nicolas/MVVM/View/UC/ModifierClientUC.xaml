@@ -7,6 +7,32 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <DataGrid
+            x:Name="dgCommandes"
+            Height="320"
+            Margin="0,14,0,0"
+            HorizontalAlignment="Stretch"
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
+            ItemsSource="{Binding LesClients}" Width="600">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding NumClient}"
+                    Header="N°" />
+                <DataGridTextColumn
+                    Width="2*"
+                    Binding="{Binding NomClient}"
+                    Header="Nom" />
+                <DataGridTextColumn
+                    Width="2*"
+                    Binding="{Binding PrenomClient}"
+                    Header="Prenom" />
+                <DataGridTextColumn
+                    Width="3*"
+                    Binding="{Binding MailClient}"
+                    Header="Mail" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

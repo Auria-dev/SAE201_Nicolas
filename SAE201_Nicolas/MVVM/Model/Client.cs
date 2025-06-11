@@ -81,13 +81,13 @@ namespace SAE201_Nicolas.MVVM.Model
 
         public List<Client> FindAll()
         {
-            List<Client> lesVins = new List<Client>();
+            List<Client> lesClients = new List<Client>();
             using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select * from client ;"))
             {
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    lesVins.Add(
+                    lesClients.Add(
                         new Client(
                             (int)dr["numclient"],
                             (string)dr["nomclient"],
@@ -97,7 +97,7 @@ namespace SAE201_Nicolas.MVVM.Model
                     );
                 }
             }
-            return lesVins;
+            return lesClients;
         }
     }
 }
