@@ -38,8 +38,6 @@ namespace SAE201_Nicolas
                 try
                 {
                     connection.Open();
-
-                    //montrer application ici
                     MainWindow mainWindow = new MainWindow();
                     this.Hide();
                     mainWindow.Show();

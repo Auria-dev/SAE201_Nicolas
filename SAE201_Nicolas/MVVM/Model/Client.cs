@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,10 @@ namespace SAE201_Nicolas.MVVM.Model
         private string nomClient;
         private string prenomClient;
         private string mailClient;
+
+        public Client()
+        {
+        }
 
         public Client(int numClient, string nomClient, string prenomClient, string mailClient)
         {
@@ -73,5 +79,25 @@ namespace SAE201_Nicolas.MVVM.Model
             }
         }
 
+        public List<Client> FindAll()
+        {
+            List<Client> lesVins = new List<Client>();
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select * from client ;"))
+            {
+                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    lesVins.Add(
+                        new Client(
+                            (int)dr["numclient"],
+                            (string)dr["nomclient"],
+                            (string)dr["prenomclient"],
+                            (string)dr["mailclient"]
+                        )
+                    );
+                }
+            }
+            return lesVins;
+        }
     }
 }

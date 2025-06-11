@@ -51,7 +51,10 @@ namespace SAE201_Nicolas.MVVM.View.UC
             
             unVin.NumVin = unVin.AjouterVin();
 
-            Console.WriteLine("ComboxBoxAppellation = " + ComboxBoxAppellation.SelectedIndex);
+            //Console.WriteLine("ComboxBoxAppellation = " + ComboxBoxAppellation.SelectedIndex);
+            //Console.WriteLine("cbFournisseur = " + cbFournisseur.SelectedIndex);
+            //Console.WriteLine("cbTypeVin = " + cbTypeVin.SelectedIndex);
+
             Console.WriteLine("Num avant: " + MainWindow.LaGestionDeVins.LesVins.Count);
             MainWindow.LaGestionDeVins.LesVins.Add(unVin);
             Console.WriteLine("Num apres: " + MainWindow.LaGestionDeVins.LesVins.Count);
