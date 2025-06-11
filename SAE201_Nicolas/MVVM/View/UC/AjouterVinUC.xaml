@@ -106,8 +106,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Style="{StaticResource ComboBoxStyle}">
-                <ComboBoxItem IsSelected="True">Tous</ComboBoxItem>
-                <ComboBoxItem>Bordeaux</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">Bordeaux</ComboBoxItem>
                 <ComboBoxItem>Bourgogne</ComboBoxItem>
                 <ComboBoxItem>Champagne</ComboBoxItem>
                 <ComboBoxItem>Alsace</ComboBoxItem>
