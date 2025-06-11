@@ -111,25 +111,43 @@
 
                     <RadioButton
                         Height="42"
+                        Click="ModifierClick"
                         Command="{Binding ModifierVC}"
                         Content="Modifier"
                         FontSize="18"
                         Foreground="White"
-                        Style="{StaticResource SidebarMenu}" Click="ModifierClick" />
+                        Style="{StaticResource SidebarMenu}" />
 
                     <RadioButton
                         Height="42"
+                        Click="AjouterClick"
                         Command="{Binding AjouterVC}"
                         Content="Ajouter"
                         FontSize="18"
                         Foreground="White"
-                        Style="{StaticResource SidebarMenu}" Click="AjouterClick" />
+                        Style="{StaticResource SidebarMenu}" />
 
                     <Button
                         x:Name="butDeconnexion"
-                        Margin="20,150,20,0"
+                        Height="41"
+                        Margin="20,120,20,0"
                         Click="butDeconnexion_Click"
-                        Content="SE DECONNECTER" />
+                        Content="Se déconnecter"
+                        FontSize="16"
+                        Style="{StaticResource ButtonInverse}" />
+                    <Image
+                        Margin="0,14,0,0"
+                        Source="/MVVM/Ressources/logo_nicolas.png" RenderTransformOrigin="0.5,0.5" Stretch="Fill" >
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="0.9" ScaleX="0.9"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+
                 </StackPanel>
             </Border>
 

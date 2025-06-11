@@ -16,6 +16,7 @@
                 <ResourceDictionary Source="Theme/Checkbox.xaml" />
                 <ResourceDictionary Source="Theme/Datagrid.xaml" />
                 <ResourceDictionary Source="Theme/PassBox.xaml" />
+                <ResourceDictionary Source="Theme/ButtonInverse.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
