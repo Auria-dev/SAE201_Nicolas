@@ -35,6 +35,9 @@ namespace SAE201_Nicolas
             ViewManager.Instance.RegisterView<GestionCommandes>(nameof(GestionCommandes));
             ViewManager.Instance.RegisterView<EspacePersonnel>(nameof(EspacePersonnel));
             ViewManager.Instance.RegisterView<Modifier>(nameof(Modifier));
+            //ViewManager.Instance.RegisterView<ModifierVinUC>(nameof(ModifierVinUC));
+            ViewManager.Instance.RegisterView<ModifierClientUC>(nameof(ModifierClientUC));
+            //ViewManager.Instance.RegisterView<ModifierFournisseurUC>(nameof(ModifierFournisseurUC));
 
             ViewManager.Instance.RegisterView<Ajouter>(nameof(Ajouter));
             ViewManager.Instance.RegisterView<AjouterVinUC>(nameof(AjouterVinUC));
@@ -96,6 +99,8 @@ namespace SAE201_Nicolas
             UserControl view = ViewManager.Instance.GetView(viewName);
             MainContentControl.Content = view;
         }
+
+
 
         private void RechercherVinClick(object sender, RoutedEventArgs e)
         {
