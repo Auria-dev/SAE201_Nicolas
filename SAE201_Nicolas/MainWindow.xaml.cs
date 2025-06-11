@@ -100,8 +100,6 @@ namespace SAE201_Nicolas
             MainContentControl.Content = view;
         }
 
-
-
         private void RechercherVinClick(object sender, RoutedEventArgs e)
         {
             ViewManager.Instance.RequestMainContentChange(MainContentControl, nameof(RechercherVin));

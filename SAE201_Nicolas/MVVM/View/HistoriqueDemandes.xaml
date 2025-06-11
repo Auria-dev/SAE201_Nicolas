@@ -134,7 +134,7 @@
 
         <DataGrid
             x:Name="dgDemandes"
-            Height="380"
+            Height="320"
             Margin="0,14,0,0"
             HorizontalAlignment="Stretch"
             AutoGenerateColumns="False"
@@ -176,5 +176,25 @@
                     Header="État" />
             </DataGrid.Columns>
         </DataGrid>
+
+        <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
+            <Button
+                Width="120"
+                Height="42"
+                Click="supprimerDemandes"
+                Content="Supprimer"
+                FontSize="14"
+                IsDefault="True"
+                Style="{StaticResource DefaultButton}" />
+            <Button
+                Width="120"
+                Height="42"
+                Click="commanderDemande"
+                Content="Commander"
+                FontSize="14"
+                IsDefault="True"
+                Style="{StaticResource DefaultButton}" />
+        </StackPanel>
+
     </StackPanel>
 </UserControl>
