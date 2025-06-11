@@ -58,12 +58,13 @@
                 Style="{StaticResource TextBox}" />
 
             <Button
+                x:Name="butAjouterClient"
                 Width="380"
                 Height="48"
                 Margin="0,34,0,50"
                 Content="Confirmer"
                 FontSize="16"
-                Style="{StaticResource DefaultButton}" />
+                Style="{StaticResource DefaultButton}" Click="butAjouterClient_Click" />
         </StackPanel>
     </StackPanel>
 </UserControl>
