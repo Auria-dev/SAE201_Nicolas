@@ -86,16 +86,16 @@
 
                     <RadioButton
                         Height="42"
-                        Command="{Binding GestionCommandesVC}"
-                        Content="Gestion commandes"
+                        Command="{Binding HistoriqueCommandesVC}"
+                        Content="Historique demandes"
                         FontSize="18"
                         Foreground="White"
                         Style="{StaticResource SidebarMenu}" />
 
                     <RadioButton
                         Height="42"
-                        Command="{Binding HistoriqueCommandesVC}"
-                        Content="Historique demandes"
+                        Command="{Binding GestionCommandesVC}"
+                        Content="Gestion commandes"
                         FontSize="18"
                         Foreground="White"
                         Style="{StaticResource SidebarMenu}" />

@@ -15,6 +15,7 @@ namespace SAE201_Nicolas.MVVM.Model
         private ObservableCollection<Commande> lesCommandes;
         private ObservableCollection<Fournisseur> lesFournisseurs;
         private ObservableCollection<DetailCommande> lesDetailsCommandes;
+        private ObservableCollection<Employe> lesEmployes;
 
         public GestionVin(string nom)
         {
@@ -24,9 +25,11 @@ namespace SAE201_Nicolas.MVVM.Model
             this.lesCommandes = new ObservableCollection<Commande>(new Commande().FindAll());
             this.lesFournisseurs = new ObservableCollection<Fournisseur>(new Fournisseur().FindAll());
             this.lesDetailsCommandes = new ObservableCollection<DetailCommande>(new DetailCommande().FindAll(this));
+            this.lesEmployes = new ObservableCollection<Employe>(new Employe().FindAll());
 
             Console.WriteLine(
                 "Found:\n" +
+                this.lesEmployes.Count + " employes\n"             +
                 this.lesVins.Count + " vins\n"             +
                 this.lesDemandes.Count + " demandes\n"         +
                 this.lesCommandes.Count + " commandes\n"        +
@@ -35,86 +38,48 @@ namespace SAE201_Nicolas.MVVM.Model
             );
         }
 
-        public GestionVin() : this("")
-        {
-        }
+        public GestionVin() : this("") { }
 
         public string Nom
         {
-            get
-            {
-                return this.nom;
-            }
-
-            set
-            {
-                this.nom = value;
-            }
+            get { return this.nom; }
+            set { this.nom = value; }
         }
 
         public ObservableCollection<Vin> LesVins
         {
-            get
-            {
-                return this.lesVins;
-            }
-
-            set
-            {
-                this.lesVins = value;
-            }
+            get { return this.lesVins; }
+            set { this.lesVins = value; }
         }
 
         public ObservableCollection<Demande> LesDemandes
         {
-            get
-            {
-                return this.lesDemandes;
-            }
-
-            set
-            {
-                this.lesDemandes = value;
-            }
+            get { return this.lesDemandes; }
+            set { this.lesDemandes = value; }
         }
 
         public ObservableCollection<Commande> LesCommandes
         {
-            get
-            {
-                return this.lesCommandes;
-            }
-
-            set
-            {
-                this.lesCommandes = value;
-            }
+            get { return this.lesCommandes; }
+            set { this.lesCommandes = value; }
         }
 
         public ObservableCollection<Fournisseur> LesFournisseurs
         {
-            get
-            {
-                return this.lesFournisseurs;
-            }
-
-            set
-            {
-                this.lesFournisseurs = value;
-            }
+            get { return this.lesFournisseurs; }
+            set { this.lesFournisseurs = value; }
         }
 
         public ObservableCollection<DetailCommande> LesDetailsCommandes
         {
-            get
-            {
-                return this.lesDetailsCommandes;
-            }
+            get { return this.lesDetailsCommandes; }
+            set { this.lesDetailsCommandes = value; }
+        }
 
-            set
-            {
-                this.lesDetailsCommandes = value;
-            }
+        public ObservableCollection<Employe> LesEmployes
+        {
+            get { return this.lesEmployes; }
+            set { this.lesEmployes = value; }
         }
     }
 }
