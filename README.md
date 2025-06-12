@@ -8,6 +8,9 @@ TODO (if time):
 
 ```
 TODO:
+Compte rendu:
+	voirs ConsignesRendusDeveloppement.pdf sur le U
+
 fuckass unit tests
 	(i hate it)
 
