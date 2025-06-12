@@ -192,7 +192,6 @@
                 x:Name="butCommanderDemande"
                 Width="120"
                 Height="42"
-                Margin="14,0,0,0"
                 Click="commanderDemande"
                 Content="Commander"
                 FontSize="14"
