@@ -35,7 +35,7 @@ namespace SAE201_Nicolas.Model
             this.Nom = nom;
             this.Prenom = prenom;
             this.Login = login;
-            this.Mdp = PasswordHelper.HashPassword(mdp);
+            //this.Mdp = PasswordHelper.HashPassword(mdp);
         }
         
         public Employe() { }

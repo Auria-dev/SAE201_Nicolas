@@ -133,12 +133,12 @@ namespace SAE201_Nicolas.View
         {
             if (dgVins.SelectedItem == null)
             {
-                MessageBox.Show("Veuillez sélectionner un client", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Veuillez sélectionner un vin", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
                 Vin vinSelectionne = (Vin)dgVins.SelectedItem;
-                Vin copie = new Vin(vinSelectionne.NumVin, vinSelectionne.NomVin, vinSelectionne.PrixVin, vinSelectionne.Descriptif, vinSelectionne.Annee);
+                Vin copie = new Vin(vinSelectionne.NumVin, vinSelectionne.NomVin, vinSelectionne.PrixVin, vinSelectionne.Descriptif, vinSelectionne.Annee, vinSelectionne.NumTypeVin, vinSelectionne.NumAppelation, vinSelectionne.NumFournisseur);
 
                 ModifierVinWindow winVin = new ModifierVinWindow(copie);
                 bool? result = winVin.ShowDialog();
@@ -153,6 +153,9 @@ namespace SAE201_Nicolas.View
                         vinSelectionne.PrixVin = copie.PrixVin;
                         vinSelectionne.Descriptif = copie.Descriptif;
                         vinSelectionne.Annee = copie.Annee;
+                        vinSelectionne.NumTypeVin = copie.NumTypeVin;
+                        vinSelectionne.NumAppelation = copie.NumAppelation;
+                        vinSelectionne.NumFournisseur = copie.NumFournisseur;
                         dgVins.Items.Refresh();
                     }
                     catch (Exception ex)

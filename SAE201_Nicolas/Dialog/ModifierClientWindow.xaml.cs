@@ -62,7 +62,7 @@ namespace SAE201_Nicolas.Dialog
                 if (Validation.GetHasError(uie))
                 {
                     ok = false;
-                    MessageBox.Show(this, "Erreurs de saisies. Impossible de créer le chien.", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show(this, "Erreurs de saisies. Impossible de modifier le client.", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
             }
