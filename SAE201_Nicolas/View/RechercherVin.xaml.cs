@@ -1,5 +1,7 @@
-﻿using SAE201_Nicolas.Dialog;
+﻿using SAE201_Nicolas.Core;
+using SAE201_Nicolas.Dialog;
 using SAE201_Nicolas.Model;
+using SAE201_Nicolas.View.UC;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -161,6 +163,41 @@ namespace SAE201_Nicolas.View
                     catch (Exception ex)
                     {
                         MessageBox.Show("Le vin n'a pas pu être modifié.", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
+        }
+
+        private void butAjouterVin_Click(object sender, RoutedEventArgs e)
+        {
+            ViewManager.Instance.RequestMainContentChange(nameof(AjouterVinUC));
+        }
+
+        private void butSupprimerVin_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgVins.SelectedItem == null)
+            {
+                MessageBox.Show("Veuillez sélectionner un client", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                Vin VinAsupprimer = (Vin)dgVins.SelectedItem;
+                MessageBoxResult supprimerResult = MessageBox.Show(
+                    $"Etes vous sur de vouloir supprimmer le vin {VinAsupprimer.NomVin} ?",
+                    "Supprimmer",
+                    MessageBoxButton.YesNoCancel,
+                    MessageBoxImage.Warning
+                    );
+                if (supprimerResult == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        VinAsupprimer.SupprimerVin();
+                        MainWindow.LaGestionDeVins.LesVins.Remove(VinAsupprimer);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Le vin n'a pas pu être supprimé.", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }

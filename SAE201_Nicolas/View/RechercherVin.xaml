@@ -264,24 +264,36 @@
                 x:Name="butModifierVin"
                 Width="80"
                 Height="42"
+                Margin="0,0,5,0"
                 HorizontalAlignment="Left"
+                Click="butModifierVin_Click"
                 Content="Modifier"
                 FontSize="14"
                 IsDefault="True"
-                Style="{StaticResource DefaultButton}" Click="butModifierVin_Click" Margin="0,0,5,0" />
+                Style="{StaticResource DefaultButton}" />
             <Button
-                x:Name="butSupprimer"
+                x:Name="butSupprimerVin"
                 Width="80"
                 Height="42"
-                Margin="0,0,140,0"
+                Margin="0,0,5,0"
                 HorizontalAlignment="Left"
                 Content="Supprimer"
                 FontSize="14"
                 IsDefault="True"
-                Style="{StaticResource DefaultButton}" />
+                Style="{StaticResource DefaultButton}" Click="butSupprimerVin_Click" />
+            <Button
+                x:Name="butAjouterVin"
+                Width="80"
+                Height="42"
+                Margin="0,0,120,0"
+                HorizontalAlignment="Left"
+                Content="Ajouter"
+                FontSize="14"
+                IsDefault="True"
+                Style="{StaticResource DefaultButton}" Click="butAjouterVin_Click" />
             <TextBox
                 x:Name="TxtboxQuantiteVins"
-                Width="275"
+                Width="220"
                 Height="40"
                 Margin="8,0,0,0"
                 core:PlaceholderService.Placeholder="Quantié"

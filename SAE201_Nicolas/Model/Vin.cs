@@ -331,6 +331,15 @@ namespace SAE201_Nicolas.Model
             }
         }
 
+        public int SupprimerVin()
+        {
+            using (var cmdUpdate = new NpgsqlCommand("delete from vin where numvin =@numvin;"))
+            {
+                cmdUpdate.Parameters.AddWithValue("numvin", this.NumVin);
+                return DataAccess.Instance.ExecuteSet(cmdUpdate);
+            }
+        }
+
         public override bool Equals(object? obj)
         {
             return obj is Vin vin &&
