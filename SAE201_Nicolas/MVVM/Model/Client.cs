@@ -122,5 +122,17 @@ namespace SAE201_Nicolas.MVVM.Model
                 return DataAccess.Instance.ExecuteSet(cmdUpdate);
             }
         }
+
+        public int UpdateClient()
+        {
+            using (var cmdUpdate = new NpgsqlCommand("update client set nomclient =@nomclient ,  prenomclient = @prenomclient,  mailclient = @mailclient  where numclient =@numclient;"))
+            {
+                cmdUpdate.Parameters.AddWithValue("nomclient", this.NomClient);
+                cmdUpdate.Parameters.AddWithValue("prenomclient", this.PrenomClient);
+                cmdUpdate.Parameters.AddWithValue("mailclient", this.MailClient);
+                cmdUpdate.Parameters.AddWithValue("numclient", this.NumClient);
+                return DataAccess.Instance.ExecuteSet(cmdUpdate);
+            }
+        }
     }
 }

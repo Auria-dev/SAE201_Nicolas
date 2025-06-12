@@ -1,4 +1,5 @@
-﻿using SAE201_Nicolas.MVVM.Model;
+﻿using SAE201_Nicolas.Core;
+using SAE201_Nicolas.MVVM.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,8 +32,7 @@ namespace SAE201_Nicolas.MVVM.View.UC
             if (dgClients.SelectedItem == null)
             {
                 MessageBox.Show("Veuillez sélectionner un client", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-                
+            } 
             else
             {
                 Client clientnAsupprimer = (Client)dgClients.SelectedItem;
@@ -53,6 +53,35 @@ namespace SAE201_Nicolas.MVVM.View.UC
                     {
                         MessageBox.Show("Le client n'a pas pu être supprimé.", "Attention",
                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
+        }
+
+        private void butModifClient_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgClients.SelectedItem == null)
+            {
+                MessageBox.Show("Veuillez sélectionner un client", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                Client clientSelectionne = (Client)dgClients.SelectedItem;
+                Client copie = new Client(clientSelectionne.NumClient, clientSelectionne.NomClient, clientSelectionne.PrenomClient, clientSelectionne.MailClient);
+                ModifierClientWindow wChien = new ModifierClientWindow(copie);
+                bool? result = wChien.ShowDialog();
+                if (result == true)
+                {
+                    try
+                    {
+                        copie.UpdateClient();
+                        clientSelectionne.NomClient = copie.NomClient;
+                        clientSelectionne.PrenomClient = copie.PrenomClient;
+                        clientSelectionne.MailClient = copie.MailClient;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Le client n'a pas pu être modifié.", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }

@@ -27,6 +27,12 @@ namespace SAE201_Nicolas.MVVM.View.UC
             InitializeComponent();
         }
 
+        public AjouterClientUC(Client unClient)
+        {
+            InitializeComponent();
+            this.DataContext = unClient;
+        }
+
         private void ClickedReturn(object sender, MouseButtonEventArgs e)
         {
             ViewManager.Instance.GoBack();

@@ -177,10 +177,16 @@ namespace SAE201_Nicolas.MVVM.View
                     dgDemandes.Items.Refresh();
                 }
 
-
                 //Demande demandeSelectionne = (Demande)dgDemandes.SelectedItem;
-                //Demande copie = new Demande(demandeSelectionne.NumDemande, demandeSelectionne.NumVin, demandeSelectionne.NumEmploye, demandeSelectionne.NumCommande, demandeSelectionne.DateDemande, demandeSelectionne.QuantiteDemande, demandeSelectionne.EtatDemande);
-
+                //Demande copie = new Demande(
+                //    demandeSelectionne.NumDemande, 
+                //    demandeSelectionne.NumVin, 
+                //    demandeSelectionne.NumEmploye, 
+                //    demandeSelectionne.NumCommande, 
+                //    demandeSelectionne.DateDemande, 
+                //    demandeSelectionne.QuantiteDemande, 
+                //    demandeSelectionne.EtatDemande
+                //    );
             }
         }
     }
