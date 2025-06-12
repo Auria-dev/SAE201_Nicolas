@@ -49,11 +49,7 @@ namespace SAE201_Nicolas.View.UC
 
             MainWindow.LaGestionDeVins.LesClients.Add(unClient);
 
-            MessageBox.Show($"Création du client {unClient.PrenomClient} {unClient.NomClient} réussite.", "Création du client.", MessageBoxButton.OK, MessageBoxImage.Information);
-            ViewManager.Instance.RequestMainContentChange(nameof(Ajouter));
-            TxtboxNomClient.Text = "";
-            TxtboxPrenomClient.Text = "";
-            TxtboxMailClient.Text = "";
+            MessageBox.Show("Client inséré.", $"Insertion du client {unClient.PrenomClient} {unClient.NomClient} réussite.", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

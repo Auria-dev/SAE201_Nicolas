@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:model="clr-namespace:SAE201_Nicolas.Model"
     Title="Application Nicolas"
-    Width="1050"
-    Height="650"
+    Width="1000"
+    Height="600"
     AllowsTransparency="True"
     Background="Transparent"
     ResizeMode="NoResize"
@@ -16,18 +16,11 @@
     WindowStyle="None"
     mc:Ignorable="d">
 
-    <Border
-        Width="1000"
-        Height="600"
-        Background="#fff"
-        CornerRadius="30, 30, 16, 30">
-        <Border.Effect>
-            <DropShadowEffect
-                BlurRadius="12"
-                Opacity="0.15"
-                ShadowDepth="0"
-                Color="Black" />
-        </Border.Effect>
+    <!--<Window.DataContext>
+        <viewModel:MainViewModel />
+    </Window.DataContext>-->
+
+    <Border Background="#fff" CornerRadius="30, 30, 16, 30">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="230" />
@@ -38,6 +31,7 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
+            <!--  Invisible border that spans across the full window, so we can drag it  -->
             <Border
                 Grid.Row="0"
                 Grid.ColumnSpan="2"
@@ -79,6 +73,7 @@
                 CornerRadius="0,0,0,16">
 
                 <StackPanel>
+                    <!--  Define each tab, we set their source (styling) as well as the command they will call when clicked on.  -->
                     <RadioButton
                         Height="42"
                         Margin="0,48,0,0"
