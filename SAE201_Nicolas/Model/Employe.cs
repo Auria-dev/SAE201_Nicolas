@@ -1,4 +1,5 @@
 ﻿using Npgsql;
+using SAE201_Nicolas.Core;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace SAE201_Nicolas.Model
         Vendeur,
         ResponsableDeMagasin
     }
+
     public class Employe : INotifyPropertyChanged
     {
         private int numEmploye;
@@ -22,18 +24,23 @@ namespace SAE201_Nicolas.Model
         private string prenom;
         private string login;
         private string mdp;
+        private Role roleEmploye;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public Employe(int numEmploye, string nom, string prenom, string login, string mdp)
+        public Employe(int numEmploye, int numRole, string nom, string prenom, string login, string mdp)
         {
+            this.roleEmploye = IntToRole(numEmploye);
             this.NumEmploye = numEmploye;
             this.Nom = nom;
             this.Prenom = prenom;
             this.Login = login;
-            this.Mdp = mdp;
+            this.Mdp = PasswordHelper.HashPassword(mdp);
         }
+        
         public Employe() { }
+
+
 
         public int NumEmploye
         {
@@ -90,6 +97,12 @@ namespace SAE201_Nicolas.Model
             get { return this.Nom + " " + this.Prenom.Substring(0, 1) + "."; }
         }
 
+        public Role IntToRole(int r)
+        {
+            if (r == 1) return Role.ResponsableDeMagasin;
+            else return Role.Vendeur;
+        }
+
         public List<Employe> FindAll()
         {
             List<Employe> lesEmployer = new List<Employe>();
@@ -101,6 +114,7 @@ namespace SAE201_Nicolas.Model
                     lesEmployer.Add(
                         new Employe(
                             (int)dr["numemploye"],
+                            (int)dr["numrole"],
                             dr["nom"].ToString(),
                             dr["prenom"].ToString(),
                             dr["login"].ToString(),

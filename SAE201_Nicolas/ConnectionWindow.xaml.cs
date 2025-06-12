@@ -1,4 +1,8 @@
-﻿using Npgsql;
+﻿using Microsoft.Ajax.Utilities;
+using Npgsql;
+using SAE201_Nicolas.Core;
+using SAE201_Nicolas.Model;
+using System.Data;
 using System.Windows;
 using System.Windows.Input;
 
@@ -38,6 +42,18 @@ namespace SAE201_Nicolas
                 try
                 {
                     connection.Open();
+
+                    if (!tbLogin.Text.IsNullOrWhiteSpace())
+                    {
+                        List<Employe> lesEmploye = new Employe().FindAll();
+
+                        if (lesEmploye.Any(w=>w.Login == tbLogin.Text))
+                        {
+                            Employe emp = lesEmploye.First();
+                            Console.WriteLine("Employe found!");
+                        }
+                    }
+
                     MainWindow mainWindow = new MainWindow();
                     this.Hide();
                     mainWindow.Show();
