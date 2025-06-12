@@ -14,10 +14,6 @@ Compte rendu:
 fuckass unit tests
 	(i hate it)
 
-Context menu on all datagrids that lets you edit/delete them.
-	editing: new window pops up
-	remove: msgbox to confirm
-
 System de comptes (employer)
 	Partie BDD des comptes et des roles
 	Lors du login on crée un Employer correctement
@@ -26,6 +22,10 @@ System de comptes (employer)
 Exporter/publier l'application
 
 DONE :
+Context menu on all datagrids that lets you edit/delete them.
+	editing: new window pops up
+	remove: msgbox to confirm
+
 Partie "Rechercher/Demander des vin"
 	data grid avec tt les vins
 	1) Selectionner vin
