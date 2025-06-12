@@ -62,9 +62,10 @@
                 Width="380"
                 Height="48"
                 Margin="0,34,0,50"
+                Click="butAjouterClient_Click"
                 Content="Confirmer"
                 FontSize="16"
-                Style="{StaticResource DefaultButton}" Click="butAjouterClient_Click" />
+                Style="{StaticResource DefaultButton}" />
         </StackPanel>
     </StackPanel>
 </UserControl>
