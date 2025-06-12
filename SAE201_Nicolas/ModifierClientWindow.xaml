@@ -69,47 +69,48 @@
             <StackPanel
                 x:Name="panelFormClient"
                 Grid.Row="1"
+                HorizontalAlignment="Center"
                 Orientation="Vertical">
 
                 <Label
-                    Margin="10,20,0,0"
+                    Margin="0,20,0,0"
                     Content="_Nom du client"
                     FontSize="14"
                     Target="{Binding ElementName=TxtboxNomClient}" />
                 <TextBox
                     x:Name="TxtboxNomClient"
-                    Width="380"
+                    Width="330"
                     Height="48"
                     Style="{StaticResource TextBox}"
                     Text="{Binding NomClient, ValidatesOnExceptions=True}" />
 
                 <Label
-                    Margin="10,10,0,0"
+                    Margin="0,10,0,0"
                     Content="_Prénom du client"
                     FontSize="14"
                     Target="{Binding ElementName=TxtboxPrenomClient}" />
                 <TextBox
                     x:Name="TxtboxPrenomClient"
-                    Width="380"
+                    Width="330"
                     Height="48"
                     Style="{StaticResource TextBox}"
                     Text="{Binding PrenomClient, ValidatesOnExceptions=True}" />
 
                 <Label
-                    Margin="10,10,0,0"
+                    Margin="0,10,0,0"
                     Content="_Mail du client"
                     FontSize="14"
                     Target="{Binding ElementName=TxtboxMailClient}" />
                 <TextBox
                     x:Name="TxtboxMailClient"
-                    Width="380"
+                    Width="330"
                     Height="48"
                     Style="{StaticResource TextBox}"
                     Text="{Binding MailClient, ValidatesOnExceptions=True}" />
 
                 <Button
                     x:Name="butValider"
-                    Width="380"
+                    Width="330"
                     Height="48"
                     Margin="0,20,0,50"
                     Click="butAjouterClient_Click"

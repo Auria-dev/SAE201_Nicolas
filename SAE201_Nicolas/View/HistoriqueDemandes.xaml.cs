@@ -143,7 +143,9 @@ namespace SAE201_Nicolas.View
                         de.EtatDemande = EnumEtatCommande.Validée;
                         de.UpdateDemande();
                         if (dgDemandes != null)
-                            CollectionViewSource.GetDefaultView(dgDemandes.ItemsSource).Refresh();
+                            { CollectionViewSource.GetDefaultView(dgDemandes.ItemsSource).Refresh(); }
+
+                        MessageBox.Show("Votre commande a bien été enregistrée.", "Commande effectuée", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     catch (Exception ex)
                     {
