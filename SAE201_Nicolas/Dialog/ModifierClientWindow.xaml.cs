@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SAE201_Nicolas
+namespace SAE201_Nicolas.Dialog
 {
     /// <summary>
     /// Logique d'interaction pour ModifierClientWindow.xaml
@@ -24,11 +24,13 @@ namespace SAE201_Nicolas
         {
             InitializeComponent();
         }
+
         public ModifierClientWindow(Client unClient)
         {
             InitializeComponent();
             this.DataContext = unClient;
         }
+
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
         {

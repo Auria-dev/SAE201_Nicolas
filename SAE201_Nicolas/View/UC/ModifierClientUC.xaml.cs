@@ -1,5 +1,6 @@
 ﻿using SAE201_Nicolas.Core;
 using SAE201_Nicolas.Model;
+using SAE201_Nicolas.Dialog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
