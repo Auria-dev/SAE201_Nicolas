@@ -1,4 +1,5 @@
-﻿using SAE201_Nicolas.Model;
+﻿using SAE201_Nicolas.Dialog;
+using SAE201_Nicolas.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -126,6 +127,40 @@ namespace SAE201_Nicolas.View
             MainWindow.LaGestionDeVins.LesDemandes.Add(uneDemande);
 
             MessageBox.Show("Votre demande a été enregistrée", "Demande sauvegardée", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void butModifierVin_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgVins.SelectedItem == null)
+            {
+                MessageBox.Show("Veuillez sélectionner un client", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                Vin vinSelectionne = (Vin)dgVins.SelectedItem;
+                Vin copie = new Vin(vinSelectionne.NumVin, vinSelectionne.NomVin, vinSelectionne.PrixVin, vinSelectionne.Descriptif, vinSelectionne.Annee);
+
+                ModifierVinWindow winVin = new ModifierVinWindow(copie);
+                bool? result = winVin.ShowDialog();
+
+                if (result == true)
+                {
+                    try
+                    {
+                        copie.UpdateVin();
+                        vinSelectionne.NumVin = copie.NumVin;
+                        vinSelectionne.NomVin = copie.NomVin;
+                        vinSelectionne.PrixVin = copie.PrixVin;
+                        vinSelectionne.Descriptif = copie.Descriptif;
+                        vinSelectionne.Annee = copie.Annee;
+                        dgVins.Items.Refresh();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Le vin n'a pas pu être modifié.", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
         }
     }
 }

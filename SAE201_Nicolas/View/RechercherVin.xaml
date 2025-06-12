@@ -257,9 +257,28 @@
         </DataGrid>
 
         <StackPanel
-            Margin="0,14,0,0"
-            HorizontalAlignment="Right"
+            Margin="0,15,0,0"
+            HorizontalAlignment="Center"
             Orientation="Horizontal">
+            <Button
+                x:Name="butModifierVin"
+                Width="80"
+                Height="42"
+                HorizontalAlignment="Left"
+                Content="Modifier"
+                FontSize="14"
+                IsDefault="True"
+                Style="{StaticResource DefaultButton}" Click="butModifierVin_Click" Margin="0,0,5,0" />
+            <Button
+                x:Name="butSupprimer"
+                Width="80"
+                Height="42"
+                Margin="0,0,140,0"
+                HorizontalAlignment="Left"
+                Content="Supprimer"
+                FontSize="14"
+                IsDefault="True"
+                Style="{StaticResource DefaultButton}" />
             <TextBox
                 x:Name="TxtboxQuantiteVins"
                 Width="275"
@@ -279,6 +298,7 @@
                 FontSize="14"
                 IsDefault="True"
                 Style="{StaticResource DefaultButton}" />
+
         </StackPanel>
 
     </StackPanel>

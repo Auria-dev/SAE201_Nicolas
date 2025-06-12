@@ -18,7 +18,7 @@
             FontSize="24"
             Text="Que souhaitez-vous modifier?" />
         <Button
-            x:Name="ModifierVin"
+            x:Name="butModifierVin"
             Width="340"
             Height="48"
             Margin="0,24,0,0"
@@ -27,7 +27,7 @@
             FontSize="16"
             Style="{StaticResource DefaultButton}" />
         <Button
-            x:Name="ModifierClient"
+            x:Name="butModifierClient"
             Width="340"
             Height="48"
             Margin="0,24,0,0"
@@ -36,7 +36,7 @@
             FontSize="16"
             Style="{StaticResource DefaultButton}" />
         <Button
-            x:Name="ModifierFournisseur"
+            x:Name="butModifierFournisseur"
             Width="340"
             Height="48"
             Margin="0,24,0,0"

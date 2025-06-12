@@ -315,6 +315,22 @@ namespace SAE201_Nicolas.Model
             return nb;
         }
 
+        public int UpdateVin()
+        {
+            using (var cmdUpdate = new NpgsqlCommand("update vin set numfournisseur =@numfournisseur,  numtype = @numtype,  numappelation = @numappelation, nomvin = @nomvin, prixvin = @prixvin, descriptif = @descriptif, annee = @annee where numvin =@numvin;"))
+            {
+                cmdUpdate.Parameters.AddWithValue("numfournisseur", this.NumFournisseur);
+                cmdUpdate.Parameters.AddWithValue("numtype", this.NumTypeVin);
+                cmdUpdate.Parameters.AddWithValue("numappelation", this.NumAppelation);
+                cmdUpdate.Parameters.AddWithValue("nomvin", this.NomVin);
+                cmdUpdate.Parameters.AddWithValue("prixvin", this.PrixVin);
+                cmdUpdate.Parameters.AddWithValue("descriptif", this.Descriptif);
+                cmdUpdate.Parameters.AddWithValue("annee", this.Annee);
+                cmdUpdate.Parameters.AddWithValue("numvin", this.NumVin);
+                return DataAccess.Instance.ExecuteSet(cmdUpdate);
+            }
+        }
+
         public override bool Equals(object? obj)
         {
             return obj is Vin vin &&

@@ -29,7 +29,7 @@ namespace SAE201_Nicolas.View
 
         private void BtnModifierVinClick(object sender, RoutedEventArgs e)
         {
-            //ViewManager.Instance.RequestMainContentChange(null, nameof(ModifierVinUC));
+            ViewManager.Instance.RequestMainContentChange(nameof(ModifierVinUC));
         }
 
         private void BtnModifierClientClick(object sender, RoutedEventArgs e)

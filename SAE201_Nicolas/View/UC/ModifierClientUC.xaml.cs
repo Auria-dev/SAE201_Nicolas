@@ -52,8 +52,7 @@ namespace SAE201_Nicolas.View.UC
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Le client n'a pas pu être supprimé.", "Attention",
-                       MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Le client n'a pas pu être supprimé.", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }
@@ -69,8 +68,8 @@ namespace SAE201_Nicolas.View.UC
             {
                 Client clientSelectionne = (Client)dgClients.SelectedItem;
                 Client copie = new Client(clientSelectionne.NumClient, clientSelectionne.NomClient, clientSelectionne.PrenomClient, clientSelectionne.MailClient);
-                ModifierClientWindow wChien = new ModifierClientWindow(copie);
-                bool? result = wChien.ShowDialog();
+                ModifierClientWindow winClient = new ModifierClientWindow(copie);
+                bool? result = winClient.ShowDialog();
                 if (result == true)
                 {
                     try
@@ -79,6 +78,7 @@ namespace SAE201_Nicolas.View.UC
                         clientSelectionne.NomClient = copie.NomClient;
                         clientSelectionne.PrenomClient = copie.PrenomClient;
                         clientSelectionne.MailClient = copie.MailClient;
+                        dgClients.Items.Refresh();
                     }
                     catch (Exception ex)
                     {
