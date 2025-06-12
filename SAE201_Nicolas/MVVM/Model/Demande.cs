@@ -189,7 +189,9 @@ namespace SAE201_Nicolas.MVVM.Model
         public int AjouterDemande()
         {
             int nb = 0;
-            using (var cmdInsert = new NpgsqlCommand("insert into demande (numvin, numemploye, numcommande, numclient, datedemande, quantitedemande, etatdemande) values (@numvin, @numemploye, @numcommande, @numclient, @datedemande, @quantitedemande, @etatdemande) RETURNING numdemande"))
+            using (var cmdInsert = new NpgsqlCommand("insert into demande"
+                +"(numvin, numemploye, numcommande, numclient, datedemande, quantitedemande, etatdemande) values "
+                +"(@numvin, @numemploye, @numcommande, @numclient, @datedemande, @quantitedemande, @etatdemande) RETURNING numdemande"))
             {
                 cmdInsert.Parameters.AddWithValue("numvin", this.NumVin);
                 cmdInsert.Parameters.AddWithValue("numemploye", this.NumEmploye);
@@ -202,6 +204,24 @@ namespace SAE201_Nicolas.MVVM.Model
             }
             this.NumDemande = nb;
             return nb;
+        }
+
+        public int UpdateDemande()
+        {
+            using (var cmdUpdate = new NpgsqlCommand("update demande set "
+                + "numvin = @numvin, numemploye = @numemploye, numcommande = @numcommande, numclient = @numclient, datedemande = @datedemande, quantitedemande = @quantitedemande, etatdemande = @etatdemande "
+                + "where numdemande =@numdemande;"))
+            {
+                cmdUpdate.Parameters.AddWithValue("numvin", this.NumVin);
+                cmdUpdate.Parameters.AddWithValue("numemploye", this.NumEmploye);
+                cmdUpdate.Parameters.AddWithValue("numcommande", this.NumCommande);
+                cmdUpdate.Parameters.AddWithValue("numclient", this.NumClient);
+                cmdUpdate.Parameters.AddWithValue("datedemande", this.DateDemande);
+                cmdUpdate.Parameters.AddWithValue("quantitedemande", this.QuantiteDemande);
+                cmdUpdate.Parameters.AddWithValue("etatdemande", this.NomEtatDemande);
+                cmdUpdate.Parameters.AddWithValue("numdemande", this.NumDemande);
+                return DataAccess.Instance.ExecuteSet(cmdUpdate);
+            }
         }
     }
 }

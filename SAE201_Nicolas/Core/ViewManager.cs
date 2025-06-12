@@ -6,9 +6,7 @@ namespace SAE201_Nicolas.Core
     {
         private Dictionary<string, Lazy<UserControl>> _views;
         private Stack<string> _viewHistory;
-
-        public event Action<ContentControl, string> OnMainContentChangeRequested;
-
+        public event Action<string> OnMainContentChangeRequested;
         private static ViewManager _instance;
 
         private ViewManager()
@@ -38,20 +36,20 @@ namespace SAE201_Nicolas.Core
             throw new ArgumentException("View not found");
         }
 
-        public void RequestMainContentChange(ContentControl contentControl, string viewName)
+        public void RequestMainContentChange(string viewName)
         {
             if (_viewHistory.Count == 0 || _viewHistory.Peek() != viewName)
                 _viewHistory.Push(viewName);
             
-            OnMainContentChangeRequested?.Invoke(contentControl, viewName);
+            OnMainContentChangeRequested?.Invoke(viewName);
         }
 
-        public void GoBack(ContentControl contentControl)
+        public void GoBack()
         {
             if (_viewHistory.Count > 1) {
                 _viewHistory.Pop();
                 string previousView = _viewHistory.Peek();
-                OnMainContentChangeRequested?.Invoke(contentControl, previousView);
+                OnMainContentChangeRequested?.Invoke(previousView);
             }
         }
     }

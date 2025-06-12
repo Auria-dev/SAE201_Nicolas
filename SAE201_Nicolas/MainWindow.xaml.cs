@@ -44,7 +44,7 @@ namespace SAE201_Nicolas
             ViewManager.Instance.RegisterView<AjouterClientUC>(nameof(AjouterClientUC));
             ViewManager.Instance.RegisterView<AjouterFournisseurUC>(nameof(AjouterFournisseurUC));
 
-            ViewManager.Instance.RequestMainContentChange(MainContentControl, nameof(RechercherVin));
+            ViewManager.Instance.RequestMainContentChange(nameof(RechercherVin));
         }
 
         public void ChargeData()
@@ -94,7 +94,7 @@ namespace SAE201_Nicolas
             }
         }
 
-        private void SetMainContent(ContentControl contentControl, string viewName)
+        private void SetMainContent(string viewName)
         {
             UserControl view = ViewManager.Instance.GetView(viewName);
             MainContentControl.Content = view;
@@ -102,32 +102,32 @@ namespace SAE201_Nicolas
 
         private void RechercherVinClick(object sender, RoutedEventArgs e)
         {
-            ViewManager.Instance.RequestMainContentChange(MainContentControl, nameof(RechercherVin));
+            ViewManager.Instance.RequestMainContentChange(nameof(RechercherVin));
         }
 
         private void ModifierClick(object sender, RoutedEventArgs e)
         {
-            ViewManager.Instance.RequestMainContentChange(MainContentControl, nameof(Modifier));
+            ViewManager.Instance.RequestMainContentChange(nameof(Modifier));
         }
 
         private void HistoriqueCommandesClick(object sender, RoutedEventArgs e)
         {
-            ViewManager.Instance.RequestMainContentChange(MainContentControl, nameof(HistoriqueCommandes));
+            ViewManager.Instance.RequestMainContentChange(nameof(HistoriqueCommandes));
         }
 
         private void GestionCommandesClick(object sender, RoutedEventArgs e)
         {
-            ViewManager.Instance.RequestMainContentChange(MainContentControl, nameof(GestionCommandes));
+            ViewManager.Instance.RequestMainContentChange(nameof(GestionCommandes));
         }
 
         private void EspacePersonnelClick(object sender, RoutedEventArgs e)
         {
-            ViewManager.Instance.RequestMainContentChange(MainContentControl, nameof(EspacePersonnel));
+            ViewManager.Instance.RequestMainContentChange(nameof(EspacePersonnel));
         }
 
         private void AjouterClick(object sender, RoutedEventArgs e)
         {
-            ViewManager.Instance.RequestMainContentChange(MainContentControl, nameof(Ajouter));
+            ViewManager.Instance.RequestMainContentChange(nameof(Ajouter));
         }
     }
 }

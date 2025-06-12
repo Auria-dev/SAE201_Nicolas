@@ -167,6 +167,20 @@ namespace SAE201_Nicolas.MVVM.Model
             }
         }
 
+        public void AjouterDetailCommande()
+        {
+            using (var cmdInsert = new NpgsqlCommand(
+                "insert into detailcommande (numcommande, numvin, quantite, prix) values " +
+               "(@numcommande, @numvin, @quantite, @prix)"))
+            {
+                cmdInsert.Parameters.AddWithValue("numcommande", this.NumCommande);
+                cmdInsert.Parameters.AddWithValue("numvin", this.NumVin);
+                cmdInsert.Parameters.AddWithValue("quantite", this.Quantite);
+                cmdInsert.Parameters.AddWithValue("prix", this.Prix);
+                DataAccess.Instance.ExecuteVoidInsert(cmdInsert);
+            }
+        }
+
         public List<DetailCommande> FindAll(GestionVin gestionVin)
         {
             List<DetailCommande> lesDetailsDeCommandes = new List<DetailCommande>();
