@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="SAE201_Nicolas.View.Ajouter"
+    x:Class="SAE201_Nicolas.View.GestionClients"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -15,32 +15,23 @@
         <TextBlock
             HorizontalAlignment="Center"
             FontSize="24"
-            Text="Que souhaitez-vous ajouter?" />
-        <Button
-            x:Name="AjouterVin"
-            Width="340"
-            Height="48"
-            Margin="0,24,0,0"
-            Click="BtnAjouterVinClick"
-            Content="Ajouter un vin"
-            FontSize="16"
-            Style="{StaticResource DefaultButton}" />
+            Text="Que souhaitez-vous faire?" />
         <Button
             x:Name="AjouterClient"
             Width="340"
             Height="48"
             Margin="0,24,0,0"
-            Click="BtnAjouterClientClick"
+            Click="btnAjouterClient"
             Content="Ajouter un client"
             FontSize="16"
             Style="{StaticResource DefaultButton}" />
         <Button
-            x:Name="AjouterFournisseur"
+            x:Name="ModifierClient"
             Width="340"
             Height="48"
             Margin="0,24,0,0"
-            Click="BtnAjouterFournisseurClick"
-            Content="Ajouter un fournisseur"
+            Click="btnModifierClient"
+            Content="Modifier un client"
             FontSize="16"
             Style="{StaticResource DefaultButton}" />
     </StackPanel>

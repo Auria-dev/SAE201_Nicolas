@@ -18,28 +18,23 @@ using System.Windows.Shapes;
 namespace SAE201_Nicolas.View
 {
     /// <summary>
-    /// Logique d'interaction pour Modifier.xaml
+    /// Logique d'interaction pour GestionClients.xaml
     /// </summary>
-    public partial class Modifier : UserControl
+    public partial class GestionClients : UserControl
     {
-        public Modifier()
+        public GestionClients()
         {
             InitializeComponent();
         }
 
-        private void BtnModifierVinClick(object sender, RoutedEventArgs e)
-        {
-            //ViewManager.Instance.RequestMainContentChange(null, nameof(ModifierVinUC));
-        }
-
-        private void BtnModifierClientClick(object sender, RoutedEventArgs e)
+        private void btnModifierClient(object sender, RoutedEventArgs e)
         {
             ViewManager.Instance.RequestMainContentChange(nameof(ModifierClientUC));
         }
 
-        private void BtnModifierFournisseurClick(object sender, RoutedEventArgs e)
+        private void btnAjouterClient(object sender, RoutedEventArgs e)
         {
-            //ViewManager.Instance.RequestMainContentChange(null, nameof(ModifierFournisseurUC));
+            ViewManager.Instance.RequestMainContentChange(nameof(AjouterClientUC));
         }
     }
 }

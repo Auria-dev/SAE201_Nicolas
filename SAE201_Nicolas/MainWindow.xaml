@@ -117,18 +117,9 @@
 
                     <RadioButton
                         Height="42"
-                        Click="ModifierClick"
+                        Click="GestionClientClick"
                         Command="{Binding ModifierVC}"
-                        Content="Modifier"
-                        FontSize="18"
-                        Foreground="White"
-                        Style="{StaticResource SidebarMenu}" />
-
-                    <RadioButton
-                        Height="42"
-                        Click="AjouterClick"
-                        Command="{Binding AjouterVC}"
-                        Content="Ajouter"
+                        Content="Gestion clients"
                         FontSize="18"
                         Foreground="White"
                         Style="{StaticResource SidebarMenu}" />

@@ -1,0 +1,139 @@
+﻿<Window
+    x:Class="SAE201_Nicolas.Dialog.ModifierCommandeWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SAE201_Nicolas.Dialog"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ModifierCommandeWindow"
+    Width="410"
+    Height="450"
+    AllowsTransparency="True"
+    Background="Transparent"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Border
+        Width="360"
+        Height="400"
+        Background="#fff"
+        CornerRadius="30,30,16,16">
+        <Border.Effect>
+            <DropShadowEffect
+                BlurRadius="12"
+                Opacity="0.3"
+                ShadowDepth="0"
+                Color="Black" />
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Border
+                Height="30"
+                VerticalAlignment="Center"
+                Background="#8f0e2a"
+                CornerRadius="16,16,0,0"
+                MouseDown="TitleBar_MouseDown">
+
+                <Grid>
+                    <TextBlock
+                        Margin="20,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="16"
+                        Foreground="#efefef"
+                        Text="Modifier un client" />
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <Ellipse
+                            Width="16"
+                            Height="16"
+                            Margin="0,0,10,0"
+                            Cursor="Hand"
+                            Fill="#f2be4e"
+                            MouseLeftButtonDown="MinimizeEllipse_Click" />
+                        <Ellipse
+                            Width="16"
+                            Height="16"
+                            Margin="0,0,10,0"
+                            Cursor="Hand"
+                            Fill="#ea695d"
+                            MouseLeftButtonDown="CloseEllipse_Click" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <StackPanel
+                Grid.Row="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="#fff"
+                Orientation="Vertical">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontSize="22"
+                    Text="Modifier une commande" />
+                <!--  selectionner un vin plutôt?  -->
+                <TextBlock
+                    Margin="0,14,0,0"
+                    FontSize="16"
+                    Text="Fournisseur" />
+                <ComboBox
+                    x:Name="cbFournisseur"
+                    Width="280"
+                    Height="48"
+                    Style="{StaticResource ComboBoxStyle}">
+                    <ComboBoxItem IsSelected="True">Château Margaux</ComboBoxItem>
+                    <ComboBoxItem>Domaine de la Romanée-Conti</ComboBoxItem>
+                    <ComboBoxItem>Moët et Chandon</ComboBoxItem>
+                    <ComboBoxItem>Hugel et Fils</ComboBoxItem>
+                    <ComboBoxItem>Georges Duboeuf</ComboBoxItem>
+                    <ComboBoxItem>Guigal</ComboBoxItem>
+                    <ComboBoxItem>Château Cheval Blanc</ComboBoxItem>
+                    <ComboBoxItem>Château Lafite Rothschild</ComboBoxItem>
+                    <ComboBoxItem>Château Mouton Rothschild</ComboBoxItem>
+                    <ComboBoxItem>Château Haut-Brion</ComboBoxItem>
+                    <ComboBoxItem>Château d'Yquem</ComboBoxItem>
+                    <ComboBoxItem>Château Petrus</ComboBoxItem>
+                    <ComboBoxItem>Château Latour</ComboBoxItem>
+                    <ComboBoxItem>Château Lynch-Bages</ComboBoxItem>
+                    <ComboBoxItem>Château Pichon Longueville</ComboBoxItem>
+                </ComboBox>
+
+                <TextBlock
+                    Margin="0,14,0,0"
+                    FontSize="16"
+                    Text="Quantité" />
+                <TextBox
+                    x:Name="txtBoxQteVin"
+                    Width="280"
+                    Height="42"
+                    Style="{StaticResource TextBox}"
+                    TextChanged="updatePrix" />
+
+                <TextBlock
+                    Margin="0,14,0,0"
+                    FontSize="16"
+                    Text="Prix (€)" />
+                <TextBox
+                    x:Name="txtBoxPrix"
+                    Width="280"
+                    Height="42"
+                    IsEnabled="False"
+                    Style="{StaticResource TextBox}" />
+
+                <Button
+                    Width="280"
+                    Height="42"
+                    Margin="0,24,0,0"
+                    Click="confirmerModifClick"
+                    Content="Confirmer"
+                    FontSize="16"
+                    Style="{StaticResource DefaultButton}" />
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

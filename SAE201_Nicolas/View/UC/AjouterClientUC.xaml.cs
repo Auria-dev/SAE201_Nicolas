@@ -50,7 +50,7 @@ namespace SAE201_Nicolas.View.UC
             MainWindow.LaGestionDeVins.LesClients.Add(unClient);
 
             MessageBox.Show($"Création du client {unClient.PrenomClient} {unClient.NomClient} réussite.", "Création du client.", MessageBoxButton.OK, MessageBoxImage.Information);
-            ViewManager.Instance.RequestMainContentChange(nameof(Ajouter));
+            //ViewManager.Instance.RequestMainContentChange(nameof(Ajouter));
             TxtboxNomClient.Text = "";
             TxtboxPrenomClient.Text = "";
             TxtboxMailClient.Text = "";

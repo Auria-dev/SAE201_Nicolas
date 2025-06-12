@@ -1,4 +1,5 @@
-﻿using SAE201_Nicolas.Model;
+﻿using SAE201_Nicolas.Dialog;
+using SAE201_Nicolas.Model;
 using SAE201_Nicolas.View.UC;
 using System;
 using System.Collections.Generic;
@@ -129,15 +130,9 @@ namespace SAE201_Nicolas.View
             }
 
             DetailCommande dtcmd = dtcmdl[0];
-            Window window = new Window();
-            ModifierCommandeUC modifierCommandeUC = new ModifierCommandeUC(ref dtcmd);
+            ModifierCommandeWindow wModifierCommande = new ModifierCommandeWindow(ref dtcmd);
+            bool? res = wModifierCommande.ShowDialog();
             
-            window.Content = modifierCommandeUC;
-            window.Width = 480;
-            window.Height = 600;
-            window.Title = "Modifier Commande";
-            window.Show();
-
             if (dgCommandes != null)
                 CollectionViewSource.GetDefaultView(dgCommandes.ItemsSource).Refresh();
         }
