@@ -26,12 +26,18 @@ namespace SAE201_Nicolas.View.UC
         public AjouterVinUC()
         {
             InitializeComponent();
+            cbFournisseur.SelectedIndex = 1;
+            cbTypeVin.SelectedIndex = 1;
+            ComboxBoxAppellation.SelectedIndex = 1;
         }
 
         public AjouterVinUC(Vin unVin)
         {
             InitializeComponent();
-            this.DataContext = unVin;
+            this.DataContext = unVin; 
+            cbFournisseur.SelectedIndex = 1;
+            cbTypeVin.SelectedIndex = 1;
+            ComboxBoxAppellation.SelectedIndex = 1;
         }
 
         private void ClickedReturn(object sender, MouseButtonEventArgs e)
@@ -41,26 +47,37 @@ namespace SAE201_Nicolas.View.UC
 
         private void BtnAjouterVinValider(object sender, RoutedEventArgs e)
         {
+            int a;
+            double p;
             Vin unVin = new Vin();
             unVin.NumFournisseur = cbFournisseur.SelectedIndex;
             unVin.NumTypeVin = cbTypeVin.SelectedIndex;
             unVin.NumAppelation = ComboxBoxAppellation.SelectedIndex;
             unVin.NomVin = TxtboxNomVin.Text;
-            unVin.PrixVin = double.Parse(TxtboxPrixVin.Text);
+            if (!double.TryParse(TxtboxPrixVin.Text, out p))
+            {
+                MessageBox.Show("Prix invalide. Impossible de créer le vin", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            unVin.PrixVin = p;
             unVin.Descriptif = "";
-            unVin.Annee = int.Parse(TxtboxAnnee.Text);
-            
+            if (!int.TryParse(TxtboxAnnee.Text, out a)) {
+                MessageBox.Show("Année invalide. Impossible de créer le vin", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            unVin.Annee = a;
             unVin.NumVin = unVin.AjouterVin();
 
-            //Console.WriteLine("ComboxBoxAppellation = " + ComboxBoxAppellation.SelectedIndex);
-            //Console.WriteLine("cbFournisseur = " + cbFournisseur.SelectedIndex);
-            //Console.WriteLine("cbTypeVin = " + cbTypeVin.SelectedIndex);
-
-            Console.WriteLine("Num avant: " + MainWindow.LaGestionDeVins.LesVins.Count);
             MainWindow.LaGestionDeVins.LesVins.Add(unVin);
-            Console.WriteLine("Num apres: " + MainWindow.LaGestionDeVins.LesVins.Count);
 
             MessageBox.Show("Vin enregistré.", $"Insertion du nouveau vin réussite.", MessageBoxButton.OK, MessageBoxImage.Information);
+            ViewManager.Instance.RequestMainContentChange(nameof(Ajouter));
+            cbFournisseur.SelectedIndex = 1;
+            cbTypeVin.SelectedIndex = 1;
+            ComboxBoxAppellation.SelectedIndex = 1;
+            TxtboxAnnee.Text = "";
+            TxtboxNomVin.Text = "";
+            TxtboxPrixVin.Text = "";
         }
     }
 }
