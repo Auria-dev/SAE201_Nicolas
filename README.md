@@ -17,13 +17,6 @@ Context menu on all datagrids that lets you edit/delete them.
 System de comptes (employer)
 	Lors du login on crée un Employer correctement
 
-Partie "Gestion demandes" 
-	data grid avec tt les demandes
-	1) Le manager peut selectionner des demandes
-	2) Il peut selectionner plusieurs demandes pour créer une commande (si même vin ou même fournisseur)
-	3) Il confirme OU supprime la commande
-	4) si il confirme l'état de la demmande pass en 
-
 Partie "Gestion de commandes"
 	1) Il peut modifier les commandes, à voir comment il fait
 
@@ -41,4 +34,10 @@ Partie "Historique des demandes"
 	data grid avec tt les demandes
 	(Col: NomEmployer | NumDemande | NomVin | Qté | PrixTotal | DateDemande | EtatDemande | Client)
 
+Partie "Gestion demandes" 
+	data grid avec tt les demandes
+	1) Le manager peut selectionner des demandes
+	2) Il peut selectionner plusieurs demandes pour créer une commande (si même vin ou même fournisseur)
+	3) Il confirme OU supprime la commande
+	4) si il confirme l'état de la demmande pass en 
 ```
