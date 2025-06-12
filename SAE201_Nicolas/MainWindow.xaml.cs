@@ -88,9 +88,8 @@ namespace SAE201_Nicolas
                 );
             if (deconnexion == MessageBoxResult.Yes)
             {
+                this.Owner.Show();
                 this.Hide();
-                ConnectionWindow connectionWindow = new ConnectionWindow();
-                connectionWindow.Show();
             }
         }
 

@@ -215,7 +215,7 @@
                     Binding="{Binding NumCommande}"
                     Header="N°" />
                 <DataGridTextColumn
-                    Width="*"
+                    Width="3*"
                     Binding="{Binding NomVin}"
                     Header="Vin" />
                 <DataGridTextColumn
@@ -223,11 +223,11 @@
                     Binding="{Binding AnneeVin}"
                     Header="Année" />
                 <DataGridTextColumn
-                    Width="*"
+                    Width="1.2*"
                     Binding="{Binding TypeVin}"
                     Header="Type" />
                 <DataGridTextColumn
-                    Width="*"
+                    Width="2*"
                     Binding="{Binding FournisseurVin}"
                     Header="Fournisseur" />
                 <DataGridTextColumn
@@ -238,10 +238,6 @@
                     Width="*"
                     Binding="{Binding Prix}"
                     Header="Prix Total" />
-                <DataGridTextColumn
-                    Width="*"
-                    Binding="{Binding EtatCommande}"
-                    Header="État" />
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>
