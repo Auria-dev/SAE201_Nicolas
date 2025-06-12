@@ -179,20 +179,24 @@
 
         <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
             <Button
+                x:Name="butSupDemande"
                 Width="120"
                 Height="42"
-                Click="supprimerDemandes"
+                Click="supprimerDemande"
                 Content="Supprimer"
                 FontSize="14"
                 IsDefault="True"
+                Margin="0,0,10,0"
                 Style="{StaticResource DefaultButton}" />
             <Button
+                x:Name="butCommanderDemande"
                 Width="120"
                 Height="42"
                 Click="commanderDemande"
                 Content="Commander"
                 FontSize="14"
                 IsDefault="True"
+                Margin="10,0,0,0"
                 Style="{StaticResource DefaultButton}" />
         </StackPanel>
 

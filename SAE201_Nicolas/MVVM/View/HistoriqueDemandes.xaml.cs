@@ -126,9 +126,34 @@ namespace SAE201_Nicolas.MVVM.View
             if (isValid) Console.WriteLine("Twin!! (towers)");
         }
 
-        private void supprimerDemandes(object sender, RoutedEventArgs e)
+        private void supprimerDemande(object sender, RoutedEventArgs e)
         {
+            if (dgDemandes.SelectedItem == null)
+            {
+                MessageBox.Show("Veuillez sélectionner une demande", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
 
+            else
+            {
+                //Demande demandeAsupprimer = (Demande)dgDemandes.SelectedItem;
+                //MessageBoxResult supprimerResult = MessageBox.Show(
+                //    $"Etes vous sur de vouloir supprimmer la demande N°{demandeAsupprimer.NumDemande} ?",
+                //    "Supprimmer",
+                //    MessageBoxButton.YesNoCancel,
+                //    MessageBoxImage.Warning
+                //    );
+                //if (supprimerResult == MessageBoxResult.Yes)
+                //{
+                //    demandeAsupprimer.EtatDemande = EnumEtatCommande.Supprimée;
+                //    //demandeAsupprimer.UpdateSuppressionDemande();
+                //    dgDemandes.Items.Refresh();
+                //}
+
+
+                //Demande demandeSelectionne = (Demande)dgDemandes.SelectedItem;
+                //Demande copie = new Demande(demandeSelectionne.NumDemande, demandeSelectionne.NumVin, demandeSelectionne.NumEmploye, demandeSelectionne.NumCommande, demandeSelectionne.DateDemande, demandeSelectionne.QuantiteDemande, demandeSelectionne.EtatDemande);
+
+            }
         }
     }
 }
