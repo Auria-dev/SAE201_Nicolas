@@ -1,24 +1,21 @@
 # SAE201_Nicolas
 
+# WE NEED TO DO ALL OF THE LOGIN ON THE DATABASE, AS WELL AS USING THAT IN THE APP!!!
 
-TODO:
-- stuff
-- Cleanup all the ChargeData
+TODO (if time):
 - Interface for all of the FindAll, Ajouter all that
-- Login (data base accounts things)
-- Login (C# part)
-```
-PUT IMAGES IN THE WINE DATAGRID!!!!
+- Images in datagrid
 
+```
+TODO:
 Context menu on all datagrids that lets you edit/delete them.
 	editing: new window pops up
 	remove: msgbox to confirm
 
 System de comptes (employer)
+	Partie BDD des comptes et des roles
 	Lors du login on crée un Employer correctement
-
-Partie "Gestion de commandes"
-	1) Il peut modifier les commandes, à voir comment il fait
+	On utilise cette employer pour determiner quelles menu il a access & pour créer des demandes & commandes
 
 
 DONE :
