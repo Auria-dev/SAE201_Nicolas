@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:model="clr-namespace:SAE201_Nicolas.Model"
     Title="Application Nicolas"
-    Width="1000"
-    Height="600"
+    Width="1050"
+    Height="650"
     AllowsTransparency="True"
     Background="Transparent"
     ResizeMode="NoResize"
@@ -20,7 +20,18 @@
         <viewModel:MainViewModel />
     </Window.DataContext>-->
 
-    <Border Background="#fff" CornerRadius="30, 30, 16, 30">
+    <Border
+        Width="1000"
+        Height="600"
+        Background="#fff"
+        CornerRadius="30, 30, 16, 30">
+        <Border.Effect>
+            <DropShadowEffect
+                BlurRadius="12"
+                Opacity="0.15"
+                ShadowDepth="0"
+                Color="Black" />
+        </Border.Effect>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="230" />
