@@ -23,6 +23,7 @@ System de comptes (employer)
 	Lors du login on crée un Employer correctement
 	On utilise cette employer pour determiner quelles menu il a access & pour créer des demandes & commandes
 
+Exporter/publier l'application
 
 DONE :
 Partie "Rechercher/Demander des vin"
