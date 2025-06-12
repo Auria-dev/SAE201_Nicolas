@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <DataGrid
-            x:Name="dgCommandes"
+            x:Name="dgClients"
             Height="320"
             Margin="0,14,0,0"
             HorizontalAlignment="Stretch"
@@ -34,5 +34,24 @@
                     Header="Mail" />
             </DataGrid.Columns>
         </DataGrid>
+        <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button
+                x:Name="butModifClient"
+                Width="120"
+                Height="50"
+                Margin="10,0,10,0"
+                Content="Modifier"
+                FontSize="16"
+                Style="{StaticResource DefaultButton}" HorizontalAlignment="Right" />
+            <Button
+                x:Name="butSupClient"
+                Width="120"
+                Height="50"
+                Margin="10,0,10,0"
+                Content="Supprimer"
+                FontSize="16"
+                Style="{StaticResource DefaultButton}" HorizontalAlignment="Right" Click="butSupClient_Click" />
+        </StackPanel>
+        
     </Grid>
 </UserControl>

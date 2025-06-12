@@ -113,5 +113,14 @@ namespace SAE201_Nicolas.MVVM.Model
             this.NumClient = nb;
             return nb;
         }
+
+        public int SupprimerClient()
+        {
+            using (var cmdUpdate = new NpgsqlCommand("delete from client where numclient =@numclient;"))
+            {
+                cmdUpdate.Parameters.AddWithValue("numclient", this.NumClient);
+                return DataAccess.Instance.ExecuteSet(cmdUpdate);
+            }
+        }
     }
 }

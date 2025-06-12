@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SAE201_Nicolas.MVVM.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,38 @@ namespace SAE201_Nicolas.MVVM.View.UC
         public ModifierClientUC()
         {
             InitializeComponent();
+        }
+
+        private void butSupClient_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgClients.SelectedItem == null)
+            {
+                MessageBox.Show("Veuillez sélectionner un client", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+                
+            else
+            {
+                Client clientnAsupprimer = (Client)dgClients.SelectedItem;
+                MessageBoxResult supprimerResult = MessageBox.Show(
+                    $"Etes vous sur de vouloir supprimmer le client {clientnAsupprimer.PrenomClient} {clientnAsupprimer.NomClient} ?", 
+                    "Supprimmer",
+                    MessageBoxButton.YesNoCancel, 
+                    MessageBoxImage.Warning
+                    );
+                if (supprimerResult == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        clientnAsupprimer.SupprimerClient();
+                        MainWindow.LaGestionDeVins.LesClients.Remove(clientnAsupprimer);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Le client n'a pas pu être supprimé.", "Attention",
+                       MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
         }
     }
 }
