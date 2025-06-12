@@ -108,7 +108,7 @@ namespace SAE201_Nicolas.View
                 if (de.EtatDemande != EnumEtatCommande.EnAttante)
                 {
                     // checking for isvalid cause we dont wanna show 10 errors to the user
-                    if (isValid) MessageBox.Show("Impossible de commander une demande déjà validé ou supprimer.", "Erreur lors de la creation de la commande", MessageBoxButton.OK, MessageBoxImage.Error);
+                    if (isValid) MessageBox.Show("Impossible de commander une demande déjà validée ou supprimée.", "Erreur lors de la creation de la commande", MessageBoxButton.OK, MessageBoxImage.Error);
                     isValid = false;
                     break;
                 }

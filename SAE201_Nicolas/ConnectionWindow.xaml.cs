@@ -13,6 +13,7 @@ namespace SAE201_Nicolas
     /// </summary>
     public partial class ConnectionWindow : Window
     {
+        public MainWindow mainWindow = new MainWindow();
         public ConnectionWindow()
         {
             InitializeComponent();
@@ -53,14 +54,19 @@ namespace SAE201_Nicolas
                             Console.WriteLine("Employe found!");
                         }
                     }
-
-                    MainWindow mainWindow = new MainWindow();
-                    this.Hide();
-                    mainWindow.Show();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Identifiant ou mot de passe incorrect", "Login Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+                if (connection.State == System.Data.ConnectionState.Open)
+                {
+                    this.Hide();
+                    mainWindow.Show();
+                    mainWindow.Owner = this;
+                    tbLogin.Text = "";
+                    pswrdBox.Password = "";
                 }
             }
         }

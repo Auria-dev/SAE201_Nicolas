@@ -146,11 +146,11 @@
                     Binding="{Binding NumDemande}"
                     Header="N° Demande" />
                 <DataGridTextColumn
-                    Width="*"
+                    Width="3*"
                     Binding="{Binding NomVin}"
                     Header="Vin" />
                 <DataGridTextColumn
-                    Width="*"
+                    Width="1.5*"
                     Binding="{Binding NomEmploye}"
                     Header="Employer" />
                 <DataGridTextColumn
@@ -159,7 +159,7 @@
                     Header="N° Commande" />
 
                 <DataGridTextColumn
-                    Width="*"
+                    Width="1.5*"
                     Binding="{Binding DateDemande, StringFormat=dd/MM/yyyy, ConverterCulture=fr-FR}"
                     Header="Date" />
                 <DataGridTextColumn
