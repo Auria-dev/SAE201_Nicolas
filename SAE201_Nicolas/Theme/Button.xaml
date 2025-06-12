@@ -38,14 +38,11 @@
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Cursor" Value="Arrow" />
-            <!--  for mouse cursor  -->
         </Style.Setters>
 
         <Style.Triggers>
-            <!--  hover  -->
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Cursor" Value="Hand" />
-                <!--  TODO: Change the Border's background when hovered  -->
             </Trigger>
         </Style.Triggers>
     </Style>

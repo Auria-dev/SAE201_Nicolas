@@ -1,0 +1,287 @@
+﻿<UserControl
+    x:Class="SAE201_Nicolas.View.RechercherVin"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:core="clr-namespace:SAE201_Nicolas.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SAE201_Nicolas.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:SAE201_Nicolas.Model"
+    d:DesignHeight="650"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <StackPanel VerticalAlignment="Top">
+        <TextBlock
+            HorizontalAlignment="Left"
+            FontSize="26"
+            Foreground="Black"
+            Text=" Demander des vins" />
+
+        <StackPanel
+            Margin="0,8,0,0"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <TextBox
+                x:Name="barDeRechercheVins"
+                Width="605"
+                Height="42"
+                Margin="0,0,0,0"
+                core:PlaceholderService.Placeholder="Rechercher"
+                FontSize="14"
+                Style="{StaticResource TextBox}" />
+            <Button
+                Width="120"
+                Height="42"
+                Margin="12,0,0,0"
+                Click="updateRechercheVin"
+                Content="Rechercher"
+                FontSize="14"
+                IsDefault="True"
+                Style="{StaticResource DefaultButton}" />
+        </StackPanel>
+
+        <StackPanel Margin="0,14,0,0" Orientation="Horizontal">
+            <StackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Vertical">
+                <TextBlock Text="Filre de prix (€)" />
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBox
+                        x:Name="FiltrePrixMin"
+                        Width="75"
+                        Height="40"
+                        Margin="0,0,0,0"
+                        core:PlaceholderService.Placeholder="Min"
+                        FontSize="14"
+                        Style="{StaticResource TextBox}"
+                        TextChanged="updateFiltrePrix" />
+
+                    <TextBox
+                        x:Name="FiltrePrixMax"
+                        Width="75"
+                        Height="40"
+                        Margin="8,0,0,0"
+                        core:PlaceholderService.Placeholder="Max"
+                        FontSize="14"
+                        Style="{StaticResource TextBox}"
+                        TextChanged="updateFiltrePrix" />
+                </StackPanel>
+            </StackPanel>
+
+
+            <StackPanel
+                Margin="24,0,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Vertical">
+                <TextBlock Text="Filre d'appellation" />
+                <StackPanel
+                    Height="42"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <ComboBox
+                        x:Name="ComboxBoxAppellation"
+                        Width="220"
+                        Height="40"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        SelectionChanged="updateFiltreAppellationVin"
+                        Style="{StaticResource ComboBoxStyle}">
+                        <ComboBoxItem IsSelected="True">Tous</ComboBoxItem>
+                        <ComboBoxItem>Bordeaux</ComboBoxItem>
+                        <ComboBoxItem>Bourgogne</ComboBoxItem>
+                        <ComboBoxItem>Champagne</ComboBoxItem>
+                        <ComboBoxItem>Alsace</ComboBoxItem>
+                        <ComboBoxItem>Beaujolais</ComboBoxItem>
+                        <ComboBoxItem>Côtes du Rhône</ComboBoxItem>
+                        <ComboBoxItem>Loire</ComboBoxItem>
+                        <ComboBoxItem>Provence</ComboBoxItem>
+                        <ComboBoxItem>Languedoc</ComboBoxItem>
+                        <ComboBoxItem>Roussillon</ComboBoxItem>
+                        <ComboBoxItem>Savoie</ComboBoxItem>
+                        <ComboBoxItem>Jura</ComboBoxItem>
+                        <ComboBoxItem>Sud-Ouest</ComboBoxItem>
+                        <ComboBoxItem>Corse</ComboBoxItem>
+                        <ComboBoxItem>Bergerac</ComboBoxItem>
+                        <ComboBoxItem>Cahors</ComboBoxItem>
+                        <ComboBoxItem>Gaillac</ComboBoxItem>
+                        <ComboBoxItem>Madiran</ComboBoxItem>
+                        <ComboBoxItem>Jurançon</ComboBoxItem>
+                        <ComboBoxItem>Coteaux du Tricastin</ComboBoxItem>
+                        <ComboBoxItem>Coteaux de l'Aubance</ComboBoxItem>
+                        <ComboBoxItem>Coteaux de Saumur</ComboBoxItem>
+                        <ComboBoxItem>Côtes de Provence</ComboBoxItem>
+                        <ComboBoxItem>Côtes de Bergerac</ComboBoxItem>
+                        <ComboBoxItem>Côtes de Blaye</ComboBoxItem>
+                        <ComboBoxItem>Côtes de Duras</ComboBoxItem>
+                        <ComboBoxItem>Côtes de Gascogne</ComboBoxItem>
+                        <ComboBoxItem>Côtes de Millau</ComboBoxItem>
+                        <ComboBoxItem>Côtes de Saint-Mont</ComboBoxItem>
+                        <ComboBoxItem>Côtes du Frontonnais</ComboBoxItem>
+                        <ComboBoxItem>Côtes du Marmandais</ComboBoxItem>
+                        <ComboBoxItem>Côtes du Roussillon</ComboBoxItem>
+                        <ComboBoxItem>Côtes du Ventoux</ComboBoxItem>
+                        <ComboBoxItem>Fitou</ComboBoxItem>
+                        <ComboBoxItem>Italien</ComboBoxItem>
+                        <ComboBoxItem>Muscat de Frontignan</ComboBoxItem>
+                        <ComboBoxItem>Muscat de Lunel</ComboBoxItem>
+                        <ComboBoxItem>Muscat de Mireval</ComboBoxItem>
+                        <ComboBoxItem>Muscat de Saint-Jean-de-Minervois</ComboBoxItem>
+                        <ComboBoxItem>Pineau des Charentes</ComboBoxItem>
+                        <ComboBoxItem>Rasteau</ComboBoxItem>
+                        <ComboBoxItem>Tavel</ComboBoxItem>
+                        <ComboBoxItem>Vacqueyras</ComboBoxItem>
+                        <ComboBoxItem>Vin de Pays d'Oc</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+
+
+            <StackPanel
+                Margin="24,0,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Vertical">
+                <TextBlock Text="Filre de type" />
+                <StackPanel
+                    Height="42"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+
+                        <CheckBox
+                            x:Name="FiltreBlanc"
+                            VerticalAlignment="Center"
+                            Click="updateFiltreTypeVin"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Blanc
+                        </CheckBox>
+                        <CheckBox
+                            x:Name="FiltreRouge"
+                            Margin="8,0,0,0"
+                            VerticalAlignment="Center"
+                            Click="updateFiltreTypeVin"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Rouge
+                        </CheckBox>
+                        <CheckBox
+                            x:Name="FiltreRose"
+                            Margin="8,0,0,0"
+                            VerticalAlignment="Center"
+                            Click="updateFiltreTypeVin"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Rosé
+                        </CheckBox>
+                        <CheckBox
+                            x:Name="FiltreChampagne"
+                            Margin="8,0,0,0"
+                            VerticalAlignment="Center"
+                            Click="updateFiltreTypeVin"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Champagne
+                        </CheckBox>
+                    </StackPanel>
+
+                    <StackPanel Margin="0,8,0,0" Orientation="Horizontal">
+                        <CheckBox
+                            x:Name="FiltreMousseux"
+                            VerticalAlignment="Center"
+                            Click="updateFiltreTypeVin"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Mousseux
+                        </CheckBox>
+                        <CheckBox
+                            x:Name="FiltreDoux"
+                            Margin="8,0,0,0"
+                            VerticalAlignment="Center"
+                            Click="updateFiltreTypeVin"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Doux
+                        </CheckBox>
+                        <CheckBox
+                            x:Name="FiltreLiquoreux"
+                            Margin="8,0,0,0"
+                            VerticalAlignment="Center"
+                            Click="updateFiltreTypeVin"
+                            IsChecked="True"
+                            Style="{StaticResource CheckboxStyle}">
+                            Liquoreux
+                        </CheckBox>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+        </StackPanel>
+        <DataGrid
+            x:Name="dgVins"
+            Height="315"
+            Margin="0,14,0,0"
+            HorizontalAlignment="Stretch"
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
+            ItemsSource="{Binding LesVins}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="3.5*"
+                    Binding="{Binding NomVin}"
+                    Header="Nom" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding PrixVin}"
+                    Header="Prix (€)" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Annee}"
+                    Header="Année" />
+                <DataGridTextColumn
+                    Width="2*"
+                    Binding="{Binding NomTypeVin}"
+                    Header="Type de vin" />
+                <DataGridTextColumn
+                    Width="2*"
+                    Binding="{Binding NomAppelation}"
+                    Header="Appelation" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel
+            Margin="0,14,0,0"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <TextBox
+                x:Name="TxtboxQuantiteVins"
+                Width="275"
+                Height="40"
+                Margin="8,0,0,0"
+                core:PlaceholderService.Placeholder="Quantié"
+                FontSize="14"
+                Style="{StaticResource TextBox}"
+                TextChanged="updateFiltrePrix" />
+            <Button
+                x:Name="btnDemander"
+                Width="120"
+                Height="42"
+                Margin="12,0,0,0"
+                Click="btnDemanderClick"
+                Content="Demander"
+                FontSize="14"
+                IsDefault="True"
+                Style="{StaticResource DefaultButton}" />
+        </StackPanel>
+
+    </StackPanel>
+</UserControl>
+
+
