@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:SAE201_Nicolas"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:model="clr-namespace:SAE201_Nicolas.MVVM.Model"
+    xmlns:model="clr-namespace:SAE201_Nicolas.Model"
     Title="Application Nicolas"
     Width="1000"
     Height="600"
@@ -139,7 +139,7 @@
                     <Image
                         Margin="0,14,0,0"
                         RenderTransformOrigin="0.5,0.5"
-                        Source="/MVVM/Ressources/logo_nicolas.png"
+                        Source="/Ressources/logo_nicolas.png"
                         Stretch="Fill">
                         <Image.RenderTransform>
                             <TransformGroup>

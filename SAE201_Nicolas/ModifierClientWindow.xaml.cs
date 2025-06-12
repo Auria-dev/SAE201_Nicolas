@@ -1,4 +1,4 @@
-﻿using SAE201_Nicolas.MVVM.Model;
+﻿using SAE201_Nicolas.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

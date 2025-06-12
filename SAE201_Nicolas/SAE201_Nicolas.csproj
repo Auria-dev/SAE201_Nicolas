@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="MVVM\Ressources\logo_nicolas.png" />
+    <None Remove="Ressources\logo_nicolas.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="MVVM\Ressources\logo_nicolas.png">
+    <Resource Include="Ressources\logo_nicolas.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

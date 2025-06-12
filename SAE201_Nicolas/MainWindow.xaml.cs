@@ -1,7 +1,7 @@
 ﻿using SAE201_Nicolas.Core;
-using SAE201_Nicolas.MVVM.Model;
-using SAE201_Nicolas.MVVM.View;
-using SAE201_Nicolas.MVVM.View.UC;
+using SAE201_Nicolas.Model;
+using SAE201_Nicolas.View;
+using SAE201_Nicolas.View.UC;
 using System;
 using System.Text;
 using System.Windows;
@@ -83,7 +83,7 @@ namespace SAE201_Nicolas
                 this, 
                 "Etes-vous sur de vous déconnecter ?", 
                 "Déconexion",
-                MessageBoxButton.YesNoCancel, 
+                MessageBoxButton.YesNo, 
                 MessageBoxImage.Warning
                 );
             if (deconnexion == MessageBoxResult.Yes)

@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:SAE201_Nicolas"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:model="clr-namespace:SAE201_Nicolas.MVVM.Model"
+    xmlns:model="clr-namespace:SAE201_Nicolas.Model"
     Title="Application Nicolas"
     Width="1000"
     Height="600"
@@ -67,7 +67,7 @@
                 Margin="0,0,0,50"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
-                <Image Source="/MVVM/Ressources/logo_nicolas.png" />
+                <Image Source="/Ressources/logo_nicolas.png" />
                 <Label
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
