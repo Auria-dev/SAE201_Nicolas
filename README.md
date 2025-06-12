@@ -8,6 +8,9 @@ TODO (if time):
 
 ```
 TODO:
+fuckass unit tests
+	(i hate it)
+
 Context menu on all datagrids that lets you edit/delete them.
 	editing: new window pops up
 	remove: msgbox to confirm
