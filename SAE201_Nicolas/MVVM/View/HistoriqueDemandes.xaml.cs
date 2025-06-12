@@ -143,7 +143,9 @@ namespace SAE201_Nicolas.MVVM.View
 
                         de.EtatDemande = EnumEtatCommande.Validée;
                         if (dgDemandes != null)
-                            CollectionViewSource.GetDefaultView(dgDemandes.ItemsSource).Refresh();
+                            { CollectionViewSource.GetDefaultView(dgDemandes.ItemsSource).Refresh(); }
+
+                        MessageBox.Show("Votre commande a bien été enregistrée.", "Commande effectuée", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     catch (Exception ex)
                     {
