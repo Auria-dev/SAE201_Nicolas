@@ -16,10 +16,6 @@
     WindowStyle="None"
     mc:Ignorable="d">
 
-    <!--<Window.DataContext>
-        <viewModel:MainViewModel />
-    </Window.DataContext>-->
-
     <Border
         Width="1000"
         Height="600"
@@ -42,7 +38,6 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <!--  Invisible border that spans across the full window, so we can drag it  -->
             <Border
                 Grid.Row="0"
                 Grid.ColumnSpan="2"
@@ -84,7 +79,6 @@
                 CornerRadius="0,0,0,16">
 
                 <StackPanel>
-                    <!--  Define each tab, we set their source (styling) as well as the command they will call when clicked on.  -->
                     <RadioButton
                         Height="42"
                         Margin="0,48,0,0"
