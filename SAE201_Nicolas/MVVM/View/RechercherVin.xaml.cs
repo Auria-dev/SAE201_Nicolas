@@ -107,14 +107,22 @@ namespace SAE201_Nicolas.MVVM.View
             //MessageBox.Show($"Nouvelle demande de {qte} vin ({((Vin)dgVins.SelectedItem).NomVin})", "Demande de vin", MessageBoxButton.OK, MessageBoxImage.Information);
             TxtboxQuantiteVins.Text = "";
 
-            int numDemande = MainWindow.LaGestionDeVins.LesDemandes.OrderBy(w => w.NumDemande).Last().NumDemande + 1;
-            int numCommande = MainWindow.LaGestionDeVins.LesCommandes.OrderBy(w => w.NumCommande).Last().NumCommande+ 1;
-            Demande uneDemande = new Demande(numDemande, ((Vin)dgVins.SelectedItem).NumVin, 1, numCommande, DateTime.Now, qte, EnumEtatCommande.EnAttante);
-            //Demande uneDemande = new Demande();
-            //uneDemande.NumVin = 1;
+            //int numDemande = MainWindow.LaGestionDeVins.LesDemandes.OrderBy(w => w.NumDemande).Last().NumDemande + 1;
+            int numCommande = MainWindow.LaGestionDeVins.LesCommandes.OrderBy(w => w.NumCommande).Last().NumCommande;
+            //Demande uneDemande = new Demande(numDemande, ((Vin)dgVins.SelectedItem).NumVin, 1, numCommande, DateTime.Now, qte, EnumEtatCommande.EnAttante);
+            Demande uneDemande = new Demande();
+            uneDemande.NumVin = ((Vin)dgVins.SelectedItem).NumVin;
+            uneDemande.NumEmploye = 1;
+            uneDemande.NumCommande = numCommande;
+            uneDemande.DateDemande = DateTime.Now;
+            uneDemande.QuantiteDemande = qte;
+            uneDemande.EtatDemande = EnumEtatCommande.EnAttante;
+            uneDemande.NumClient = 1;
 
+            uneDemande.NumDemande = uneDemande.AjouterDemande();
             MainWindow.LaGestionDeVins.LesDemandes.Add(uneDemande);
-            //uneDemande.NumDemande = uneDemande.AjouterDemande();
+
+            MessageBox.Show("Votre demande a été enregistrée", "Demande sauvegardée", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

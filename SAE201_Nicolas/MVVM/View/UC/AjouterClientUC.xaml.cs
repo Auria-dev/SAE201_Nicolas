@@ -43,7 +43,7 @@ namespace SAE201_Nicolas.MVVM.View.UC
 
             MainWindow.LaGestionDeVins.LesClients.Add(unClient);
 
-            MessageBox.Show("Client inséré.", "Insertion réussite");
+            MessageBox.Show("Client inséré.", $"Insertion du client {unClient.PrenomClient} {unClient.NomClient} réussite.", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
