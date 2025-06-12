@@ -30,6 +30,22 @@ namespace SAE201_Nicolas
             this.DataContext = unClient;
         }
 
+        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
+
+        private void MinimizeEllipse_Click(object sender, MouseButtonEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void CloseEllipse_Click(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
+
         private void butAjouterClient_Click(object sender, RoutedEventArgs e)
         {
             bool ok = true;
