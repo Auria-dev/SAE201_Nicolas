@@ -32,17 +32,17 @@ namespace SAE201_Nicolas.MVVM.View
 
         private void BtnAjouterVinClick(object sender, RoutedEventArgs e)
         {
-            ViewManager.Instance.RequestMainContentChange(null, nameof(AjouterVinUC));
+            ViewManager.Instance.RequestMainContentChange(nameof(AjouterVinUC));
         }
 
         private void BtnAjouterClientClick(object sender, RoutedEventArgs e)
         {
-            ViewManager.Instance.RequestMainContentChange(null, nameof(AjouterClientUC));
+            ViewManager.Instance.RequestMainContentChange(nameof(AjouterClientUC));
         }
 
         private void BtnAjouterFournisseurClick(object sender, RoutedEventArgs e)
         {
-            ViewManager.Instance.RequestMainContentChange(null, nameof(AjouterFournisseurUC));
+            ViewManager.Instance.RequestMainContentChange(nameof(AjouterFournisseurUC));
         }
     }
 }

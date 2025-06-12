@@ -107,7 +107,7 @@ namespace SAE201_Nicolas.MVVM.View
 
                 if (de.EtatDemande != EnumEtatCommande.EnAttante)
                 {
-                    // if isvalid cause we dont wanna show 10 errors to the user
+                    // checking for isvalid cause we dont wanna show 10 errors to the user
                     if (isValid) MessageBox.Show("Impossible de commander une demande déjà validé ou supprimer.", "Erreur lors de la creation de la commande", MessageBoxButton.OK, MessageBoxImage.Error);
                     isValid = false;
                     break;
@@ -116,14 +116,42 @@ namespace SAE201_Nicolas.MVVM.View
                 qteTotal += de.QuantiteDemande;
             }
 
-            // if isvalid cause we dont wanna show 10 errors to the user
+            // checking for isvalid cause we dont wanna show 10 errors to the user
             if (qteTotal > 100 && isValid)
             {
                 MessageBox.Show("Une demande ne dois pas contenire plus de 100 vins.", "Erreur lors de la creation de la commande", MessageBoxButton.OK, MessageBoxImage.Error);
                 isValid = false;
             }
 
-            if (isValid) Console.WriteLine("Twin!! (towers)");
+            if (isValid)
+            {
+                foreach (Demande de in demandes)
+                {
+                    // TODO: change the 1 to an actual employe ID when we have a proper connection system 
+                    int numCommande = MainWindow.LaGestionDeVins.LesCommandes.OrderByDescending(w => w.NumCommande).First().NumCommande + 1;
+                    Commande newCommande = new Commande(numCommande, 1, DateTime.Now, "Validée", de.PrixDemande);
+                    DetailCommande newDetail = new DetailCommande(numCommande, de.NumVin, qteTotal, de.PrixDemande, MainWindow.LaGestionDeVins);
+
+                    try
+                    {
+                        de.UpdateDemande();
+                        newCommande.AjouterCommande();
+                        newDetail.AjouterDetailCommande();
+
+                        MainWindow.LaGestionDeVins.LesCommandes.Add(newCommande);
+                        MainWindow.LaGestionDeVins.LesDetailsCommandes.Add(newDetail);
+
+                        de.EtatDemande = EnumEtatCommande.Validée;
+                        if (dgDemandes != null)
+                            CollectionViewSource.GetDefaultView(dgDemandes.ItemsSource).Refresh();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erreur lors de l'insertion de la demande", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
         }
 
         private void supprimerDemande(object sender, RoutedEventArgs e)

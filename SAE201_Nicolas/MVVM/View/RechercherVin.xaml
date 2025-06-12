@@ -98,6 +98,45 @@
                         <ComboBoxItem>Champagne</ComboBoxItem>
                         <ComboBoxItem>Alsace</ComboBoxItem>
                         <ComboBoxItem>Beaujolais</ComboBoxItem>
+                        <ComboBoxItem>Côtes du Rhône</ComboBoxItem>
+                        <ComboBoxItem>Loire</ComboBoxItem>
+                        <ComboBoxItem>Provence</ComboBoxItem>
+                        <ComboBoxItem>Languedoc</ComboBoxItem>
+                        <ComboBoxItem>Roussillon</ComboBoxItem>
+                        <ComboBoxItem>Savoie</ComboBoxItem>
+                        <ComboBoxItem>Jura</ComboBoxItem>
+                        <ComboBoxItem>Sud-Ouest</ComboBoxItem>
+                        <ComboBoxItem>Corse</ComboBoxItem>
+                        <ComboBoxItem>Bergerac</ComboBoxItem>
+                        <ComboBoxItem>Cahors</ComboBoxItem>
+                        <ComboBoxItem>Gaillac</ComboBoxItem>
+                        <ComboBoxItem>Madiran</ComboBoxItem>
+                        <ComboBoxItem>Jurançon</ComboBoxItem>
+                        <ComboBoxItem>Coteaux du Tricastin</ComboBoxItem>
+                        <ComboBoxItem>Coteaux de l'Aubance</ComboBoxItem>
+                        <ComboBoxItem>Coteaux de Saumur</ComboBoxItem>
+                        <ComboBoxItem>Côtes de Provence</ComboBoxItem>
+                        <ComboBoxItem>Côtes de Bergerac</ComboBoxItem>
+                        <ComboBoxItem>Côtes de Blaye</ComboBoxItem>
+                        <ComboBoxItem>Côtes de Duras</ComboBoxItem>
+                        <ComboBoxItem>Côtes de Gascogne</ComboBoxItem>
+                        <ComboBoxItem>Côtes de Millau</ComboBoxItem>
+                        <ComboBoxItem>Côtes de Saint-Mont</ComboBoxItem>
+                        <ComboBoxItem>Côtes du Frontonnais</ComboBoxItem>
+                        <ComboBoxItem>Côtes du Marmandais</ComboBoxItem>
+                        <ComboBoxItem>Côtes du Roussillon</ComboBoxItem>
+                        <ComboBoxItem>Côtes du Ventoux</ComboBoxItem>
+                        <ComboBoxItem>Fitou</ComboBoxItem>
+                        <ComboBoxItem>Italien</ComboBoxItem>
+                        <ComboBoxItem>Muscat de Frontignan</ComboBoxItem>
+                        <ComboBoxItem>Muscat de Lunel</ComboBoxItem>
+                        <ComboBoxItem>Muscat de Mireval</ComboBoxItem>
+                        <ComboBoxItem>Muscat de Saint-Jean-de-Minervois</ComboBoxItem>
+                        <ComboBoxItem>Pineau des Charentes</ComboBoxItem>
+                        <ComboBoxItem>Rasteau</ComboBoxItem>
+                        <ComboBoxItem>Tavel</ComboBoxItem>
+                        <ComboBoxItem>Vacqueyras</ComboBoxItem>
+                        <ComboBoxItem>Vin de Pays d'Oc</ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
             </StackPanel>
@@ -244,3 +283,5 @@
 
     </StackPanel>
 </UserControl>
+
+

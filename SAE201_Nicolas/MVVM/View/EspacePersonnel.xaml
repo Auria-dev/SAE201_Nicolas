@@ -15,42 +15,45 @@
             FontSize="26"
             Foreground="Black"
             Text=" Espace personnel" />
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Vertical">
 
-                <Label
-                    Margin="8,14,0,0"
-                    Content="_Nom"
-                    FontSize="14"
-                    Target="{Binding ElementName=TxtboxNom}" />
-                <TextBox
-                    x:Name="TxtboxNom"
-                    Width="380"
-                    Height="48"
-                    Style="{StaticResource TextBox}" />
+            <Label
+                Margin="8,14,0,0"
+                Content="_Nom"
+                FontSize="14"
+                Target="{Binding ElementName=TxtboxNom}" />
+            <TextBox
+                x:Name="TxtboxNom"
+                Width="380"
+                Height="48"
+                Style="{StaticResource TextBox}" />
 
-                <Label
+            <Label
                 Margin="8,14,0,0"
                 Content="_Prénom"
                 FontSize="14"
                 Target="{Binding ElementName=TxtboxPrenom}" />
-                <TextBox
+            <TextBox
                 x:Name="TxtboxPrenom"
                 Width="380"
                 Height="48"
                 Style="{StaticResource TextBox}" />
 
-                <Label
+            <Label
                 Margin="8,14,0,0"
                 Content="_Mail"
                 FontSize="14"
                 Target="{Binding ElementName=TxtboxMail}" />
-                <TextBox
+            <TextBox
                 x:Name="TxtboxMail"
                 Width="380"
                 Height="48"
                 Style="{StaticResource TextBox}" />
 
-                <Button
+            <Button
                 Width="380"
                 Height="48"
                 Margin="0,34,0,50"

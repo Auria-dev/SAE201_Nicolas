@@ -34,7 +34,7 @@ namespace SAE201_Nicolas.MVVM.View
 
         private void BtnModifierClientClick(object sender, RoutedEventArgs e)
         {
-            ViewManager.Instance.RequestMainContentChange(null, nameof(ModifierClientUC));
+            ViewManager.Instance.RequestMainContentChange(nameof(ModifierClientUC));
         }
 
         private void BtnModifierFournisseurClick(object sender, RoutedEventArgs e)

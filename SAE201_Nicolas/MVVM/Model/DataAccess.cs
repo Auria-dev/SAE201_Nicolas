@@ -92,6 +92,22 @@ namespace SAE201_Nicolas.MVVM.Model
                 throw;
             }
             return nb;
+        }        
+        
+        //   pour requêtes INSERT et renvoie PAS l'ID généré
+        public void ExecuteVoidInsert(NpgsqlCommand cmd)
+        {
+            try
+            {
+                cmd.Connection = GetConnection();
+                cmd.ExecuteScalar();
+
+            }
+            catch (Exception ex)
+            {
+                LogError.Log(ex, "Pb avec une requete insert " + cmd.CommandText);
+                throw;
+            }
         }
 
         //  pour requêtes UPDATE, DELETE

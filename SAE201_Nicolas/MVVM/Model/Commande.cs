@@ -123,7 +123,21 @@ namespace SAE201_Nicolas.MVVM.Model
             else return e.ToString();
         }
 
-        public void AjouterCommande() { }
+        public void AjouterCommande()
+        {
+            using (var cmdInsert = new NpgsqlCommand(
+                "insert into commande (numcommande, numemploye, datecommande, etatcommande, prixtotal) values "+
+               "(@numcommande, @numemploye, @datecommande, @etatcommande, @prixtotal)"))
+            {
+                cmdInsert.Parameters.AddWithValue("numcommande", this.NumCommande);
+                cmdInsert.Parameters.AddWithValue("numemploye", this.NumEmploye);
+                cmdInsert.Parameters.AddWithValue("datecommande", this.DateCommande);
+                cmdInsert.Parameters.AddWithValue("etatcommande", this.EtatCommande);
+                cmdInsert.Parameters.AddWithValue("prixtotal", this.PrixTotal);
+                DataAccess.Instance.ExecuteVoidInsert(cmdInsert);
+            }
+        }
+
         public void ModifierCommande() { }
         public void SupprimerCommande() { }
 
