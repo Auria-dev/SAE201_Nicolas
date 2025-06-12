@@ -203,6 +203,12 @@
             AutoGenerateColumns="False"
             IsReadOnly="True"
             ItemsSource="{Binding LesDetailsCommandes}">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Click="dgCommandesModifier" Header="Modifier" />
+                    <MenuItem Click="dgCommandesSupprimer" Header="Supprimer" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="*"

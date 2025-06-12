@@ -1,4 +1,5 @@
 ﻿using SAE201_Nicolas.MVVM.Model;
+using SAE201_Nicolas.MVVM.View.UC;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,5 +83,63 @@ namespace SAE201_Nicolas.MVVM.View
                 CollectionViewSource.GetDefaultView(dgCommandes.ItemsSource).Refresh();
         }
 
+        private void dgCommandesSupprimer(object sender, RoutedEventArgs e)
+        {
+
+            // delete le detail commande ET la commande
+
+            List<DetailCommande> dtcm = dgCommandes.SelectedItems.Cast<DetailCommande>().ToList();
+
+            MessageBoxResult supprimerResult = MessageBox.Show(
+                    $"Etes vous sur de vouloir supprimmer {(dtcm.Count > 1 ? "ces" : "cette")} commande{(dtcm.Count > 1 ? "s" : "")} ?",
+                    "Supprimmer",
+                    MessageBoxButton.YesNoCancel,
+                    MessageBoxImage.Warning
+            );
+
+            if (supprimerResult == MessageBoxResult.Yes)
+            {
+                foreach (DetailCommande commande in dtcm)
+                {
+                    try
+                    {
+                        commande.Delete();
+                        commande.Commande.Delete();
+
+                        MainWindow.LaGestionDeVins.LesDetailsCommandes.Remove(commande);
+                        MainWindow.LaGestionDeVins.LesCommandes.Remove(commande.Commande);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erreur lors de la suppr de la commande", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void dgCommandesModifier(object sender, RoutedEventArgs e)
+        {
+            // dtcmdl = detail commande list
+            List<DetailCommande> dtcmdl = dgCommandes.SelectedItems.Cast<DetailCommande>().ToList();
+            if (dtcmdl.Count > 1)
+            {
+                MessageBox.Show("cant edit multiple at once");
+                return;
+            }
+
+            DetailCommande dtcmd = dtcmdl[0];
+            Window window = new Window();
+            ModifierCommandeUC modifierCommandeUC = new ModifierCommandeUC(ref dtcmd);
+            
+            window.Content = modifierCommandeUC;
+            window.Width = 480;
+            window.Height = 600;
+            window.Title = "Modifier Commande";
+            window.Show();
+
+            if (dgCommandes != null)
+                CollectionViewSource.GetDefaultView(dgCommandes.ItemsSource).Refresh();
+        }
     }
 }

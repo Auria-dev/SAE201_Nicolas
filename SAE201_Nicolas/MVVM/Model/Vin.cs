@@ -1,6 +1,7 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace SAE201_Nicolas.MVVM.Model
         Beaujolais
     }
 
-    public class Vin
+    public class Vin : INotifyPropertyChanged
     {
         private int numVin;
         private string nomVin;
@@ -39,6 +40,8 @@ namespace SAE201_Nicolas.MVVM.Model
         private int numTypeVin;
         private int numAppelation;
         private int numFournisseur;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public Vin()
         {
@@ -74,6 +77,7 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.numVin = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumVin)));
             }
         }
 
@@ -87,6 +91,7 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.nomVin = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NomVin)));
             }
         }
 
@@ -100,6 +105,7 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.prixVin = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PrixVin)));
             }
         }
 
@@ -113,6 +119,7 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.descriptif = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Descriptif)));
             }
         }
 
@@ -126,6 +133,7 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.annee = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Annee)));
             }
         }
 
@@ -203,32 +211,27 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.numTypeVin = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumTypeVin)));
             }
         }
 
         public int NumAppelation
         {
-            get
-            {
-                return this.numAppelation;
-            }
+            get { return this.numAppelation; }
 
-            set
-            {
+            set {
                 this.numAppelation = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumAppelation)));
             }
         }
 
         public int NumFournisseur
         {
-            get
-            {
-                return this.numFournisseur;
-            }
+            get { return this.numFournisseur; }
 
-            set
-            {
+            set {
                 this.numFournisseur = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumFournisseur)));
             }
         }
 

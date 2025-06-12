@@ -1,6 +1,7 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,12 @@ using System.Threading.Tasks;
 
 namespace SAE201_Nicolas.MVVM.Model
 {
-    public class Fournisseur
+    public class Fournisseur : INotifyPropertyChanged
     {
         private int numFournisseur;
         private string nomFournisseur;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public Fournisseur() { }
 
@@ -31,6 +34,7 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.numFournisseur = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumFournisseur)));
             }
         }
 
@@ -44,6 +48,7 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.nomFournisseur = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NomFournisseur)));
             }
         }
 

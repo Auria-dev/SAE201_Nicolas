@@ -1,6 +1,7 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -15,13 +16,15 @@ namespace SAE201_Nicolas.MVVM.Model
         Supprimée
     }
 
-    public class Commande
+    public class Commande : INotifyPropertyChanged
     {
         private int numCommande;
         private int numEmploye;
         private DateTime dateCommande;
         private string etatCommande;
         private double prixTotal;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public Commande()
         {
@@ -46,6 +49,7 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.numCommande = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumCommande)));
             }
         }
 
@@ -59,6 +63,7 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.numEmploye = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumEmploye)));
             }
         }
 
@@ -72,6 +77,7 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.dateCommande = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DateCommande)));
             }
         }
 
@@ -85,6 +91,7 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.etatCommande = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EtatCommande)));
             }
         }
 
@@ -98,6 +105,7 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.prixTotal = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PrixTotal)));
             }
         }
 
@@ -138,8 +146,16 @@ namespace SAE201_Nicolas.MVVM.Model
             }
         }
 
+        public int Delete()
+        {
+            using (var cmdUpdate = new NpgsqlCommand("delete from commande where numcommande=@numcommande;"))
+            {
+                cmdUpdate.Parameters.AddWithValue("numcommande", this.NumCommande);
+                return DataAccess.Instance.ExecuteSet(cmdUpdate);
+            }
+        }
+
         public void ModifierCommande() { }
-        public void SupprimerCommande() { }
 
         public List<Commande> FindAll()
         {

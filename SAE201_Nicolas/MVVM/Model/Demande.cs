@@ -1,6 +1,7 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ using System.Web;
 
 namespace SAE201_Nicolas.MVVM.Model
 {
-    public class Demande
+    public class Demande : INotifyPropertyChanged
     {
         private int numDemande;
         private int numVin;
@@ -19,7 +20,8 @@ namespace SAE201_Nicolas.MVVM.Model
         private DateTime dateDemande;
         private int quantiteDemande;
         private EnumEtatCommande etatDemande;
-        
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public Demande() { }
 
@@ -49,43 +51,64 @@ namespace SAE201_Nicolas.MVVM.Model
         public int NumDemande
         {
             get { return this.numDemande; }
-            set { this.numDemande = value; }
+            set { 
+                this.numDemande = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumDemande)));
+            }
         }
 
         public int NumVin
         {
             get { return this.numVin; }
-            set { this.numVin = value; }
+            set { 
+                this.numVin = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumVin)));
+            }
         }
 
         public int NumEmploye
         {
             get { return this.numEmploye; }
-            set { this.numEmploye = value; }
+            set { 
+                this.numEmploye = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumEmploye)));
+            }
         }
 
         public int NumCommande
         {
             get { return this.numCommande; }
-            set { this.numCommande = value; }
+            set { 
+                this.numCommande = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumCommande)));
+            }
         }
 
         public DateTime DateDemande
         {
             get { return this.dateDemande; } 
-            set { this.dateDemande = value; }
+            set { 
+                this.dateDemande = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DateDemande)));
+            }
         }
 
         public int QuantiteDemande
         {
             get { return this.quantiteDemande; }
-            set { this.quantiteDemande = value; }
+            set { 
+                this.quantiteDemande = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(QuantiteDemande)));
+            }
         }
 
         public EnumEtatCommande EtatDemande
         {
             get { return this.etatDemande; }
-            set { this.etatDemande = value; }
+            set { 
+                this.etatDemande = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EtatDemande)));
+            }
         }
 
         public string EtatDemandeString
