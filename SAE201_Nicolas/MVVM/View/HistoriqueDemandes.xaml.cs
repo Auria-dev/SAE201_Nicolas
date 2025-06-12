@@ -163,19 +163,19 @@ namespace SAE201_Nicolas.MVVM.View
 
             else
             {
-                //Demande demandeAsupprimer = (Demande)dgDemandes.SelectedItem;
-                //MessageBoxResult supprimerResult = MessageBox.Show(
-                //    $"Etes vous sur de vouloir supprimmer la demande N°{demandeAsupprimer.NumDemande} ?",
-                //    "Supprimmer",
-                //    MessageBoxButton.YesNoCancel,
-                //    MessageBoxImage.Warning
-                //    );
-                //if (supprimerResult == MessageBoxResult.Yes)
-                //{
-                //    demandeAsupprimer.EtatDemande = EnumEtatCommande.Supprimée;
-                //    //demandeAsupprimer.UpdateSuppressionDemande();
-                //    dgDemandes.Items.Refresh();
-                //}
+                Demande demandeAsupprimer = (Demande)dgDemandes.SelectedItem;
+                MessageBoxResult supprimerResult = MessageBox.Show(
+                    $"Etes vous sur de vouloir supprimmer la demande N°{demandeAsupprimer.NumDemande} ?",
+                    "Supprimmer",
+                    MessageBoxButton.YesNoCancel,
+                    MessageBoxImage.Warning
+                    );
+                if (supprimerResult == MessageBoxResult.Yes)
+                {
+                    demandeAsupprimer.EtatDemande = EnumEtatCommande.Supprimée;
+                    //demandeAsupprimer.UpdateSuppressionDemande();
+                    dgDemandes.Items.Refresh();
+                }
 
 
                 //Demande demandeSelectionne = (Demande)dgDemandes.SelectedItem;
