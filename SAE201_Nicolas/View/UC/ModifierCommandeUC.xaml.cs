@@ -21,56 +21,11 @@ namespace SAE201_Nicolas.View.UC
     /// </summary>
     public partial class ModifierCommandeUC : UserControl
     {
-        private DetailCommande dtcmd;
 
         public ModifierCommandeUC()
         {
             InitializeComponent();
         }
 
-        public ModifierCommandeUC(ref DetailCommande dtcmd)
-        {
-            InitializeComponent();
-            this.dtcmd = dtcmd;
-
-            foreach (ComboBoxItem item in cbFournisseur.Items) {
-                if ((string)item.Content == this.dtcmd.Fournisseur.NomFournisseur) {
-                    cbFournisseur.SelectedItem = item;
-                    break;
-                }
-            }
-
-            txtBoxQteVin.Text = this.dtcmd.Quantite.ToString();
-            txtBoxPrix.Text = (this.dtcmd.Vin.PrixVin * dtcmd.Quantite).ToString();
-        }
-
-        private void updatePrix(object sender, TextChangedEventArgs e)
-        {
-            int nQte;
-            
-            if (int.TryParse(this.txtBoxQteVin.Text, out nQte))
-            {
-                dtcmd.Quantite = nQte;
-                txtBoxPrix.Text = (this.dtcmd.Vin.PrixVin * this.dtcmd.Quantite).ToString();
-            }
-        }
-
-        private void confirmerModifClick(object sender, RoutedEventArgs e)
-        {
-            if (dtcmd == null) return;
-
-            // nouvelle quantité
-            int nQte;
-            if (int.TryParse(this.txtBoxQteVin.Text, out nQte))
-            {
-                dtcmd.Quantite = nQte;
-                txtBoxPrix.Text = (this.dtcmd.Vin.PrixVin * this.dtcmd.Quantite).ToString();
-            }
-
-            // nouveau fournisseur
-            dtcmd.Fournisseur.NomFournisseur = cbFournisseur.Text;
-
-            Window.GetWindow(this).Close();
-        }
     }
 }

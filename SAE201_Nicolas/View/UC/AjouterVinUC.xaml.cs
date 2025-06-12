@@ -71,7 +71,7 @@ namespace SAE201_Nicolas.View.UC
             MainWindow.LaGestionDeVins.LesVins.Add(unVin);
 
             MessageBox.Show("Vin enregistré.", $"Insertion du nouveau vin réussite.", MessageBoxButton.OK, MessageBoxImage.Information);
-            ViewManager.Instance.RequestMainContentChange(nameof(Ajouter));
+            //ViewManager.Instance.RequestMainContentChange(nameof(Ajouter));
             cbFournisseur.SelectedIndex = 1;
             cbTypeVin.SelectedIndex = 1;
             ComboxBoxAppellation.SelectedIndex = 1;

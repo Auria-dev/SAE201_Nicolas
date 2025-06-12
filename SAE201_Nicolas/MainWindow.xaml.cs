@@ -1,4 +1,4 @@
-﻿using SAE201_Nicolas.Core;
+using SAE201_Nicolas.Core;
 using SAE201_Nicolas.Model;
 using SAE201_Nicolas.View;
 using SAE201_Nicolas.View.UC;
@@ -34,15 +34,13 @@ namespace SAE201_Nicolas
             ViewManager.Instance.RegisterView<HistoriqueCommandes>(nameof(HistoriqueCommandes));
             ViewManager.Instance.RegisterView<GestionCommandes>(nameof(GestionCommandes));
             ViewManager.Instance.RegisterView<EspacePersonnel>(nameof(EspacePersonnel));
-            ViewManager.Instance.RegisterView<Modifier>(nameof(Modifier));
-            ViewManager.Instance.RegisterView<ModifierVinUC>(nameof(ModifierVinUC));
-            ViewManager.Instance.RegisterView<ModifierClientUC>(nameof(ModifierClientUC));
-            //ViewManager.Instance.RegisterView<ModifierFournisseurUC>(nameof(ModifierFournisseurUC));
-
-            ViewManager.Instance.RegisterView<Ajouter>(nameof(Ajouter));
+            ViewManager.Instance.RegisterView<GestionClients>(nameof(GestionClients));
+            
             ViewManager.Instance.RegisterView<AjouterVinUC>(nameof(AjouterVinUC));
+            //ViewManager.Instance.RegisterView<ModifierVinUC>(nameof(ModifierVinUC));
+
             ViewManager.Instance.RegisterView<AjouterClientUC>(nameof(AjouterClientUC));
-            ViewManager.Instance.RegisterView<AjouterFournisseurUC>(nameof(AjouterFournisseurUC));
+            ViewManager.Instance.RegisterView<ModifierClientUC>(nameof(ModifierClientUC));
 
             ViewManager.Instance.RequestMainContentChange(nameof(RechercherVin));
         }
@@ -100,14 +98,10 @@ namespace SAE201_Nicolas
             MainContentControl.Content = view;
         }
 
+
         private void RechercherVinClick(object sender, RoutedEventArgs e)
         {
             ViewManager.Instance.RequestMainContentChange(nameof(RechercherVin));
-        }
-
-        private void ModifierClick(object sender, RoutedEventArgs e)
-        {
-            ViewManager.Instance.RequestMainContentChange(nameof(Modifier));
         }
 
         private void HistoriqueCommandesClick(object sender, RoutedEventArgs e)
@@ -125,9 +119,9 @@ namespace SAE201_Nicolas
             ViewManager.Instance.RequestMainContentChange(nameof(EspacePersonnel));
         }
 
-        private void AjouterClick(object sender, RoutedEventArgs e)
+        private void GestionClientClick(object sender, RoutedEventArgs e)
         {
-            ViewManager.Instance.RequestMainContentChange(nameof(Ajouter));
+            ViewManager.Instance.RequestMainContentChange(nameof(GestionClients));
         }
     }
 }
