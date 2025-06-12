@@ -1,6 +1,7 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -14,13 +15,15 @@ namespace SAE201_Nicolas.MVVM.Model
         Vendeur,
         ResponsableDeMagasin
     }
-    public class Employe
+    public class Employe : INotifyPropertyChanged
     {
         private int numEmploye;
         private string nom;
         private string prenom;
         private string login;
         private string mdp;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public Employe(int numEmploye, string nom, string prenom, string login, string mdp)
         {
@@ -35,31 +38,41 @@ namespace SAE201_Nicolas.MVVM.Model
         public int NumEmploye
         {
             get { return this.numEmploye; }
-            set { this.numEmploye = value; }
+            set { this.numEmploye = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumEmploye)));
+            }
         }
 
         public string Nom
         {
             get { return this.nom; }
-            set { this.nom = value; }
+            set { this.nom = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Nom)));
+            }
         }
 
         public string Prenom
         {
             get { return this.prenom; }
-            set { this.prenom = value; }
+            set { this.prenom = value; 
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Prenom)));
+            }
         }
 
         public string Login
         {
             get { return this.login; }
-            set { this.login = value; }
+            set { this.login = value; 
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Login)));
+            }
         }
 
         public string Mdp
         {
             get { return this.mdp; }
-            set { this.mdp = value; }
+            set { this.mdp = value; 
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mdp)));
+            }
         }
 
         public string NomEmployerCourt

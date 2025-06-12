@@ -167,13 +167,21 @@ namespace SAE201_Nicolas.MVVM.View
 
             if (supprimerResult == MessageBoxResult.Yes)
             {
-                foreach (Demande de in demandes) 
-                {               
-                    de.EtatDemande = EnumEtatCommande.Supprimée;
-                    de.UpdateDemande();
+                foreach (Demande de in demandes)
+                {
+                    try
+                    {
+                        de.EtatDemande = EnumEtatCommande.Supprimée;
+                        de.UpdateDemande();
 
-                    if (dgDemandes != null)
-                        CollectionViewSource.GetDefaultView(dgDemandes.ItemsSource).Refresh();
+                        if (dgDemandes != null)
+                            CollectionViewSource.GetDefaultView(dgDemandes.ItemsSource).Refresh();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erreur lors de la mis a jour de la demande", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                        Console.WriteLine(ex.Message);
+                    }
                 }
 
                 //Demande demandeSelectionne = (Demande)dgDemandes.SelectedItem;

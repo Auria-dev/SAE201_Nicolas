@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ using System.Windows.Controls;
 
 namespace SAE201_Nicolas.MVVM.Model
 {
-    public class DetailCommande
+    public class DetailCommande : INotifyPropertyChanged
     {
         private int numCommande;
         private int numVin;
@@ -20,6 +21,8 @@ namespace SAE201_Nicolas.MVVM.Model
         private Vin vin;
         private Commande commande;
         private Fournisseur fournisseur;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public DetailCommande(int numCommande, int numVin, int quantite, double prix, GestionVin gestionVin) // loading it from the GestionVin
         {
@@ -46,6 +49,7 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.numCommande = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumCommande)));
             }
         }
 
@@ -59,6 +63,7 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.numVin = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumVin)));
             }
         }
 
@@ -72,6 +77,7 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.quantite = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Quantite)));
             }
         }
 
@@ -85,6 +91,7 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.prix = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Prix)));
             }
         }
 
@@ -138,6 +145,7 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.vin = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Vin)));
             }
         }
 
@@ -151,6 +159,7 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.commande = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Commande)));
             }
         }
 
@@ -164,6 +173,7 @@ namespace SAE201_Nicolas.MVVM.Model
             set
             {
                 this.fournisseur = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Fournisseur)));
             }
         }
 
@@ -178,6 +188,16 @@ namespace SAE201_Nicolas.MVVM.Model
                 cmdInsert.Parameters.AddWithValue("quantite", this.Quantite);
                 cmdInsert.Parameters.AddWithValue("prix", this.Prix);
                 DataAccess.Instance.ExecuteVoidInsert(cmdInsert);
+            }
+        }
+
+        public int Delete()
+        {
+            using (var cmdUpdate = new NpgsqlCommand("delete from detailcommande where numcommande=@numcommande and numvin=@numvin;"))
+            {
+                cmdUpdate.Parameters.AddWithValue("numcommande", this.NumCommande);
+                cmdUpdate.Parameters.AddWithValue("numvin", this.NumVin);
+                return DataAccess.Instance.ExecuteSet(cmdUpdate);
             }
         }
 
