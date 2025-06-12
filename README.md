@@ -1,25 +1,29 @@
 # SAE201_Nicolas
 
+# WE NEED TO DO ALL OF THE LOGIN ON THE DATABASE, AS WELL AS USING THAT IN THE APP!!!
 
-TODO:
-- stuff
-- Cleanup all the ChargeData
+TODO (if time):
 - Interface for all of the FindAll, Ajouter all that
-- Login (data base accounts things)
-- Login (C# part)
+- Images in datagrid
+
 ```
-PUT IMAGES IN THE WINE DATAGRID!!!!
+TODO:
+Compte rendu:
+	voirs ConsignesRendusDeveloppement.pdf sur le U
+
+fuckass unit tests
+	(i hate it)
 
 Context menu on all datagrids that lets you edit/delete them.
 	editing: new window pops up
 	remove: msgbox to confirm
 
 System de comptes (employer)
+	Partie BDD des comptes et des roles
 	Lors du login on crée un Employer correctement
+	On utilise cette employer pour determiner quelles menu il a access & pour créer des demandes & commandes
 
-Partie "Gestion de commandes"
-	1) Il peut modifier les commandes, à voir comment il fait
-
+Exporter/publier l'application
 
 DONE :
 Partie "Rechercher/Demander des vin"
