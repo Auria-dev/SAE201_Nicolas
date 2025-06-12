@@ -156,31 +156,25 @@ namespace SAE201_Nicolas.MVVM.View
 
         private void supprimerDemande(object sender, RoutedEventArgs e)
         {
-            if (dgDemandes.SelectedItem == null)
+            List<Demande> demandes = dgDemandes.SelectedItems.Cast<Demande>().ToList();
+            
+            MessageBoxResult supprimerResult = MessageBox.Show(
+                    $"Etes vous sur de vouloir supprimmer ?",
+                    "Supprimmer",
+                    MessageBoxButton.YesNoCancel,
+                    MessageBoxImage.Warning
+            );
+
+            if (supprimerResult == MessageBoxResult.Yes)
             {
-                MessageBox.Show("Veuillez sélectionner une demande", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+                foreach (Demande de in demandes) 
+                {               
+                    de.EtatDemande = EnumEtatCommande.Supprimée;
+                    de.UpdateDemande();
 
-            else
-            {
-                //Demande demandeAsupprimer = (Demande)dgDemandes.SelectedItem;
-                //MessageBoxResult supprimerResult = MessageBox.Show(
-                //    $"Etes vous sur de vouloir supprimmer la demande N°{demandeAsupprimer.NumDemande} ?",
-                //    "Supprimmer",
-                //    MessageBoxButton.YesNoCancel,
-                //    MessageBoxImage.Warning
-                //    );
-                //if (supprimerResult == MessageBoxResult.Yes)
-                //{
-                //    demandeAsupprimer.EtatDemande = EnumEtatCommande.Supprimée;
-                //    //demandeAsupprimer.UpdateSuppressionDemande();
-                //    dgDemandes.Items.Refresh();
-                //}
-
-
-                //Demande demandeSelectionne = (Demande)dgDemandes.SelectedItem;
-                //Demande copie = new Demande(demandeSelectionne.NumDemande, demandeSelectionne.NumVin, demandeSelectionne.NumEmploye, demandeSelectionne.NumCommande, demandeSelectionne.DateDemande, demandeSelectionne.QuantiteDemande, demandeSelectionne.EtatDemande);
-
+                    if (dgDemandes != null)
+                        CollectionViewSource.GetDefaultView(dgDemandes.ItemsSource).Refresh();
+                }
             }
         }
     }
