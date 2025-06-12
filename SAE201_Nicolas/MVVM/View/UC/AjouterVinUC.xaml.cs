@@ -3,6 +3,7 @@ using SAE201_Nicolas.MVVM.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -58,6 +59,8 @@ namespace SAE201_Nicolas.MVVM.View.UC
             Console.WriteLine("Num avant: " + MainWindow.LaGestionDeVins.LesVins.Count);
             MainWindow.LaGestionDeVins.LesVins.Add(unVin);
             Console.WriteLine("Num apres: " + MainWindow.LaGestionDeVins.LesVins.Count);
+
+            MessageBox.Show("Vin enregistré.", $"Insertion du nouveau vin réussite.", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

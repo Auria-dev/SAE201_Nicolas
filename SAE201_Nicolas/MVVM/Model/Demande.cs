@@ -87,7 +87,15 @@ namespace SAE201_Nicolas.MVVM.Model
             get { return this.etatDemande; }
             set { this.etatDemande = value; }
         }
-        
+
+        public string EtatDemandeString
+        {
+            get
+            {
+                return this.EtatDemande.ToString();
+            }
+        }
+
         public string NomEtatDemande
         {
             get { return EtatCommandeToString(EtatDemande); }
@@ -189,7 +197,7 @@ namespace SAE201_Nicolas.MVVM.Model
                 cmdInsert.Parameters.AddWithValue("numclient", this.NumClient);
                 cmdInsert.Parameters.AddWithValue("datedemande", this.DateDemande);
                 cmdInsert.Parameters.AddWithValue("quantitedemande", this.QuantiteDemande);
-                cmdInsert.Parameters.AddWithValue("etatdemande", this.EtatDemande);
+                cmdInsert.Parameters.AddWithValue("etatdemande", this.EtatDemandeString);
                 nb = DataAccess.Instance.ExecuteInsert(cmdInsert);
             }
             this.NumDemande = nb;
