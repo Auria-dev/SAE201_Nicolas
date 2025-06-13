@@ -28,9 +28,10 @@ namespace SAE201_Nicolas.View
             UpdateDataContext();
             //this.DataContext = ConnectionWindow.EmployeActuel;
         }
+
         private void UpdateDataContext()
         {
-            this.DataContext = ConnectionWindow.EmployeActuel;
+            this.DataContext = MainWindow.EmployeActuel;
         }
 
         // Ajoute cette méthode publique
@@ -41,7 +42,7 @@ namespace SAE201_Nicolas.View
 
         private void butConfirmer_Click(object sender, RoutedEventArgs e)
         {
-            Employe vinSelectionne = ConnectionWindow.EmployeActuel;
+            Employe vinSelectionne = MainWindow.EmployeActuel;
             Employe copie = new Employe(vinSelectionne.NumEmploye, vinSelectionne.NumEmploye, vinSelectionne.Nom, vinSelectionne.Prenom, vinSelectionne.Login, vinSelectionne.Mdp);
 
             try

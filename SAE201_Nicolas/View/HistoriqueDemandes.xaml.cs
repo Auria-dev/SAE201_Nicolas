@@ -28,6 +28,24 @@ namespace SAE201_Nicolas.View
         public HistoriqueCommandes()
         {
             InitializeComponent();
+            
+            if (MainWindow.EmployeActuel.RoleEmploye == Role.Vendeur)
+            {
+                Console.WriteLine("this is a test");
+                spBtns.Height = 0;
+                butSupDemande.IsEnabled = false;
+                butCommanderDemande.IsEnabled = false;
+                dgDemandes.Height = 375;
+            } 
+            else
+            {
+                spBtns.Height = 42;
+                butSupDemande.IsEnabled = true;
+                butCommanderDemande.IsEnabled = true;
+                dgDemandes.Height = 320;
+
+            }
+
             listCommandes = new ListCollectionView(MainWindow.LaGestionDeVins.LesDemandes);
             dgDemandes.ItemsSource = listCommandes;
             listCommandes.Filter = FiltrerDemandes;
