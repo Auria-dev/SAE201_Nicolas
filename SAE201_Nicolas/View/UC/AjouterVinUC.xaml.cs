@@ -26,16 +26,15 @@ namespace SAE201_Nicolas.View.UC
         public AjouterVinUC()
         {
             InitializeComponent();
-            this.DataContext = new Vin();
+            cbFournisseur.SelectedIndex = 1;
+            cbTypeVin.SelectedIndex = 1;
+            ComboxBoxAppellation.SelectedIndex = 1;
         }
 
         public AjouterVinUC(Vin unVin)
         {
             InitializeComponent();
             this.DataContext = unVin;
-            TxtboxNomVin.Text = "";
-            TxtboxAnnee.Text = "";
-            TxtboxPrixVin.Text = "";
             cbFournisseur.SelectedIndex = 1;
             cbTypeVin.SelectedIndex = 1;
             ComboxBoxAppellation.SelectedIndex = 1;
@@ -48,41 +47,42 @@ namespace SAE201_Nicolas.View.UC
 
         private void BtnAjouterVinValider(object sender, RoutedEventArgs e)
         {
-
-            bool ok = true;
-            foreach (UIElement uie in spAjouterVin.Children)
-            {
-                if (uie is TextBox)
-                {
-                    TextBox txt = (TextBox)uie;
-                    txt.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                }
-
-                if (Validation.GetHasError(uie)) ok = false;
-            }
-
-            if (!ok)
-            {
-                MessageBox.Show("Les informations renseigner sont invalide. Impossible de créer le vin.", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            } 
-
             int a;
             double p;
+            string n;
+            
+            if (string.IsNullOrEmpty(TxtboxNomVin.Text)) {
+                MessageBox.Show("Nom invalide. Impossible de créer le vin", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            
+            
+            if (!int.TryParse(TxtboxAnnee.Text, out a))
+            {
+                MessageBox.Show("Année invalide. Impossible de créer le vin", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (!double.TryParse(TxtboxPrixVin.Text, out p))
+            {
+                MessageBox.Show("Prix invalide. Impossible de créer le vin", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             Vin unVin = new Vin();
             unVin.NumFournisseur = cbFournisseur.SelectedIndex;
             unVin.NumTypeVin = cbTypeVin.SelectedIndex;
             unVin.NumAppelation = ComboxBoxAppellation.SelectedIndex;
             unVin.NomVin = TxtboxNomVin.Text;
-            unVin.PrixVin = double.Parse(TxtboxPrixVin.Text);
+            unVin.PrixVin = p;
             unVin.Descriptif = "";
-            unVin.Annee = int.Parse(TxtboxAnnee.Text);
+            unVin.Annee = a;
             unVin.NumVin = unVin.AjouterVin();
 
             MainWindow.LaGestionDeVins.LesVins.Add(unVin);
 
             MessageBox.Show("Vin enregistré.", $"Insertion du nouveau vin réussite.", MessageBoxButton.OK, MessageBoxImage.Information);
-            
+            //ViewManager.Instance.RequestMainContentChange(nameof(Ajouter));
             cbFournisseur.SelectedIndex = 1;
             cbTypeVin.SelectedIndex = 1;
             ComboxBoxAppellation.SelectedIndex = 1;

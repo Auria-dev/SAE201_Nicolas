@@ -91,8 +91,8 @@ namespace SAE201_Nicolas.View
             List<DetailCommande> dtcm = dgCommandes.SelectedItems.Cast<DetailCommande>().ToList();
 
             MessageBoxResult supprimerResult = MessageBox.Show(
-                    $"Etes vous sur de vouloir supprimmer {(dtcm.Count > 1 ? "ces" : "cette")} commande{(dtcm.Count > 1 ? "s" : "")} ?",
-                    "Supprimmer",
+                    $"Etes vous sur de vouloir supprimer {(dtcm.Count > 1 ? "ces" : "cette")} commande{(dtcm.Count > 1 ? "s" : "")} ?",
+                    "Supprimer",
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Warning
             );

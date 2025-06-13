@@ -38,8 +38,8 @@ namespace SAE201_Nicolas.View.UC
             {
                 Client clientnAsupprimer = (Client)dgClients.SelectedItem;
                 MessageBoxResult supprimerResult = MessageBox.Show(
-                    $"Etes vous sur de vouloir supprimmer le client {clientnAsupprimer.PrenomClient} {clientnAsupprimer.NomClient} ?", 
-                    "Supprimmer",
+                    $"Etes vous sur de vouloir supprimer le client {clientnAsupprimer.PrenomClient} {clientnAsupprimer.NomClient} ?", 
+                    "Supprimer",
                     MessageBoxButton.YesNoCancel, 
                     MessageBoxImage.Warning
                     );

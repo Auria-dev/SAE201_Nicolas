@@ -16,7 +16,6 @@
             MouseDown="ClickedReturn"
             Text="Annuler" />
         <StackPanel
-            x:Name="spAjouterVin"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Orientation="Vertical">
@@ -34,8 +33,7 @@
                 x:Name="TxtboxNomVin"
                 Width="380"
                 Height="48"
-                Style="{StaticResource TextBox}"
-                Text="{Binding NomVin, ValidatesOnExceptions=True}" />
+                Style="{StaticResource TextBox}" />
 
             <Label
                 Margin="8,8,0,0"
@@ -46,8 +44,7 @@
                 x:Name="TxtboxAnnee"
                 Width="380"
                 Height="48"
-                Style="{StaticResource TextBox}"
-                Text="{Binding Annee, ValidatesOnExceptions=True}" />
+                Style="{StaticResource TextBox}" />
 
             <StackPanel Margin="8,8,0,0" Orientation="Horizontal">
                 <StackPanel Orientation="Vertical">
@@ -60,8 +57,7 @@
                         Width="180"
                         Height="48"
                         Margin="0,0,12,0"
-                        Style="{StaticResource TextBox}"
-                        Text="{Binding PrixVin, ValidatesOnExceptions=True}" />
+                        Style="{StaticResource TextBox}" />
                 </StackPanel>
 
                 <StackPanel Orientation="Vertical">
@@ -183,4 +179,5 @@
                 Style="{StaticResource DefaultButton}" />
         </StackPanel>
     </StackPanel>
+
 </UserControl>
