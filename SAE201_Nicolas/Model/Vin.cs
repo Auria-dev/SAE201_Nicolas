@@ -202,8 +202,6 @@ namespace SAE201_Nicolas.Model
 
             set
             {
-                if (!Enum.IsDefined(typeof(TypeVin), value - 1))
-                    throw new ArgumentException("Le type de vin est invalide.");
                 this.numTypeVin = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumTypeVin)));
             }
@@ -226,7 +224,7 @@ namespace SAE201_Nicolas.Model
 
             set
             {
-                if (value <= 0)
+                if (value < 0)
                     throw new ArgumentException("Le numéro du fournisseur doit être supérieur à zéro.");
                 this.numFournisseur = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumFournisseur)));

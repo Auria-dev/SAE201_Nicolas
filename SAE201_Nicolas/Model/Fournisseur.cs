@@ -33,7 +33,7 @@ namespace SAE201_Nicolas.Model
 
             set
             {
-                if (value <= 0)
+                if (value < 0)
                     throw new ArgumentException("Le numéro du fournisseur doit être supérieur à zéro.");
                 this.numFournisseur = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumFournisseur)));

@@ -183,9 +183,9 @@ namespace SAE201_Nicolas.View
             {
                 Vin VinAsupprimer = (Vin)dgVins.SelectedItem;
                 MessageBoxResult supprimerResult = MessageBox.Show(
-                    $"Etes vous sur de vouloir supprimmer le vin {VinAsupprimer.NomVin} ?",
-                    "Supprimmer",
-                    MessageBoxButton.YesNoCancel,
+                    $"Etes vous sur de vouloir supprimer le vin {VinAsupprimer.NomVin} ?",
+                    "Supprimer",
+                    MessageBoxButton.YesNo,
                     MessageBoxImage.Warning
                     );
                 if (supprimerResult == MessageBoxResult.Yes)

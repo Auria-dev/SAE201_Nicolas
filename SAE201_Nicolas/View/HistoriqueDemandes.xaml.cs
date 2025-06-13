@@ -163,8 +163,8 @@ namespace SAE201_Nicolas.View
             List<Demande> demandes = dgDemandes.SelectedItems.Cast<Demande>().ToList();
                
             MessageBoxResult supprimerResult = MessageBox.Show(
-                    $"Etes vous sur de vouloir supprimmer {(demandes.Count > 1 ? "ces" : "cette")} commande{(demandes.Count > 1 ? "s" : "")} ?",
-                    "Supprimmer",
+                    $"Etes vous sur de vouloir supprimer {(demandes.Count > 1 ? "ces" : "cette")} commande{(demandes.Count > 1 ? "s" : "")} ?",
+                    "Supprimer",
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Warning
             );
