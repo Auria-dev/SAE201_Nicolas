@@ -53,6 +53,7 @@
                 x:Name="TxtboxMail"
                 Width="380"
                 Height="48"
+                IsEnabled="False"
                 IsReadOnly="True"
                 Style="{StaticResource TextBox}"
                 Text="{Binding Login, ValidatesOnExceptions=True}" />

@@ -197,7 +197,7 @@
         </StackPanel>
         <DataGrid
             x:Name="dgCommandes"
-            Height="320"
+            Height="375"
             Margin="0,14,0,0"
             HorizontalAlignment="Stretch"
             AutoGenerateColumns="False"

@@ -44,6 +44,10 @@
                             <Setter TargetName="TxtboxBorder" Property="BorderBrush" Value="Red" />
                             <Setter TargetName="TxtboxBorder" Property="BorderThickness" Value="2" />
                         </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="TxtboxBorder" Property="Background" Value="#EDDCDC" />
+                            <Setter TargetName="TxtboxBorder" Property="BorderBrush" Value="#EDDCDC" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
