@@ -118,7 +118,7 @@ namespace SAE201_Nicolas.View
             int numCommande = MainWindow.LaGestionDeVins.LesCommandes.OrderBy(w => w.NumCommande).Last().NumCommande;
             Demande uneDemande = new Demande();
             uneDemande.NumVin = ((Vin)dgVins.SelectedItem).NumVin;
-            uneDemande.NumEmploye = 1;
+            uneDemande.NumEmploye = MainWindow.EmployeActuel.NumEmploye;
             uneDemande.NumCommande = numCommande;
             uneDemande.DateDemande = DateTime.Now;
             uneDemande.QuantiteDemande = qte;
