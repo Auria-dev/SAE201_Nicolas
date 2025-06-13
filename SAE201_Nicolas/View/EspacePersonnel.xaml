@@ -29,8 +29,8 @@
                 x:Name="TxtboxNom"
                 Width="380"
                 Height="48"
-                Style="{StaticResource TextBox}" 
-                Text="{Binding Nom, ValidatesOnExceptions=True}"/>
+                Style="{StaticResource TextBox}"
+                Text="{Binding Nom, ValidatesOnExceptions=True}" />
 
             <Label
                 Margin="8,14,0,0"
@@ -41,8 +41,8 @@
                 x:Name="TxtboxPrenom"
                 Width="380"
                 Height="48"
-                Text="{Binding Prenom, ValidatesOnExceptions=True}"
-                Style="{StaticResource TextBox}" />
+                Style="{StaticResource TextBox}"
+                Text="{Binding Prenom, ValidatesOnExceptions=True}" />
 
             <Label
                 Margin="8,14,0,0"
@@ -54,13 +54,15 @@
                 Width="380"
                 Height="48"
                 IsReadOnly="True"
-                Text="{Binding Login, ValidatesOnExceptions=True}"
-                Style="{StaticResource TextBox}" />
+                Style="{StaticResource TextBox}"
+                Text="{Binding Login, ValidatesOnExceptions=True}" />
 
             <Button
+                x:Name="butConfirmer"
                 Width="380"
                 Height="48"
                 Margin="0,34,0,50"
+                Click="butConfirmer_Click"
                 Content="Confirmer"
                 FontSize="16"
                 Style="{StaticResource DefaultButton}" />

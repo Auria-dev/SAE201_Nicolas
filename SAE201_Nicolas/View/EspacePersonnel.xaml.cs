@@ -1,4 +1,5 @@
-﻿using SAE201_Nicolas.Model;
+﻿using SAE201_Nicolas.Dialog;
+using SAE201_Nicolas.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,27 @@ namespace SAE201_Nicolas.View
         public void RefreshEmploye()
         {
             UpdateDataContext();
+        }
+
+        private void butConfirmer_Click(object sender, RoutedEventArgs e)
+        {
+            Employe vinSelectionne = ConnectionWindow.EmployeActuel;
+            Employe copie = new Employe(vinSelectionne.NumEmploye, vinSelectionne.NumEmploye, vinSelectionne.Nom, vinSelectionne.Prenom, vinSelectionne.Login, vinSelectionne.Mdp);
+
+            try
+            {
+                copie.UpdateEmploye();
+                vinSelectionne.NumEmploye = copie.NumEmploye;
+                vinSelectionne.Nom = copie.Nom;
+                vinSelectionne.Prenom = copie.Prenom;
+                vinSelectionne.Login = copie.Login;
+                vinSelectionne.Mdp = copie.Mdp;
+                MessageBox.Show("Vos informations personnelles ont été enregistrés.", "Données enregistrées", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Les infos n'ont pas pu être modifié.", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

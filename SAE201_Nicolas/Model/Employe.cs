@@ -133,5 +133,16 @@ namespace SAE201_Nicolas.Model
             }
             return lesEmployer;
         }
+
+        public int UpdateEmploye()
+        {
+            using (var cmdUpdate = new NpgsqlCommand("update employe set nom = @nom,  prenom = @prenom where numemploye =@numemploye;"))
+            {
+                cmdUpdate.Parameters.AddWithValue("nom", this.Nom);
+                cmdUpdate.Parameters.AddWithValue("prenom", this.Prenom);
+                cmdUpdate.Parameters.AddWithValue("numemploye", this.NumEmploye);
+                return DataAccess.Instance.ExecuteSet(cmdUpdate);
+            }
+        }
     }
 }
