@@ -84,7 +84,7 @@
                     Width="380"
                     Height="48"
                     Style="{StaticResource TextBox}"
-                    Text="{Binding NomVin}" />
+                    Text="{Binding NomVin, ValidatesOnExceptions=True}" />
 
                 <Label
                     Margin="8,8,0,0"

@@ -9,12 +9,7 @@ namespace SAE201_Nicolas.Core
 {
     class PlaceholderService
     {
-        public static readonly DependencyProperty PlaceholderProperty =
-            DependencyProperty.RegisterAttached(
-            "Placeholder",
-            typeof(string),
-            typeof(PlaceholderService),
-            new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.AffectsRender));
+        public static readonly DependencyProperty PlaceholderProperty = DependencyProperty.RegisterAttached("Placeholder", typeof(string), typeof(PlaceholderService), new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.AffectsRender));
 
         public static void SetPlaceholder(UIElement element, string value)
         {

@@ -135,7 +135,7 @@ namespace SAE201_Nicolas.Model
             get { return this.prixVin; }
             set
             {
-                if (value < 0)
+                if (value <= 0)
                     throw new ArgumentException("Le prix du vin ne peut pas être négatif.");
                 this.prixVin = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PrixVin)));
