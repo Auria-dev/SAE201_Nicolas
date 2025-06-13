@@ -88,6 +88,7 @@ namespace SAE201_Nicolas
             {
                 this.Owner.Show();
                 this.Hide();
+                rbMenuDemanderVins.IsChecked = true;
                 ViewManager.Instance.RequestMainContentChange(nameof(RechercherVin));
             }
         }

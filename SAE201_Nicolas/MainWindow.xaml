@@ -80,6 +80,7 @@
 
                 <StackPanel>
                     <RadioButton
+                        x:Name="rbMenuDemanderVins"
                         Height="42"
                         Margin="0,48,0,0"
                         Click="RechercherVinClick"
@@ -90,6 +91,7 @@
                         IsChecked="True"
                         Style="{StaticResource SidebarMenu}" />
                     <RadioButton
+                        x:Name="rbMenuHistoriqueDemande"
                         Height="42"
                         Click="HistoriqueCommandesClick"
                         Command="{Binding HistoriqueCommandesVC}"
@@ -98,6 +100,7 @@
                         Foreground="White"
                         Style="{StaticResource SidebarMenu}" />
                     <RadioButton
+                        x:Name="rbMenuGestionCommande"
                         Height="42"
                         Click="GestionCommandesClick"
                         Command="{Binding GestionCommandesVC}"
@@ -107,6 +110,7 @@
                         Style="{StaticResource SidebarMenu}" />
 
                     <RadioButton
+                        x:Name="rbMenuEspacePersonnel"
                         Height="42"
                         Click="EspacePersonnelClick"
                         Command="{Binding EspacePersonnelVC}"
@@ -116,6 +120,7 @@
                         Style="{StaticResource SidebarMenu}" />
 
                     <RadioButton
+                        x:Name="ebMenuGestionClients"
                         Height="42"
                         Click="GestionClientClick"
                         Command="{Binding ModifierVC}"
