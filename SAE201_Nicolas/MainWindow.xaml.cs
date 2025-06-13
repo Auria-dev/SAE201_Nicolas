@@ -2,17 +2,9 @@ using SAE201_Nicolas.Core;
 using SAE201_Nicolas.Model;
 using SAE201_Nicolas.View;
 using SAE201_Nicolas.View.UC;
-using System;
-using System.Text;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows;
 
 namespace SAE201_Nicolas
 {
@@ -22,6 +14,7 @@ namespace SAE201_Nicolas
     public partial class MainWindow : Window
     {
         public static GestionVin LaGestionDeVins { get; set; }
+        public static Employe EmployeActuel { get; set; }
 
         public MainWindow()
         {
@@ -35,9 +28,37 @@ namespace SAE201_Nicolas
             ViewManager.Instance.RegisterView<GestionCommandes>(nameof(GestionCommandes));
             ViewManager.Instance.RegisterView<EspacePersonnel>(nameof(EspacePersonnel));
             ViewManager.Instance.RegisterView<GestionClients>(nameof(GestionClients));
-            
+
             ViewManager.Instance.RegisterView<AjouterVinUC>(nameof(AjouterVinUC));
 
+            ViewManager.Instance.RegisterView<AjouterClientUC>(nameof(AjouterClientUC));
+            ViewManager.Instance.RegisterView<ModifierClientUC>(nameof(ModifierClientUC));
+
+            ViewManager.Instance.RequestMainContentChange(nameof(RechercherVin));
+        }
+
+        public MainWindow(Employe e)
+        {
+            EmployeActuel = e;
+            
+            ChargeData();
+            InitializeComponent();
+
+            ViewManager.Instance.OnMainContentChangeRequested += SetMainContent;
+
+            if (e.RoleEmploye == Role.ResponsableDeMagasin) {
+                ViewManager.Instance.RegisterView<GestionCommandes>(nameof(GestionCommandes));
+            } else  {
+                // hide and disable Gestion Commande
+                menuGestionCommande.Height = 0;
+                menuGestionCommande.IsEnabled = false;
+            }
+
+            ViewManager.Instance.RegisterView<RechercherVin>(nameof(RechercherVin));
+            ViewManager.Instance.RegisterView<HistoriqueCommandes>(nameof(HistoriqueCommandes));
+            ViewManager.Instance.RegisterView<EspacePersonnel>(nameof(EspacePersonnel));
+            ViewManager.Instance.RegisterView<GestionClients>(nameof(GestionClients));
+            ViewManager.Instance.RegisterView<AjouterVinUC>(nameof(AjouterVinUC));
             ViewManager.Instance.RegisterView<AjouterClientUC>(nameof(AjouterClientUC));
             ViewManager.Instance.RegisterView<ModifierClientUC>(nameof(ModifierClientUC));
 
@@ -87,7 +108,8 @@ namespace SAE201_Nicolas
             if (deconnexion == MessageBoxResult.Yes)
             {
                 this.Owner.Show();
-                this.Hide();
+                this.Close();
+                ViewManager.Instance.Reset();
             }
         }
 

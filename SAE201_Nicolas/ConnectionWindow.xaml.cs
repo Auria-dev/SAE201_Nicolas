@@ -13,8 +13,8 @@ namespace SAE201_Nicolas
     /// </summary>
     public partial class ConnectionWindow : Window
     {
-        public MainWindow mainWindow = new MainWindow();
-        public static Employe EmployeActuel;
+        public MainWindow mainWindow;
+        
         public ConnectionWindow()
         {
             InitializeComponent();
@@ -45,26 +45,29 @@ namespace SAE201_Nicolas
                 {
                     connection.Open();
 
-                    if (!tbLogin.Text.IsNullOrWhiteSpace())
+                    if (tbLogin.Text.IsNullOrWhiteSpace()) return;
+                    List<Employe> lesEmploye = new Employe().FindAll();
+
+                    if (!lesEmploye.Any(w => w.Login == tbLogin.Text)) return;
+                    
+                    Employe emp = lesEmploye.FirstOrDefault(e => e.Login == tbLogin.Text);
+
+                    if (emp.Login == login)
                     {
-                        List<Employe> lesEmploye = new Employe().FindAll();
-
-                        if (lesEmploye.Any(w=>w.Login == tbLogin.Text))
-                        {
-
-                            if (lesEmploye.First().Login == login)
-                            {
-                                EmployeActuel = lesEmploye.First();
-                                Console.WriteLine("Employe found!");
-                            }
-                            else
-                            {
-                                EmployeActuel = lesEmploye.Last();
-                                Console.WriteLine("Employe found!");
-                            }
-
-                        }
+                        Console.WriteLine("Employe found!");
+                        Console.WriteLine($"Role: {emp.RoleEmploye}");
+                    } else {
+                        emp = lesEmploye.Last();
+                        Console.WriteLine("Employe not found. Using last one instead");
                     }
+
+                    if (mainWindow != null)
+                    {
+                        mainWindow.Close();
+                        mainWindow = null;
+                    }
+
+                    mainWindow = new MainWindow(emp);
                 }
                 catch (Exception ex)
                 {

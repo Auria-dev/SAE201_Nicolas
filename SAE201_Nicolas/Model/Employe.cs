@@ -30,7 +30,7 @@ namespace SAE201_Nicolas.Model
 
         public Employe(int numEmploye, int numRole, string nom, string prenom, string login, string mdp)
         {
-            this.roleEmploye = IntToRole(numEmploye);
+            this.RoleEmploye = IntToRole(numEmploye);
             this.NumEmploye = numEmploye;
             this.Nom = nom;
             this.Prenom = prenom;
@@ -103,6 +103,19 @@ namespace SAE201_Nicolas.Model
         public string NomEmployerCourt
         {
             get { return this.Nom + " " + this.Prenom.Substring(0, 1) + "."; }
+        }
+
+        public Role RoleEmploye
+        {
+            get
+            {
+                return this.roleEmploye;
+            }
+
+            set
+            {
+                this.roleEmploye = value;
+            }
         }
 
         public Role IntToRole(int r)

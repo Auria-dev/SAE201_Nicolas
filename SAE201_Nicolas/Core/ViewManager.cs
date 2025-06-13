@@ -53,5 +53,11 @@ namespace SAE201_Nicolas.Core
                 OnMainContentChangeRequested?.Invoke(previousView);
             }
         }
+
+        public void Reset()
+        {
+            _views.Clear();
+            _viewHistory.Clear();
+        }
     }
 }

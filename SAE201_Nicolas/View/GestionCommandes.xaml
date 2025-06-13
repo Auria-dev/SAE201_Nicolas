@@ -7,7 +7,7 @@
     xmlns:local="clr-namespace:SAE201_Nicolas.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:model="clr-namespace:SAE201_Nicolas.Model"
-    d:DesignHeight="450"
+    d:DesignHeight="550"
     d:DesignWidth="800"
     mc:Ignorable="d">
 

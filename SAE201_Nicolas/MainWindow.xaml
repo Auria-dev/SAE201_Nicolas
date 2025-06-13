@@ -78,76 +78,83 @@
                 Background="#8f0e2a"
                 CornerRadius="0,0,0,16">
 
-                <StackPanel>
-                    <RadioButton
-                        Height="42"
-                        Margin="0,48,0,0"
-                        Click="RechercherVinClick"
-                        Command="{Binding RechercherVinVC}"
-                        Content="Demander des vins"
-                        FontSize="18"
-                        Foreground="White"
-                        IsChecked="True"
-                        Style="{StaticResource SidebarMenu}" />
-                    <RadioButton
-                        Height="42"
-                        Click="HistoriqueCommandesClick"
-                        Command="{Binding HistoriqueCommandesVC}"
-                        Content="Historique demandes"
-                        FontSize="18"
-                        Foreground="White"
-                        Style="{StaticResource SidebarMenu}" />
-                    <RadioButton
-                        Height="42"
-                        Click="GestionCommandesClick"
-                        Command="{Binding GestionCommandesVC}"
-                        Content="Gestion commandes"
-                        FontSize="18"
-                        Foreground="White"
-                        Style="{StaticResource SidebarMenu}" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-                    <RadioButton
-                        Height="42"
-                        Click="EspacePersonnelClick"
-                        Command="{Binding EspacePersonnelVC}"
-                        Content="Espace personnel"
-                        FontSize="18"
-                        Foreground="White"
-                        Style="{StaticResource SidebarMenu}" />
-
-                    <RadioButton
-                        Height="42"
-                        Click="GestionClientClick"
-                        Command="{Binding ModifierVC}"
-                        Content="Gestion clients"
-                        FontSize="18"
-                        Foreground="White"
-                        Style="{StaticResource SidebarMenu}" />
-
-                    <Button
-                        x:Name="butDeconnexion"
-                        Height="41"
-                        Margin="20,120,20,0"
-                        Click="butDeconnexion_Click"
-                        Content="Se déconnecter"
-                        FontSize="16"
-                        Style="{StaticResource ButtonInverse}" />
-                    <Image
-                        Margin="0,14,0,0"
-                        RenderTransformOrigin="0.5,0.5"
-                        Source="/Ressources/logo_nicolas.png"
-                        Stretch="Fill">
-                        <Image.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform ScaleX="0.9" ScaleY="0.9" />
-                                <SkewTransform />
-                                <RotateTransform />
-                                <TranslateTransform />
-                            </TransformGroup>
-                        </Image.RenderTransform>
-                    </Image>
-
-                </StackPanel>
+                    <StackPanel Grid.Row="0">
+                        <RadioButton
+                            Height="42"
+                            Margin="0,48,0,0"
+                            Click="RechercherVinClick"
+                            Command="{Binding RechercherVinVC}"
+                            Content="Demander des vins"
+                            FontSize="18"
+                            Foreground="White"
+                            IsChecked="True"
+                            Style="{StaticResource SidebarMenu}" />
+                        <RadioButton
+                            Height="42"
+                            Click="HistoriqueCommandesClick"
+                            Command="{Binding HistoriqueCommandesVC}"
+                            Content="Historique demandes"
+                            FontSize="18"
+                            Foreground="White"
+                            Style="{StaticResource SidebarMenu}" />
+                        <RadioButton
+                            x:Name="menuGestionCommande"
+                            Height="42"
+                            Click="GestionCommandesClick"
+                            Command="{Binding GestionCommandesVC}"
+                            Content="Gestion commandes"
+                            FontSize="18"
+                            Foreground="White"
+                            Style="{StaticResource SidebarMenu}" />
+                        <RadioButton
+                            Height="42"
+                            Click="EspacePersonnelClick"
+                            Command="{Binding EspacePersonnelVC}"
+                            Content="Espace personnel"
+                            FontSize="18"
+                            Foreground="White"
+                            Style="{StaticResource SidebarMenu}" />
+                        <RadioButton
+                            Height="42"
+                            Click="GestionClientClick"
+                            Command="{Binding ModifierVC}"
+                            Content="Gestion clients"
+                            FontSize="18"
+                            Foreground="White"
+                            Style="{StaticResource SidebarMenu}" />
+                    </StackPanel>
+                    <StackPanel Grid.Row="2">
+                        <Button
+                            x:Name="butDeconnexion"
+                            Height="41"
+                            Margin="20,0,20,0"
+                            Click="butDeconnexion_Click"
+                            Content="Se déconnecter"
+                            FontSize="16"
+                            Style="{StaticResource ButtonInverse}" />
+                        <Image
+                            Margin="0,14,0,8"
+                            RenderTransformOrigin="0.5,0.5"
+                            Source="/Ressources/logo_nicolas.png"
+                            Stretch="Fill">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="0.9" ScaleY="0.9" />
+                                    <SkewTransform />
+                                    <RotateTransform />
+                                    <TranslateTransform />
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                    </StackPanel>
+                </Grid>
             </Border>
 
             <ContentControl
