@@ -50,8 +50,8 @@ namespace SAE201_Nicolas
                 ViewManager.Instance.RegisterView<GestionCommandes>(nameof(GestionCommandes));
             } else  {
                 // hide and disable Gestion Commande
-                menuGestionCommande.Height = 0;
-                menuGestionCommande.IsEnabled = false;
+                rbMenuGestionCommande.Height = 0;
+                rbMenuGestionCommande.IsEnabled = false;
             }
 
             ViewManager.Instance.RegisterView<RechercherVin>(nameof(RechercherVin));
