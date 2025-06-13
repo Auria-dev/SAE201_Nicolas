@@ -53,16 +53,21 @@ namespace SAE201_Nicolas.View.UC
             unVin.NumFournisseur = cbFournisseur.SelectedIndex;
             unVin.NumTypeVin = cbTypeVin.SelectedIndex;
             unVin.NumAppelation = ComboxBoxAppellation.SelectedIndex;
+            if (String.IsNullOrEmpty(TxtboxNomVin.Text))
+            {
+                MessageBox.Show("Nom invalide. Impossible de créer le vin.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             unVin.NomVin = TxtboxNomVin.Text;
             if (!double.TryParse(TxtboxPrixVin.Text, out p))
             {
-                MessageBox.Show("Prix invalide. Impossible de créer le vin", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Prix invalide. Impossible de créer le vin.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             unVin.PrixVin = p;
             unVin.Descriptif = "";
             if (!int.TryParse(TxtboxAnnee.Text, out a)) {
-                MessageBox.Show("Année invalide. Impossible de créer le vin", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Année invalide. Impossible de créer le vin.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             unVin.Annee = a;

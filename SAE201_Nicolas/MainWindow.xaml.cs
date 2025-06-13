@@ -116,6 +116,9 @@ namespace SAE201_Nicolas
         private void EspacePersonnelClick(object sender, RoutedEventArgs e)
         {
             ViewManager.Instance.RequestMainContentChange(nameof(EspacePersonnel));
+
+            var espacePersonnelView = ViewManager.Instance.GetView(nameof(EspacePersonnel)) as EspacePersonnel;
+            espacePersonnelView?.RefreshEmploye();
         }
 
         private void GestionClientClick(object sender, RoutedEventArgs e)

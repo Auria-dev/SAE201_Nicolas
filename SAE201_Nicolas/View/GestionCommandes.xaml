@@ -238,10 +238,6 @@
                     Width="*"
                     Binding="{Binding Prix}"
                     Header="Prix Total" />
-                <DataGridTextColumn
-                    Width="1.2*"
-                    Binding="{Binding EtatCommande}"
-                    Header="État" />
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>

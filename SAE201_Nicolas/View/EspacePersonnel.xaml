@@ -29,7 +29,8 @@
                 x:Name="TxtboxNom"
                 Width="380"
                 Height="48"
-                Style="{StaticResource TextBox}" />
+                Style="{StaticResource TextBox}" 
+                Text="{Binding Nom, ValidatesOnExceptions=True}"/>
 
             <Label
                 Margin="8,14,0,0"
@@ -40,17 +41,20 @@
                 x:Name="TxtboxPrenom"
                 Width="380"
                 Height="48"
+                Text="{Binding Prenom, ValidatesOnExceptions=True}"
                 Style="{StaticResource TextBox}" />
 
             <Label
                 Margin="8,14,0,0"
-                Content="_Mail"
+                Content="_Login"
                 FontSize="14"
                 Target="{Binding ElementName=TxtboxMail}" />
             <TextBox
                 x:Name="TxtboxMail"
                 Width="380"
                 Height="48"
+                IsReadOnly="True"
+                Text="{Binding Login, ValidatesOnExceptions=True}"
                 Style="{StaticResource TextBox}" />
 
             <Button

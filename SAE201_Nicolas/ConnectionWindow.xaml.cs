@@ -14,6 +14,7 @@ namespace SAE201_Nicolas
     public partial class ConnectionWindow : Window
     {
         public MainWindow mainWindow = new MainWindow();
+        public static Employe EmployeActuel;
         public ConnectionWindow()
         {
             InitializeComponent();
@@ -50,8 +51,18 @@ namespace SAE201_Nicolas
 
                         if (lesEmploye.Any(w=>w.Login == tbLogin.Text))
                         {
-                            Employe emp = lesEmploye.First();
-                            Console.WriteLine("Employe found!");
+
+                            if (lesEmploye.First().Login == login)
+                            {
+                                EmployeActuel = lesEmploye.First();
+                                Console.WriteLine("Employe found!");
+                            }
+                            else
+                            {
+                                EmployeActuel = lesEmploye.Last();
+                                Console.WriteLine("Employe found!");
+                            }
+
                         }
                     }
                 }
