@@ -32,14 +32,7 @@ namespace SAE201_Nicolas
                                       $"uid={login};" +
                                       $"password={password};";
 
-            string connectionStringTemp = $"Server=srv-peda-new;" +
-                                      "port=5433;" +
-                                      "Database=sae201_nicolas;" +
-                                      "Search Path=nicolas;" +
-                                      $"uid=ismaimal;" +
-                                      $"password=YLrlDE;";
-
-            using (NpgsqlConnection connection = new NpgsqlConnection(connectionStringTemp))
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
             {
                 try
                 {
