@@ -61,17 +61,26 @@ namespace SAE201_Nicolas.Dialog
                 if (Validation.GetHasError(uie))
                 {
                     ok = false;
-                    MessageBox.Show(this, "Erreurs de saisies. Impossible de modifier le vin.", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show(this, "Les informations renseigner sont invalide. Impossible de créer le vin.", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
                     return;
                 }
             }
-            DialogResult = true;
+
+            if (Validation.GetHasError(TxtboxPrixVin))
+            {
+                ok = false;
+            }
+
+            if (ok) DialogResult = true;
+            else
+            {
+                MessageBox.Show(this, "Les informations renseigner sont invalide. Impossible de créer le vin.", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void Window_Deactivated(object sender, EventArgs e)
         {
-            this.Close(); // Automatically closes the popup when it loses focus
-            //Deactivated="Window_Deactivated"
+            this.Close();
         }
     }
 }

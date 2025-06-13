@@ -35,18 +35,18 @@ namespace SAE201_Nicolas.Model
             this.Nom = nom;
             this.Prenom = prenom;
             this.Login = login;
-            //this.Mdp = PasswordHelper.HashPassword(mdp);
+            this.Mdp = mdp;
         }
         
         public Employe() { }
-
-
 
         public int NumEmploye
         {
             get { return this.numEmploye; }
             set
             {
+                if (value <= 0)
+                    throw new ArgumentException("Le numéro de l'employé doit être supérieur à zéro.");
                 this.numEmploye = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumEmploye)));
             }
@@ -57,6 +57,8 @@ namespace SAE201_Nicolas.Model
             get { return this.nom; }
             set
             {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Le nom ne peut pas être vide.");
                 this.nom = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Nom)));
             }
@@ -67,6 +69,8 @@ namespace SAE201_Nicolas.Model
             get { return this.prenom; }
             set
             {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Le prénom ne peut pas être vide.");
                 this.prenom = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Prenom)));
             }
@@ -77,6 +81,8 @@ namespace SAE201_Nicolas.Model
             get { return this.login; }
             set
             {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Le login ne peut pas être vide.");
                 this.login = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Login)));
             }
@@ -87,6 +93,8 @@ namespace SAE201_Nicolas.Model
             get { return this.mdp; }
             set
             {
+                if (string.IsNullOrWhiteSpace(value) || value.Length < 6)
+                    throw new ArgumentException("Le mot de passe ne peut pas être vide et doit contenir au moins 6 caractères.");
                 this.mdp = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mdp)));
             }

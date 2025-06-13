@@ -23,11 +23,50 @@ namespace SAE201_Nicolas.Model
 
     public enum Appelation
     {
-        Bourgogne,
         Bordeaux,
+        Bourgogne,
         Champagne,
         Alsace,
-        Beaujolais
+        Beaujolais,
+        CôtesDuRhône,
+        Loire,
+        Provence,
+        Languedoc,
+        Roussillon,
+        Savoie,
+        Jura,
+        SudOuest,
+        Corse,
+        Bergerac,
+        Cahors,
+        Gaillac,
+        Madiran,
+        Jurançon,
+        CoteauxDuTricastin,
+        CoteauxDelAubance,
+        CoteauxDeSaumur,
+        CôtesDeProvence,
+        CôtesDeBergerac,
+        CôtesDeBlaye,
+        CôtesDeDuras,
+        CôtesDeGascogne,
+        CôtesDeMillau,
+        CôtesDeSaintMont,
+        CôtesDuFrontonnais,
+        CôtesDuMarmandais,
+        CôtesDuRoussillon,
+        CôtesDuVentoux,
+        Fitou,
+        Italien,
+        MuscatDeFrontignan,
+        MuscatDeLunel,
+        MuscatDeMireval,
+        MuscatDeSaintJeandeMinervois,
+        PineauDesCharentes,
+        Rasteau,
+        Tavel,
+        Vacqueyras,
+        VinDePaysDOc
     }
 
     public class Vin : INotifyPropertyChanged
@@ -69,13 +108,11 @@ namespace SAE201_Nicolas.Model
 
         public int NumVin
         {
-            get
-            {
-                return this.numVin;
-            }
-
+            get { return this.numVin; }
             set
             {
+                if (value <= 0)
+                    throw new ArgumentException("Le numéro du vin doit être supérieur à zéro.");
                 this.numVin = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumVin)));
             }
@@ -83,13 +120,11 @@ namespace SAE201_Nicolas.Model
 
         public string NomVin
         {
-            get
-            {
-                return this.nomVin;
-            }
-
+            get { return this.nomVin; }
             set
             {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Le nom du vin ne peut pas être vide.");
                 this.nomVin = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NomVin)));
             }
@@ -97,13 +132,11 @@ namespace SAE201_Nicolas.Model
 
         public double PrixVin
         {
-            get
-            {
-                return this.prixVin;
-            }
-
+            get { return this.prixVin; }
             set
             {
+                if (value <= 0)
+                    throw new ArgumentException("Le prix du vin ne peut pas être négatif.");
                 this.prixVin = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PrixVin)));
             }
@@ -132,6 +165,9 @@ namespace SAE201_Nicolas.Model
 
             set
             {
+                int currentYear = DateTime.Now.Year;
+                if (value < 0 || value > currentYear)
+                    throw new ArgumentException($"L'année doit être comprise entre 0 et {currentYear}.");
                 this.annee = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Annee)));
             }
@@ -141,34 +177,11 @@ namespace SAE201_Nicolas.Model
         {
             get
             {
-                string type;
-                switch (NumTypeVin)
-                {
-                    case 1:
-                        type = TypeVin.Rouge.ToString();
-                        break;
-                    case 2:
-                        type = TypeVin.Blanc.ToString();
-                        break;
-                    case 3:
-                        type = TypeVin.Rosé.ToString();
-                        break;
-                    case 4:
-                        type = TypeVin.Champagne.ToString();
-                        break;
-                    case 5:
-                        type = TypeVin.Mousseux.ToString();
-                        break;
-                    case 6:
-                        type = TypeVin.Doux.ToString();
-                        break;
-                    case 7:
-                        type = TypeVin.Liquoreux.ToString();
-                        break;
 
-                    default: type = "INCONNU"; break;
-                }
-                return type;
+                if (Enum.IsDefined(typeof(Appelation), NumAppelation)) 
+                    return ((Appelation)NumAppelation).ToString();
+                else
+                    return "Autre";
             }
         }
 
@@ -176,40 +189,21 @@ namespace SAE201_Nicolas.Model
         {
             get
             {
-                string appelationVin;
-                switch (NumAppelation)
-                {
-                    case 1:
-                        appelationVin = Appelation.Bordeaux.ToString();
-                        break;
-                    case 2:
-                        appelationVin = Appelation.Bourgogne.ToString();
-                        break;
-                    case 3:
-                        appelationVin = Appelation.Champagne.ToString();
-                        break;
-                    case 4:
-                        appelationVin = Appelation.Alsace.ToString();
-                        break;
-                    case 5:
-                        appelationVin = Appelation.Beaujolais.ToString();
-                        break;
-
-                    default: appelationVin = "Autre"; break;
-                }
-                return appelationVin;
+                if (Enum.IsDefined(typeof(Appelation), NumAppelation))
+                    return ((Appelation)NumAppelation).ToString();
+                else 
+                    return "Autre";
             }
         }
 
         public int NumTypeVin
         {
-            get
-            {
-                return this.numTypeVin;
-            }
+            get { return this.numTypeVin; }
 
             set
             {
+                if (!Enum.IsDefined(typeof(TypeVin), value - 1))
+                    throw new ArgumentException("Le type de vin est invalide.");
                 this.numTypeVin = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumTypeVin)));
             }
@@ -232,6 +226,8 @@ namespace SAE201_Nicolas.Model
 
             set
             {
+                if (value <= 0)
+                    throw new ArgumentException("Le numéro du fournisseur doit être supérieur à zéro.");
                 this.numFournisseur = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumFournisseur)));
             }
@@ -246,8 +242,6 @@ namespace SAE201_Nicolas.Model
         {
             return (TypeVin)val - 1; // make index starts at 0
         }
-
-        public Appelation EnumToNumAppelation() { return Appelation.Bourgogne; }
 
         public List<Vin> FindAll()
         {

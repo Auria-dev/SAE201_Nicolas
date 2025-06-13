@@ -45,56 +45,53 @@ namespace SAE201_Nicolas.Model
         public string Nom
         {
             get { return this.nom; }
-            set { this.nom = value; }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value)) throw new ArgumentException("Le nom de la gestion ne peut pas être vide.");
+                this.nom = value; 
+            }
         }
 
         public ObservableCollection<Vin> LesVins
         {
             get { return this.lesVins; }
-            set { this.lesVins = value; }
+            set { this.lesVins = value ?? throw new ArgumentNullException(nameof(LesVins), "La liste des vins ne peut pas être null."); }
         }
 
         public ObservableCollection<Demande> LesDemandes
         {
             get { return this.lesDemandes; }
-            set { this.lesDemandes = value; }
+            set { this.lesDemandes = value ?? throw new ArgumentNullException(nameof(LesDemandes), "La liste des demandes ne peut pas être null."); }
         }
 
         public ObservableCollection<Commande> LesCommandes
         {
             get { return this.lesCommandes; }
-            set { this.lesCommandes = value; }
+            set { this.lesCommandes = value ?? throw new ArgumentNullException(nameof(LesCommandes), "La liste des commandes ne peut pas être null."); }
         }
 
         public ObservableCollection<Fournisseur> LesFournisseurs
         {
             get { return this.lesFournisseurs; }
-            set { this.lesFournisseurs = value; }
+            set { this.lesFournisseurs = value ?? throw new ArgumentNullException(nameof(LesFournisseurs), "La liste des fournisseurs ne peut pas être null."); }
         }
 
         public ObservableCollection<DetailCommande> LesDetailsCommandes
         {
             get { return this.lesDetailsCommandes; }
-            set { this.lesDetailsCommandes = value; }
+            set { this.lesDetailsCommandes = value ?? throw new ArgumentNullException(nameof(LesDetailsCommandes), "La liste des détails de commande ne peut pas être null."); }
         }
 
         public ObservableCollection<Employe> LesEmployes
         {
             get { return this.lesEmployes; }
-            set { this.lesEmployes = value; }
+            set { this.lesEmployes = value ?? throw new ArgumentNullException(nameof(LesEmployes), "La liste des employés ne peut pas être null."); }
         }
 
         public ObservableCollection<Client> LesClients
         {
-            get
-            {
-                return this.lesClients;
-            }
-
-            set
-            {
-                this.lesClients = value;
-            }
+            get { return this.lesClients; }
+            set { this.lesClients = value ?? throw new ArgumentNullException(nameof(LesClients), "La liste des clients ne peut pas être null."); }
         }
     }
 }

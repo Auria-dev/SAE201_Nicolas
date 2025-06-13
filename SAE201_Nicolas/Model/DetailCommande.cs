@@ -131,6 +131,7 @@ namespace SAE201_Nicolas.Model
         {
             get
             {
+                Console.WriteLine(this.Commande.EtatCommande);
                 return this.Commande.EtatCommande;
             }
         }
@@ -188,6 +189,18 @@ namespace SAE201_Nicolas.Model
                 cmdInsert.Parameters.AddWithValue("quantite", this.Quantite);
                 cmdInsert.Parameters.AddWithValue("prix", this.Prix);
                 DataAccess.Instance.ExecuteVoidInsert(cmdInsert);
+            }
+        }
+
+        public void UpdateDetailCommande()
+        {
+            using (var cmdUpdate = new NpgsqlCommand("update detailcommande set quantite=@quantite, prix=@prix where numcommande=@numcommande and numvin=@numvin;"))
+            {
+                cmdUpdate.Parameters.AddWithValue("numcommande", this.NumCommande);
+                cmdUpdate.Parameters.AddWithValue("numvin", this.NumVin);
+                cmdUpdate.Parameters.AddWithValue("quantite", this.Quantite);
+                cmdUpdate.Parameters.AddWithValue("prix", this.Prix);
+                DataAccess.Instance.ExecuteVoidInsert(cmdUpdate);
             }
         }
 

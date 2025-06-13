@@ -16,6 +16,7 @@
             MouseDown="ClickedReturn"
             Text="Annuler" />
         <StackPanel
+            x:Name="spFicheClient"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Orientation="Vertical">
@@ -33,7 +34,8 @@
                 x:Name="TxtboxNomClient"
                 Width="380"
                 Height="48"
-                Style="{StaticResource TextBox}" />
+                Style="{StaticResource TextBox}"
+                Text="{Binding NomClient, ValidatesOnExceptions=True}" />
 
             <Label
                 Margin="8,14,0,0"
@@ -44,7 +46,9 @@
                 x:Name="TxtboxPrenomClient"
                 Width="380"
                 Height="48"
-                Style="{StaticResource TextBox}" />
+                Style="{StaticResource TextBox}"
+                Text="{Binding PrenomClient, ValidatesOnExceptions=True}" />
+
 
             <Label
                 Margin="8,14,0,0"
@@ -55,7 +59,8 @@
                 x:Name="TxtboxMailClient"
                 Width="380"
                 Height="48"
-                Style="{StaticResource TextBox}" />
+                Style="{StaticResource TextBox}"
+                Text="{Binding MailClient, ValidatesOnExceptions=True}" />
 
             <Button
                 x:Name="butAjouterClient"

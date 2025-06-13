@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using Microsoft.Ajax.Utilities;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,6 +49,8 @@ namespace SAE201_Nicolas.Model
 
             set
             {
+                if (value <= 0.0)
+                    throw new ArgumentException("Le numéro de la commande ne peut pas être négatif.");
                 this.numCommande = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumCommande)));
             }
@@ -62,6 +65,8 @@ namespace SAE201_Nicolas.Model
 
             set
             {
+                if (value < 0)
+                    throw new ArgumentException("Le numéro de l'employer ne peut pas être négatif.");
                 this.numEmploye = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumEmploye)));
             }
@@ -76,6 +81,8 @@ namespace SAE201_Nicolas.Model
 
             set
             {
+                if (value > DateTime.Now)
+                    throw new ArgumentException("La date de la commande ne peut pas être dans le futur.");
                 this.dateCommande = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DateCommande)));
             }
@@ -90,6 +97,9 @@ namespace SAE201_Nicolas.Model
 
             set
             {
+                if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("L'état de la commande ne peut pas être vide.");
+
                 this.etatCommande = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EtatCommande)));
             }
@@ -104,6 +114,8 @@ namespace SAE201_Nicolas.Model
 
             set
             {
+                if (value <= 0.0)
+                    throw new ArgumentException("Le prix ne peut pas être négatif ou 0.");
                 this.prixTotal = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PrixTotal)));
             }
