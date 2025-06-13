@@ -73,6 +73,11 @@ namespace SAE201_Nicolas.View.UC
             unVin.NumFournisseur = cbFournisseur.SelectedIndex;
             unVin.NumTypeVin = cbTypeVin.SelectedIndex;
             unVin.NumAppelation = ComboxBoxAppellation.SelectedIndex;
+            if (String.IsNullOrEmpty(TxtboxNomVin.Text))
+            {
+                MessageBox.Show("Nom invalide. Impossible de créer le vin.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             unVin.NomVin = TxtboxNomVin.Text;
             unVin.PrixVin = p;
             unVin.Descriptif = "";

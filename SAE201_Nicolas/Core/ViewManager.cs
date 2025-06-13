@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using SAE201_Nicolas.View;
+using System.Windows.Controls;
 
 namespace SAE201_Nicolas.Core
 {

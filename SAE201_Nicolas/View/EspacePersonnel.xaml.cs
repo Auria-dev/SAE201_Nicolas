@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SAE201_Nicolas.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,18 @@ namespace SAE201_Nicolas.View
         public EspacePersonnel()
         {
             InitializeComponent();
+            UpdateDataContext();
+            //this.DataContext = ConnectionWindow.EmployeActuel;
+        }
+        private void UpdateDataContext()
+        {
+            this.DataContext = ConnectionWindow.EmployeActuel;
+        }
+
+        // Ajoute cette méthode publique
+        public void RefreshEmploye()
+        {
+            UpdateDataContext();
         }
     }
 }
