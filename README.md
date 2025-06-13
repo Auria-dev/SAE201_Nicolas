@@ -8,18 +8,15 @@ TODO (if time):
 
 ```
 TODO:
-Compte rendu:
-	voirs ConsignesRendusDeveloppement.pdf sur le U
+Compte rendu (voirs ConsignesRendusDeveloppement.pdf sur le U)
 
-fuckass unit tests
-	(i hate it)
+Ajouter fournisseurs à RechercherVin et HistoriqueDemandes
 
-System de comptes (employer)
-	Partie BDD des comptes et des roles
-	Lors du login on crée un Employer correctement
-	On utilise cette employer pour determiner quelles menu il a access & pour créer des demandes & commandes
+Double check all the user input
 
-Exporter/publier l'application
+Unit tests
+
+Show/Hide pages based on the employe role
 
 DONE :
 Context menu on all datagrids that lets you edit/delete them.
