@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace SAE201_Nicolas.Model
@@ -39,6 +40,8 @@ namespace SAE201_Nicolas.Model
 
             set
             {
+                if (value < 0)
+                    throw new ArgumentException("Numéro client ne peut pas être négatif.");
                 this.numClient = value; 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumClient)));
             }
@@ -53,6 +56,8 @@ namespace SAE201_Nicolas.Model
 
             set
             {
+                if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Nom client ne peut pas être vide.");
                 this.nomClient = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NomClient)));
             }
@@ -67,6 +72,8 @@ namespace SAE201_Nicolas.Model
 
             set
             {
+                if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Préom client ne peut pas être vide.");
                 this.prenomClient = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PrenomClient)));
             }
@@ -81,6 +88,12 @@ namespace SAE201_Nicolas.Model
 
             set
             {
+                if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Le mail du client ne peut pas être vide.");
+
+                if (!Regex.IsMatch(value, "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$"))
+                    throw new ArgumentException("Le mail du client n'est pas valide.");
+
                 this.mailClient = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(MailClient)));
             }

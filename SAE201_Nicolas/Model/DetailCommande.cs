@@ -131,6 +131,7 @@ namespace SAE201_Nicolas.Model
         {
             get
             {
+                Console.WriteLine(this.Commande.EtatCommande);
                 return this.Commande.EtatCommande;
             }
         }

@@ -33,6 +33,8 @@ namespace SAE201_Nicolas.Model
 
             set
             {
+                if (value <= 0)
+                    throw new ArgumentException("Le numéro du fournisseur doit être supérieur à zéro.");
                 this.numFournisseur = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumFournisseur)));
             }
@@ -47,6 +49,8 @@ namespace SAE201_Nicolas.Model
 
             set
             {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Le nom du fournisseur ne peut pas être vide.");
                 this.nomFournisseur = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NomFournisseur)));
             }

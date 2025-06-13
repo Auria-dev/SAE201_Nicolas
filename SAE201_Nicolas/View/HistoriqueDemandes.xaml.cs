@@ -145,14 +145,16 @@ namespace SAE201_Nicolas.View
                         if (dgDemandes != null)
                             { CollectionViewSource.GetDefaultView(dgDemandes.ItemsSource).Refresh(); }
 
-                        MessageBox.Show("Votre commande a bien été enregistrée.", "Commande effectuée", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     catch (Exception ex)
                     {
+                        isValid = false;
                         MessageBox.Show("Erreur lors de l'insertion de la demande", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                         Console.WriteLine(ex.Message);
                     }
                 }
+
+                if (isValid) MessageBox.Show("Votre commande a bien été enregistrée.", "Commande effectuée", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

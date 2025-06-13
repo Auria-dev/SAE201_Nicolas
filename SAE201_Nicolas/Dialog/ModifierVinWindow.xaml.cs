@@ -70,8 +70,7 @@ namespace SAE201_Nicolas.Dialog
 
         private void Window_Deactivated(object sender, EventArgs e)
         {
-            this.Close(); // Automatically closes the popup when it loses focus
-            //Deactivated="Window_Deactivated"
+            this.Close();
         }
     }
 }

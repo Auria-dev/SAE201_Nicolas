@@ -25,18 +25,6 @@ namespace SAE201_Nicolas.Model
 
         public Demande() { }
 
-        public Demande(int numDemande, int numVin, int numEmploye, int numCommande, DateTime dateDemande, int quantiteDemande, EnumEtatCommande etatDemande, int numClient)
-        {
-            this.NumDemande = numDemande;
-            this.NumVin = numVin;
-            this.NumEmploye = numEmploye;
-            this.NumCommande = numCommande;
-            this.DateDemande = dateDemande;
-            this.QuantiteDemande = quantiteDemande;
-            this.EtatDemande = etatDemande;
-            this.NumClient = numClient;
-        }
-
         public Demande(int numDemande, int numVin, int numEmploye, int numCommande, DateTime dateDemande, int quantiteDemande, EnumEtatCommande etatDemande)
         {
             this.NumDemande = numDemande;
@@ -48,11 +36,18 @@ namespace SAE201_Nicolas.Model
             this.EtatDemande = etatDemande;
         }
 
+        public Demande(int numDemande, int numVin, int numEmploye, int numCommande, DateTime dateDemande, int quantiteDemande, EnumEtatCommande etatDemande, int numClient) : this(numDemande, numVin, numEmploye, numCommande, dateDemande, quantiteDemande, etatDemande)
+        {
+            this.NumClient = numClient;
+        }
+
         public int NumDemande
         {
             get { return this.numDemande; }
             set
             {
+                if (value <= 0)
+                    throw new ArgumentException("Le numéro de la demande doit être supérieur à zéro.");
                 this.numDemande = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumDemande)));
             }
@@ -63,6 +58,8 @@ namespace SAE201_Nicolas.Model
             get { return this.numVin; }
             set
             {
+                if (value <= 0)
+                    throw new ArgumentException("Le numéro du vin doit être supérieur à zéro.");
                 this.numVin = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumVin)));
             }
@@ -73,6 +70,8 @@ namespace SAE201_Nicolas.Model
             get { return this.numEmploye; }
             set
             {
+                if (value <= 0)
+                    throw new ArgumentException("Le numéro de l'employé doit être supérieur à zéro.");
                 this.numEmploye = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumEmploye)));
             }
@@ -83,6 +82,8 @@ namespace SAE201_Nicolas.Model
             get { return this.numCommande; }
             set
             {
+                if (value <= 0)
+                    throw new ArgumentException("Le numéro de la commande doit être supérieur à zéro.");
                 this.numCommande = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumCommande)));
             }
@@ -93,6 +94,8 @@ namespace SAE201_Nicolas.Model
             get { return this.dateDemande; }
             set
             {
+                if (value > DateTime.Now)
+                    throw new ArgumentException("La date de la demande ne peut pas être dans le futur.");
                 this.dateDemande = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(DateDemande)));
             }
@@ -103,6 +106,8 @@ namespace SAE201_Nicolas.Model
             get { return this.quantiteDemande; }
             set
             {
+                if (value <= 0 || value > 100)
+                    throw new ArgumentException("La quantité demandée doit être entre 0 et 100.");
                 this.quantiteDemande = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(QuantiteDemande)));
             }
@@ -155,6 +160,8 @@ namespace SAE201_Nicolas.Model
 
             set
             {
+                if (value <= 0)
+                    throw new ArgumentException("Le numéro du client doit être supérieur à zéro.");
                 this.numClient = value;
             }
         }
