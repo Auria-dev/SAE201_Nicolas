@@ -158,6 +158,7 @@ namespace SAE201_Nicolas.View
                         vinSelectionne.NumTypeVin = copie.NumTypeVin;
                         vinSelectionne.NumAppelation = copie.NumAppelation;
                         vinSelectionne.NumFournisseur = copie.NumFournisseur;
+                        MessageBox.Show("Votre vin a été modifié.", "Modification réussite", MessageBoxButton.OK, MessageBoxImage.Information);
                         dgVins.Items.Refresh();
                     }
                     catch (Exception ex)
