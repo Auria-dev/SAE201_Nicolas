@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="SAE201_Nicolas.Model.Client">
-    <Position X="1.75" Y="4.25" Width="1.75" />
+    <Position X="11.75" Y="2.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AgAAIAIIACAAAAAAgAAQAAAIgAQAAAAAgAAAAACAAAQ=</HashCode>
       <FileName>Model\Client.cs</FileName>
@@ -9,22 +9,15 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SAE201_Nicolas.Model.Commande">
-    <Position X="3.75" Y="4.25" Width="2.25" />
+    <Position X="20.75" Y="2.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAEBAEAKAgAACAAYAACAiEECCABAAAEAAAAAAAA=</HashCode>
       <FileName>Model\Commande.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="SAE201_Nicolas.Model.DataAccess">
-    <Position X="13.75" Y="4.25" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAAEgAAAAAAAAgAAAABIBAAAABAABAAQAgAABAAAAA=</HashCode>
-      <FileName>Model\DataAccess.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="SAE201_Nicolas.Model.Demande">
-    <Position X="6.25" Y="4.25" Width="2.25" />
+    <Position X="23.75" Y="2.5" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAAKhAwDAMACAgAAgEAUBCBAgAACAAIAgAEUAAAACAA=</HashCode>
       <FileName>Model\Demande.cs</FileName>
@@ -32,23 +25,23 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SAE201_Nicolas.Model.DetailCommande">
-    <Position X="8.75" Y="4.25" Width="2.5" />
+    <Position X="14.5" Y="2.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAABAABABAAgAAAgIAQBAAQgFEAACgAAQE5AQEAIyA=</HashCode>
       <FileName>Model\DetailCommande.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.28" />
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="SAE201_Nicolas.Model.Employe">
-    <Position X="11.5" Y="4.25" Width="2" />
+    <Position X="5.75" Y="2.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>ACAAAAAAEAICAAAAAAAQIAAAgKACIAAAACAQAAAgEAI=</HashCode>
+      <HashCode>ACAAAAAAEAICAAAAAAAQIAAAgKACIAAAACAQAgAgEAI=</HashCode>
       <FileName>Model\Employe.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SAE201_Nicolas.Model.Fournisseur">
-    <Position X="20.5" Y="4.25" Width="2.25" />
+    <Position X="8.75" Y="2.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAgAAAAAAAAAgAAAAAwAAAAgAAAAAAAAAAAAAACAAA=</HashCode>
       <FileName>Model\Fournisseur.cs</FileName>
@@ -56,43 +49,43 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SAE201_Nicolas.Model.GestionVin">
-    <Position X="18" Y="4.25" Width="2.25" />
+    <Position X="0.5" Y="2.5" Width="5" />
     <TypeIdentifier>
       <HashCode>gAAABEAAAAQAAACAgCAAIEAAACgAAACEACAABAAAAAg=</HashCode>
       <FileName>Model\GestionVin.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SAE201_Nicolas.Model.Vin" BaseTypeListCollapsed="true">
-    <Position X="16" Y="4.25" Width="1.75" />
+    <Position X="17.75" Y="2.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAEBAAAAgCAAgUAgAAUBACBggAIAQYAgEA4AIACAAA=</HashCode>
       <FileName>Model\Vin.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.205" Collapsed="true" />
   </Class>
-  <Enum Name="SAE201_Nicolas.Model.EnumEtatCommande">
-    <Position X="4" Y="2.5" Width="1.75" />
+  <Enum Name="SAE201_Nicolas.Model.EnumEtatCommande" Collapsed="true">
+    <Position X="20.75" Y="1.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAACAAAAAAACAAAA=</HashCode>
       <FileName>Model\Commande.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="SAE201_Nicolas.Model.Role">
-    <Position X="11.5" Y="2.75" Width="2" />
+  <Enum Name="SAE201_Nicolas.Model.Role" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAABAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Employe.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="SAE201_Nicolas.Model.TypeVin">
-    <Position X="13.75" Y="2" Width="1.5" />
+  <Enum Name="SAE201_Nicolas.Model.TypeVin" Collapsed="true">
+    <Position X="0.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAIAAAAAAgAAAAACAAIAACAAAAAAAAAACAAAQA=</HashCode>
       <FileName>Model\Vin.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="SAE201_Nicolas.Model.Appelation" Collapsed="true">
-    <Position X="20.5" Y="3.25" Width="1.5" />
+    <Position X="0.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAGYIAADIBRGAIIAQAAIADBKQAEBAnCAAYCIEAABABw=</HashCode>
       <FileName>Model\Vin.cs</FileName>

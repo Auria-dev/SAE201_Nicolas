@@ -154,10 +154,11 @@
                     Width="1.5*"
                     Binding="{Binding NomEmploye}"
                     Header="Employer" />
-                <DataGridTextColumn
+
+                <!--<DataGridTextColumn
                     Width="*"
                     Binding="{Binding NumCommande}"
-                    Header="N° Commande" />
+                    Header="N° Commande" />-->
 
                 <DataGridTextColumn
                     Width="1.5*"

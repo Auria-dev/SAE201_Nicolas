@@ -82,9 +82,7 @@ namespace SAE201_Nicolas.Model
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public Vin()
-        {
-        }
+        public Vin() { }
 
         public Vin(int numVin, string nomVin, double prixVin, string descriptif, int annee)
         {
@@ -228,6 +226,14 @@ namespace SAE201_Nicolas.Model
                     throw new ArgumentException("Le numéro du fournisseur doit être supérieur à zéro.");
                 this.numFournisseur = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumFournisseur)));
+            }
+        }
+
+        public string NomFournisseur
+        {
+            get
+            {
+                return MainWindow.LaGestionDeVins.LesFournisseurs.FirstOrDefault(w => w.NumFournisseur == this.NumFournisseur).NomFournisseur; 
             }
         }
 

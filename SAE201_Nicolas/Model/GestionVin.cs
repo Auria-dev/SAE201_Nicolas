@@ -28,16 +28,6 @@ namespace SAE201_Nicolas.Model
             this.lesDetailsCommandes = new ObservableCollection<DetailCommande>(new DetailCommande().FindAll(this));
             this.lesEmployes = new ObservableCollection<Employe>(new Employe().FindAll());
             this.lesClients = new ObservableCollection<Client>(new Client().FindAll());
-
-            Console.WriteLine(
-                "Found:\n" +
-                this.lesEmployes.Count + " employes\n" +
-                this.lesVins.Count + " vins\n" +
-                this.lesDemandes.Count + " demandes\n" +
-                this.lesCommandes.Count + " commandes\n" +
-                this.lesFournisseurs.Count + " fournisseurs\n" +
-                this.lesDetailsCommandes.Count + " detailscommandes\n"
-            );
         }
 
         public GestionVin() : this("") { }

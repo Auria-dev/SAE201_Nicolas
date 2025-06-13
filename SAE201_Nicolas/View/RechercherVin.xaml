@@ -234,7 +234,7 @@
             ItemsSource="{Binding LesVins}">
             <DataGrid.Columns>
                 <DataGridTextColumn
-                    Width="3.5*"
+                    Width="4*"
                     Binding="{Binding NomVin}"
                     Header="Nom" />
                 <DataGridTextColumn
@@ -249,6 +249,10 @@
                     Width="2*"
                     Binding="{Binding NomTypeVin}"
                     Header="Type de vin" />
+                <DataGridTextColumn
+                    Width="2*"
+                    Binding="{Binding NomFournisseur}"
+                    Header="Fournisseur" />
                 <DataGridTextColumn
                     Width="2*"
                     Binding="{Binding NomAppelation}"
@@ -277,20 +281,22 @@
                 Height="42"
                 Margin="0,0,5,0"
                 HorizontalAlignment="Left"
+                Click="butSupprimerVin_Click"
                 Content="Supprimer"
                 FontSize="14"
                 IsDefault="True"
-                Style="{StaticResource DefaultButton}" Click="butSupprimerVin_Click" />
+                Style="{StaticResource DefaultButton}" />
             <Button
                 x:Name="butAjouterVin"
                 Width="80"
                 Height="42"
                 Margin="0,0,120,0"
                 HorizontalAlignment="Left"
+                Click="butAjouterVin_Click"
                 Content="Ajouter"
                 FontSize="14"
                 IsDefault="True"
-                Style="{StaticResource DefaultButton}" Click="butAjouterVin_Click" />
+                Style="{StaticResource DefaultButton}" />
             <TextBox
                 x:Name="TxtboxQuantiteVins"
                 Width="220"

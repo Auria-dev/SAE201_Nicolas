@@ -31,7 +31,6 @@ namespace SAE201_Nicolas.View
             
             if (MainWindow.EmployeActuel.RoleEmploye == Role.Vendeur)
             {
-                Console.WriteLine("this is a test");
                 spBtns.Height = 0;
                 butSupDemande.IsEnabled = false;
                 butCommanderDemande.IsEnabled = false;
@@ -95,84 +94,80 @@ namespace SAE201_Nicolas.View
                 CollectionViewSource.GetDefaultView(dgDemandes.ItemsSource).Refresh();
         }
 
-
         private void commanderDemande(object sender, RoutedEventArgs e)
         {
             List<Demande> demandes = dgDemandes.SelectedItems.Cast<Demande>().ToList();
-
-            bool isValid = true;
-            int qteTotal = 0;
-            string nomVinVerif = "";
-            int numFournisseurVerif = -1;
-
-            foreach (Demande de in demandes)
-            {
-                int deNumFournisseur = MainWindow.LaGestionDeVins.LesVins.SingleOrDefault(w => w.NumVin == de.NumVin).NumFournisseur;
-                if (numFournisseurVerif == -1) numFournisseurVerif = deNumFournisseur;
-                else if (numFournisseurVerif != deNumFournisseur) {
-                    MessageBox.Show("Impossible de commander plusieurs vins de fournisseurs differents.", "Erreur lors de la creation de la commande", MessageBoxButton.OK, MessageBoxImage.Error);
-                    isValid = false;
-                    break;
-                }
-
-                if (nomVinVerif.IsNullOrWhiteSpace()) nomVinVerif = de.NomVin;
-                else if (nomVinVerif != de.NomVin && numFournisseurVerif != deNumFournisseur)
-                {
-                    MessageBox.Show("Impossible de commander plusieurs vins differents.", "Erreur lors de la creation de la commande", MessageBoxButton.OK, MessageBoxImage.Error);
-                    isValid = false;
-                    break;
-                }
-
-                if (de.EtatDemande != EnumEtatCommande.EnAttante)
-                {
-                    // checking for isvalid cause we dont wanna show 10 errors to the user
-                    if (isValid) MessageBox.Show("Impossible de commander une demande déjà validée ou supprimée.", "Erreur lors de la creation de la commande", MessageBoxButton.OK, MessageBoxImage.Error);
-                    isValid = false;
-                    break;
-                }
-
-                qteTotal += de.QuantiteDemande;
+            if (!demandes.Any()) {
+                MessageBox.Show("Veuillez sélectionner au moins une demande à commander.", "Aucune sélection", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
 
-            // checking for isvalid cause we dont wanna show 10 errors to the user
-            if (qteTotal > 100 && isValid)
-            {
-                MessageBox.Show("Une demande ne dois pas contenire plus de 100 vins.", "Erreur lors de la creation de la commande", MessageBoxButton.OK, MessageBoxImage.Error);
-                isValid = false;
+            if (demandes.Any(de => de.EtatDemande != EnumEtatCommande.EnAttante)) {
+                MessageBox.Show("Impossible de commander une demande qui n'est pas en attente (déjà validée ou supprimée).", "Erreur de validation", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
 
-            if (isValid)
+            Vin premierVin = MainWindow.LaGestionDeVins.LesVins.FirstOrDefault(v => v.NumVin == demandes.First().NumVin);
+            if (premierVin == null) {
+                MessageBox.Show("Le vin associé à la première demande est introuvable.", "Erreur de données", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            int numFournisseurVerif = premierVin.NumFournisseur;
+            bool tousMemeFournisseurs = demandes.All(de => {
+                Vin vinActuel = MainWindow.LaGestionDeVins.LesVins.FirstOrDefault(v => v.NumVin == de.NumVin);
+                return vinActuel != null && vinActuel.NumFournisseur == numFournisseurVerif;
+            });
+
+            if (!tousMemeFournisseurs) {
+                MessageBox.Show("Impossible de créer une commande pour des vins de fournisseurs différents.", "Erreur de validation", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            var mergedDetails = demandes.GroupBy(de => de.NumVin)
+                                        .Select(group => new {
+                                            NumVin         = group.Key,
+                                            QuantiteTotale = group.Sum(d => d.QuantiteDemande),
+                                            PrixTotal      = group.Sum(d => d.PrixDemande)
+                                        }).ToList();
+
+            int qteTotaleCommande = mergedDetails.Sum(d => d.QuantiteTotale);
+            if (qteTotaleCommande > 100) {
+                MessageBox.Show($"Une commande ne doit pas contenir plus de 100 bouteilles au total. Quantité actuelle: {qteTotaleCommande}.", "Limite de quantité dépassée", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            try
             {
-                foreach (Demande de in demandes)
-                {
-                    // TODO: change the 1 to an actual employe ID when we have a proper connection system 
-                    int numCommande = MainWindow.LaGestionDeVins.LesCommandes.OrderByDescending(w => w.NumCommande).First().NumCommande + 1;
-                    Commande newCommande = new Commande(numCommande, 1, DateTime.Now, "Validée", de.PrixDemande);
-                    DetailCommande newDetail = new DetailCommande(numCommande, de.NumVin, qteTotal, de.PrixDemande, MainWindow.LaGestionDeVins);
+                int numCommande = 1;
+                if (MainWindow.LaGestionDeVins.LesCommandes.Any())
+                    numCommande = MainWindow.LaGestionDeVins.LesCommandes.Max(c => c.NumCommande) + 1;
+                
 
-                    try
-                    {
-                        newCommande.AjouterCommande();
-                        newDetail.AjouterDetailCommande();
+                int prixTotalCommande = mergedDetails.Sum(d => d.PrixTotal);
+                Commande newCommande = new Commande(numCommande, MainWindow.EmployeActuel.NumEmploye, DateTime.Now, "Validée", prixTotalCommande);
 
-                        MainWindow.LaGestionDeVins.LesCommandes.Add(newCommande);
-                        MainWindow.LaGestionDeVins.LesDetailsCommandes.Add(newDetail);
+                newCommande.AjouterCommande();
+                MainWindow.LaGestionDeVins.LesCommandes.Add(newCommande);
 
-                        de.EtatDemande = EnumEtatCommande.Validée;
-                        de.UpdateDemande();
-                        if (dgDemandes != null)
-                            { CollectionViewSource.GetDefaultView(dgDemandes.ItemsSource).Refresh(); }
-
-                    }
-                    catch (Exception ex)
-                    {
-                        isValid = false;
-                        MessageBox.Show("Erreur lors de l'insertion de la demande", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                        Console.WriteLine(ex.Message);
-                    }
+                foreach (var detailData in mergedDetails) {
+                    DetailCommande newDetail = new DetailCommande(numCommande, detailData.NumVin, detailData.QuantiteTotale, detailData.PrixTotal, MainWindow.LaGestionDeVins);
+                    newDetail.AjouterDetailCommande();
+                    MainWindow.LaGestionDeVins.LesDetailsCommandes.Add(newDetail);
                 }
 
-                if (isValid) MessageBox.Show("Votre commande a bien été enregistrée.", "Commande effectuée", MessageBoxButton.OK, MessageBoxImage.Information);
+                foreach (Demande de in demandes) {
+                    de.EtatDemande = EnumEtatCommande.Validée;
+                    de.UpdateDemande();
+                }
+
+                if (dgDemandes?.ItemsSource != null)
+                    CollectionViewSource.GetDefaultView(dgDemandes.ItemsSource).Refresh();
+                
+
+                MessageBox.Show("Votre commande a bien été enregistrée.", "Commande Effectuée", MessageBoxButton.OK, MessageBoxImage.Information);
+            } catch (Exception ex) {
+                MessageBox.Show("Une erreur est survenue lors de la création de la commande.", "Erreur d'insertion", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
