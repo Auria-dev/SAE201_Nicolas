@@ -46,7 +46,7 @@
                         VerticalAlignment="Center"
                         FontSize="16"
                         Foreground="#efefef"
-                        Text="Modifier un client" />
+                        Text="Modifier une commande" />
                     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                         <Ellipse
                             Width="16"
@@ -112,6 +112,7 @@
                     Width="280"
                     Height="42"
                     Style="{StaticResource TextBox}"
+                    Text="{Binding Quantite, ValidatesOnExceptions=True}"
                     TextChanged="updatePrix" />
 
                 <TextBlock

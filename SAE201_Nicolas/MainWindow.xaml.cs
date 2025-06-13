@@ -37,7 +37,6 @@ namespace SAE201_Nicolas
             ViewManager.Instance.RegisterView<GestionClients>(nameof(GestionClients));
             
             ViewManager.Instance.RegisterView<AjouterVinUC>(nameof(AjouterVinUC));
-            //ViewManager.Instance.RegisterView<ModifierVinUC>(nameof(ModifierVinUC));
 
             ViewManager.Instance.RegisterView<AjouterClientUC>(nameof(AjouterClientUC));
             ViewManager.Instance.RegisterView<ModifierClientUC>(nameof(ModifierClientUC));
@@ -83,7 +82,8 @@ namespace SAE201_Nicolas
                 "Déconexion",
                 MessageBoxButton.YesNo, 
                 MessageBoxImage.Warning
-                );
+            );
+
             if (deconnexion == MessageBoxResult.Yes)
             {
                 this.Owner.Show();

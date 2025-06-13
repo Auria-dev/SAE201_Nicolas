@@ -96,7 +96,7 @@
                     Width="380"
                     Height="48"
                     Style="{StaticResource TextBox}"
-                    Text="{Binding Annee}" />
+                    Text="{Binding Annee, ValidatesOnExceptions=True}" />
 
                 <StackPanel Margin="8,8,0,0" Orientation="Horizontal">
                     <StackPanel Orientation="Vertical">
@@ -110,7 +110,7 @@
                             Height="48"
                             Margin="0,0,12,0"
                             Style="{StaticResource TextBox}"
-                            Text="{Binding PrixVin}" />
+                            Text="{Binding PrixVin, ValidatesOnExceptions=True}" />
                     </StackPanel>
 
                     <StackPanel Orientation="Vertical">

@@ -25,6 +25,7 @@ namespace SAE201_Nicolas.View.UC
         public AjouterClientUC()
         {
             InitializeComponent();
+            this.DataContext = new Client();
         }
 
         public AjouterClientUC(Client unClient)
@@ -40,6 +41,23 @@ namespace SAE201_Nicolas.View.UC
 
         private void butAjouterClient_Click(object sender, RoutedEventArgs e)
         {
+            bool ok = true;
+            foreach (UIElement uie in spFicheClient.Children)
+            {
+                if (uie is TextBox)
+                {
+                    TextBox txt = (TextBox)uie;
+                    txt.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                }
+
+                if (Validation.GetHasError(uie)) ok = false;
+            }
+
+            if (!ok)
+            {
+                return;
+            }
+
             Client unClient = new Client();
             unClient.NomClient = TxtboxNomClient.Text;
             unClient.PrenomClient = TxtboxPrenomClient.Text;

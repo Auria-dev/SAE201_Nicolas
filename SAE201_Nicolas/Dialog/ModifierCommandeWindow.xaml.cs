@@ -30,12 +30,12 @@ namespace SAE201_Nicolas.Dialog
         public ModifierCommandeWindow(ref DetailCommande dtcmd)
         {
             InitializeComponent();
+            this.DataContext = dtcmd;
+
             this.dtcmd = dtcmd;
 
-            foreach (ComboBoxItem item in cbFournisseur.Items)
-            {
-                if ((string)item.Content == this.dtcmd.Fournisseur.NomFournisseur)
-                {
+            foreach (ComboBoxItem item in cbFournisseur.Items) {
+                if ((string)item.Content == dtcmd.FournisseurVin) {
                     cbFournisseur.SelectedItem = item;
                     break;
                 }
@@ -52,20 +52,24 @@ namespace SAE201_Nicolas.Dialog
             if (int.TryParse(this.txtBoxQteVin.Text, out nQte))
             {
                 dtcmd.Quantite = nQte;
-                txtBoxPrix.Text = (this.dtcmd.Vin.PrixVin * this.dtcmd.Quantite).ToString();
+                dtcmd.Prix = (this.dtcmd.Vin.PrixVin * this.dtcmd.Quantite);
+                txtBoxPrix.Text = dtcmd.Prix.ToString();
             }
         }
 
         private void confirmerModifClick(object sender, RoutedEventArgs e)
         {
             if (dtcmd == null) return;
+            if (Validation.GetHasError(txtBoxQteVin))
+                return;
 
             // nouvelle quantité
             int nQte;
             if (int.TryParse(this.txtBoxQteVin.Text, out nQte))
             {
                 dtcmd.Quantite = nQte;
-                txtBoxPrix.Text = (this.dtcmd.Vin.PrixVin * this.dtcmd.Quantite).ToString();
+                dtcmd.Prix = (this.dtcmd.Vin.PrixVin * this.dtcmd.Quantite);
+                txtBoxPrix.Text = dtcmd.Prix.ToString();
             }
 
             // nouveau fournisseur

@@ -86,7 +86,6 @@ namespace SAE201_Nicolas.View
 
         private void dgCommandesSupprimer(object sender, RoutedEventArgs e)
         {
-
             // delete le detail commande ET la commande
 
             List<DetailCommande> dtcm = dgCommandes.SelectedItems.Cast<DetailCommande>().ToList();
@@ -130,9 +129,11 @@ namespace SAE201_Nicolas.View
             }
 
             DetailCommande dtcmd = dtcmdl[0];
+            
             ModifierCommandeWindow wModifierCommande = new ModifierCommandeWindow(ref dtcmd);
             bool? res = wModifierCommande.ShowDialog();
-            
+
+            dtcmd.UpdateDetailCommande();
             if (dgCommandes != null)
                 CollectionViewSource.GetDefaultView(dgCommandes.ItemsSource).Refresh();
         }
