@@ -1,44 +1,8 @@
-# SAE201_Nicolas
+# SAE201 Nicolas
 
-# WE NEED TO DO ALL OF THE LOGIN ON THE DATABASE, AS WELL AS USING THAT IN THE APP!!!
+This application was developed as part of a software engineering project for managing wine orders in a store setting.
 
-TODO (if time):
-- Interface for all of the FindAll, Ajouter all that
-- Images in datagrid
-
-```
-TODO:
-Compte rendu (voirs ConsignesRendusDeveloppement.pdf sur le U)
-
-Ajouter fournisseurs à RechercherVin et HistoriqueDemandes
-
-Double check all the user input
-
-Unit tests
-
-Show/Hide pages based on the employe role
-
-DONE :
-Context menu on all datagrids that lets you edit/delete them.
-	editing: new window pops up
-	remove: msgbox to confirm
-
-Partie "Rechercher/Demander des vin"
-	data grid avec tt les vins
-	1) Selectionner vin
-	2) Clicker sur demander vin
-	3) Ouvrir menu "quantité et confirmation" 
-	4) Ajout a la liste des demandes
-	5) La demande est "En Attente" par défaut
-
-Partie "Historique des demandes"
-	data grid avec tt les demandes
-	(Col: NomEmployer | NumDemande | NomVin | Qté | PrixTotal | DateDemande | EtatDemande | Client)
-
-Partie "Gestion demandes" 
-	data grid avec tt les demandes
-	1) Le manager peut selectionner des demandes
-	2) Il peut selectionner plusieurs demandes pour créer une commande (si même vin ou même fournisseur)
-	3) Il confirme OU supprime la commande
-	4) si il confirme l'état de la demmande pass en 
-```
+# Technologies
+- C# / WPF (UI)
+- PostgreSQL (Database)
+- Npgsql (Database connector)
