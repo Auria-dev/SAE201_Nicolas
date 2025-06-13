@@ -150,6 +150,7 @@
                     Binding="{Binding NomVin}"
                     Header="Vin" />
                 <DataGridTextColumn
+                    x:Name="columnEmp"
                     Width="1.5*"
                     Binding="{Binding NomEmploye}"
                     Header="Employer" />

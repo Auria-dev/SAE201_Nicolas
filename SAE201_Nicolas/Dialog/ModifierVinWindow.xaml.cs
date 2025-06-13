@@ -61,7 +61,7 @@ namespace SAE201_Nicolas.Dialog
                 if (Validation.GetHasError(uie))
                 {
                     ok = false;
-                    MessageBox.Show(this, "Les informations renseigner sont invalide. Impossible de créer le vin.", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(this, "Les informations renseigner sont invalide. Impossible de créer le vin.", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
             }
@@ -71,10 +71,10 @@ namespace SAE201_Nicolas.Dialog
                 ok = false;
             }
 
-            if (ok) DialogResult = true;
+            if (ok) { DialogResult = true; }
             else
             {
-                MessageBox.Show(this, "Les informations renseigner sont invalide. Impossible de créer le vin.", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(this, "Les informations renseigner sont invalide. Impossible de créer le vin.", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
